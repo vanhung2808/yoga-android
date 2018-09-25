@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">YogaStudio</string>
+    <string name="schedule">Schedule</string>
+    <string name="poses">Poses</string>
+    <string name="classes">Classes</string>
+</resources>

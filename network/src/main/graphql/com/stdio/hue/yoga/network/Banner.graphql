@@ -1,0 +1,12 @@
+query Banner{
+	banner{
+		id,
+		type,
+		collection{
+			id,
+			name
+		},
+		image,
+		url
+	}
+}

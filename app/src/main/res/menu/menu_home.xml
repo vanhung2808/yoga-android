@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_classes"
+        android:icon="@drawable/ic_classes_gray"
+        android:title="@string/classes" />
+
+    <item
+        android:id="@+id/navigation_poses"
+        android:icon="@drawable/ic_poses_gray"
+        android:title="@string/poses" />
+
+    <item
+        android:id="@+id/navigation_schedule"
+        android:icon="@drawable/ic_calendar_gray"
+        android:title="@string/schedule" />
+</menu>

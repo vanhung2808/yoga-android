@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.apollographql.android'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            postprocessing {
+                removeUnusedCode false
+                removeUnusedResources false
+                obfuscate false
+                optimizeCode false
+                proguardFile 'proguard-rules.pro'
+            }
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api project(':network')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.design
+    implementation supportDependencies.dagger2
+    compileOnly supportDependencies.jsr250
+    annotationProcessor supportDependencies.dagger2Compiler
+    implementation supportDependencies.rxJava
+    implementation supportDependencies.rxAndroid
+
+    implementation 'com.google.code.gson:gson:2.8.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    api project(path: ':common')
+    implementation 'com.apollographql.apollo:apollo-runtime:1.0.0-alpha2'
+    implementation 'com.apollographql.apollo:apollo-android-support:1.0.0-alpha2'
+    implementation 'com.apollographql.apollo:apollo-rx2-support:1.0.0-alpha2'
+}
+repositories {
+    mavenCentral()
+}
