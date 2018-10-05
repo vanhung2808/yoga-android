@@ -7,4 +7,8 @@ import com.stdio.hue.yoga.base.core.mvp.Presenter;
  */
 public interface MainPresenter extends Presenter {
     void getBanners();
+
+    void getAllCategories();
+
+    void getCollectionsOfACategory(int categoryId, int limit, int pageIndex, String where);
 }

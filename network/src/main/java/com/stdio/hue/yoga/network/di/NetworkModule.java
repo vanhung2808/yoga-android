@@ -3,6 +3,9 @@ package com.stdio.hue.yoga.network.di;
 import com.apollographql.apollo.ApolloClient;
 import com.stdio.hue.yoga.network.BuildConfig;
 import com.stdio.hue.yoga.network.service.BannerService;
+import com.stdio.hue.yoga.network.service.CategoryService;
+import com.stdio.hue.yoga.network.service.ClassService;
+import com.stdio.hue.yoga.network.service.CollectionService;
 
 import org.json.JSONObject;
 
@@ -67,5 +70,20 @@ public class NetworkModule {
     @Provides
     public BannerService provideBannerService(@Named("Base") ApolloClient apolloClient) {
         return new BannerService(apolloClient);
+    }
+
+    @Provides
+    public CategoryService provideCategoryService(@Named("Base") ApolloClient apolloClient) {
+        return new CategoryService(apolloClient);
+    }
+
+    @Provides
+    public ClassService provideClassService(@Named("Base") ApolloClient apolloClient) {
+        return new ClassService(apolloClient);
+    }
+
+    @Provides
+    public CollectionService provideCollectionService(@Named("Base") ApolloClient apolloClient) {
+        return new CollectionService(apolloClient);
     }
 }

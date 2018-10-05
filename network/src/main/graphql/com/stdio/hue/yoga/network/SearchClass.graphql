@@ -1,0 +1,29 @@
+query SeachClass($condition: SearchInput, $page: Int, $limit: Int) {
+ result: searchClass(search: $condition, page: $page, limit: $limit) {
+    data {
+      name
+      id
+      description
+      video_url
+      duration
+      image
+      ability {
+        id
+        name
+      }
+      focus {
+        id
+        name
+      }
+      intensity {
+        id
+        name
+      }
+    }
+    per_page
+    total
+    current_page
+    from
+    to
+  }
+}

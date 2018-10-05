@@ -10,12 +10,14 @@ import android.view.View;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.BaseSliderView;
-import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.DefaultSliderView;
+import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.TextSliderView;
 import com.stdio.hue.yoga.databinding.FragmentMainClassesBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
+import com.stdio.hue.yoga.modules.main.ui.adapters.ClassesMainPagerAdapter;
 import com.stdio.hue.yoga.network.BannerQuery;
+import com.stdio.hue.yoga.shares.utils.SHStringHelper;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -39,6 +41,7 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
     @Override
     protected void init(@Nullable View view) {
         initSlider();
+        viewDataBinding.vpClasses.setAdapter(new ClassesMainPagerAdapter(getChildFragmentManager()));
         PublishSubject<MainAction> mainState = getAppComponent().getMainComponent().getMainState();
         getPresenter().getBanners();
         disposableManager.add(
@@ -59,15 +62,15 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
                         .subscribe(banners -> {
                             viewDataBinding.slider.removeAllSliders();
                             for (BannerQuery.Banner slider : banners) {
-                                DefaultSliderView defaultSliderView = new DefaultSliderView(getContext());
-                                defaultSliderView
-                                        .description(slider.image())
+                                TextSliderView textSliderView = new TextSliderView(getContext());
+                                textSliderView
+                                        .description(slider.collection() == null || SHStringHelper.nullOrEmpty(slider.collection().name()) ? "" : slider.collection().name())
                                         .image(slider.image())
                                         .setScaleType(BaseSliderView.ScaleType.CenterCrop)
                                         .setOnSliderClickListener(this);
-                                defaultSliderView.bundle(new Bundle());
-                                defaultSliderView.getBundle().putString("extra", slider.image());
-                                viewDataBinding.slider.addSlider(defaultSliderView);
+                                textSliderView.bundle(new Bundle());
+                                textSliderView.getBundle().putString("extra", slider.image());
+                                viewDataBinding.slider.addSlider(textSliderView);
                             }
                         }));
 

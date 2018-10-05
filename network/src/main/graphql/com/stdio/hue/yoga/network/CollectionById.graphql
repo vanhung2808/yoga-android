@@ -1,0 +1,13 @@
+query GetCollectionDetail($id : Int) {
+  collectionById(id: $id) {
+    name
+    id
+    description
+    classes {
+      id
+      name
+      image
+      duration
+    }
+  }
+}

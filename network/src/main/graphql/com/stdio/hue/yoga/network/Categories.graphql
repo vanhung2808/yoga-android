@@ -1,0 +1,12 @@
+query GetAllCategory{
+  categories {
+    id
+    name
+    collection {
+      id
+      name
+      description,
+			image
+    }
+  }
+}

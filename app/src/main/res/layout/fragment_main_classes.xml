@@ -40,21 +40,45 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <Button
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="xxcvxcv" />
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tbl_main"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/iv_search"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Collections" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Custom" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_home_search_gray" />
+            </RelativeLayout>
+
+            <com.stdio.hue.yoga.common.widgets.ViewPagerNotScroll
+                android:id="@+id/vp_classes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_home"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>

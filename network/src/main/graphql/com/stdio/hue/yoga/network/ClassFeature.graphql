@@ -1,0 +1,14 @@
+query ClassFeature{
+	ability : viewAllAbility{
+		id,
+		name
+	}
+	focus: viewAllFocus{
+		id,
+		name
+	}
+	intensity :viewAllIntensity{
+		id,
+		name
+	}
+}
