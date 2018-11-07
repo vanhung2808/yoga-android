@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
 
         <variable
@@ -42,7 +41,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:alpha="0.2"
+                android:alpha="0.3"
                 android:background="@android:color/black"
                 android:minHeight="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +52,8 @@
                 android:id="@+id/tv_collection_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:text="@{collectionName}"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -67,9 +66,9 @@
                 android:id="@+id/tv_total_classes_of_collction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
                 android:text='@{totalClasses + " classes"}'
                 android:textColor="@android:color/white"
                 android:textSize="14sp"

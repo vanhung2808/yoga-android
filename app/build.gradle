@@ -46,6 +46,10 @@ dependencies {
     compileOnly supportDependencies.jsr250
     annotationProcessor supportDependencies.dagger2Compiler
 
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    // optional - RxJava support for Room
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'

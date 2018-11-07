@@ -6,4 +6,5 @@ import com.stdio.hue.yoga.base.core.mvp.Presenter;
  * Created by hung.nguyendk on 4/29/18.
  */
 public interface SplashPresenter extends Presenter {
+    void getAllDataAndSaveLocal(Integer timeUpdate, String language);
 }

@@ -1,5 +1,8 @@
 package com.stdio.hue.yoga.data.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 
 import java.io.Serializable;
@@ -7,9 +10,17 @@ import java.io.Serializable;
 /**
  * Created by TranHuuPhuc on 9/25/18.
  */
+@Entity(tableName = "category")
 public class Category extends BaseObservable implements Serializable {
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     private int id;
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "created_at")
+    private long createdAt;
+    @ColumnInfo(name = "updated_at")
+    private long updatedAt;
 
     public int getId() {
         return id;
@@ -25,5 +36,21 @@ public class Category extends BaseObservable implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public long getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(long updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

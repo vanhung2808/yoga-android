@@ -11,6 +11,14 @@
         android:contentDescription="TODO"
         android:scaleType="centerInside" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:background="@android:color/black"
+        android:contentDescription="TODO"
+        android:scaleType="centerInside" />
+
     <ProgressBar
         android:id="@+id/loading_bar"
         android:layout_width="wrap_content"

@@ -10,6 +10,12 @@
         android:icon="@drawable/ic_poses_gray"
         android:title="@string/poses" />
 
+
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/ic_news_gray"
+        android:title="@string/news" />
+
     <item
         android:id="@+id/navigation_schedule"
         android:icon="@drawable/ic_calendar_gray"

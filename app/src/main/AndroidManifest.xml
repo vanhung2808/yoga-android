@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".modules.main.ui.activities.MainActivity" />
+        <activity android:name=".modules.classes.searchs.ui.activities.SearchClassesActivity" />
+        <activity android:name=".modules.collections.ui.activities.CollectionDetailActivity" />
 
     </application>
 </manifest>

@@ -4,8 +4,8 @@ import android.databinding.ViewDataBinding;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
+import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.ItemCollectionClassesMainBinding;
-import com.stdio.hue.yoga.network.GetCollectionsOfACategoryQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by TranHuuPhuc on 10/5/18.
  */
 public class CollectionsClassesMainAdapter extends AbsBindingAdapter<ItemCollectionClassesMainBinding> {
-    private List<GetCollectionsOfACategoryQuery.Datum> collections;
+    private List<Collection> collections;
 
     public CollectionsClassesMainAdapter(RecyclerViewClickListener itemListener) {
         super(itemListener);
@@ -29,12 +29,18 @@ public class CollectionsClassesMainAdapter extends AbsBindingAdapter<ItemCollect
     @Override
     public void updateBinding(ViewDataBinding binding, int position) {
         if (binding instanceof ItemCollectionClassesMainBinding) {
-            GetCollectionsOfACategoryQuery.Datum collection = collections.get(position);
-            ItemCollectionClassesMainBinding itemBind = (ItemCollectionClassesMainBinding) binding;
-            itemBind.setCollectionName(collection.name());
-            itemBind.setCollectionAvatar(collection.image());
-            itemBind.setTotalClasses(collection.classes() != null ? collection.classes().size() : 0);
+//            Collection collection = collections.get(position);
+//            ItemCollectionClassesMainBinding itemBind = (ItemCollectionClassesMainBinding) binding;
+//            itemBind.setCollectionName(collection.name());
+//            itemBind.setCollectionAvatar(collection.image());
+//            itemBind.setTotalClasses(collection.classes() != null ? collection.classes().size() : 0);
         }
+    }
+
+    public Collection getCollection(int position) {
+//        Collection data = collections.get(position);
+//        return new Collection(data.id(), data.name(), data.image(), data.description(), data.classes().size());
+        return null;
     }
 
     @Override
@@ -42,7 +48,7 @@ public class CollectionsClassesMainAdapter extends AbsBindingAdapter<ItemCollect
         return collections != null ? collections.size() : 0;
     }
 
-    public void updateData(List<GetCollectionsOfACategoryQuery.Datum> collections) {
+    public void updateData(List<Collection> collections) {
         int size = collections.size();
         this.collections.addAll(collections);
         notifyItemRangeInserted(size, collections.size());

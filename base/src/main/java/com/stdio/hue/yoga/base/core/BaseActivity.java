@@ -13,6 +13,12 @@ import io.reactivex.Observable;
  * Created by TranHuuPhuc on 7/6/18.
  */
 public class BaseActivity extends AppCompatActivity {
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     protected void replaceFragment(int view, Fragment fragment, boolean addToStack) {
         if (addToStack) {
             getSupportFragmentManager()

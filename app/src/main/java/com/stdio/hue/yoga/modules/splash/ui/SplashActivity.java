@@ -1,5 +1,6 @@
 package com.stdio.hue.yoga.modules.splash.ui;
 
+import android.annotation.SuppressLint;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 
@@ -28,15 +29,34 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
 
     @Override
     protected void startScreen() {
-
     }
 
+    @SuppressLint("RxSubscribeOnError")
     @Override
     protected void resumeScreen() {
-        disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
-            MainActivity.start(this);
-            finish();
+        disposableManager.add(isInternetOn().subscribe(result -> {
+            if (getPreferences(MODE_PRIVATE).getBoolean("new", false)) {
+                if (result) {
+                    //Todo fetch new database change if have.
+                } else {
+                    disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
+                        MainActivity.start(this);
+                        finish();
+                    }));
+                }
+            } else {
+                if (result) {
+                    getPreferences(MODE_PRIVATE).edit().putBoolean("new", true);
+                    //Todo fetch all database and create localdb.
+                    getPresenter().getAllDataAndSaveLocal(null, "en");
+                    MainActivity.start(this);
+                    finish();
+                } else {
+                    showToast("Could not load data. Please connect to the network and restart the application.");
+                }
+            }
         }));
+
     }
 
     @Override

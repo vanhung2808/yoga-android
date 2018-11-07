@@ -45,7 +45,6 @@ dependencies {
     annotationProcessor supportDependencies.dagger2Compiler
     implementation supportDependencies.rxJava
     implementation supportDependencies.rxAndroid
-
     implementation 'com.google.code.gson:gson:2.8.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -54,6 +53,11 @@ dependencies {
     implementation 'com.apollographql.apollo:apollo-runtime:1.0.0-alpha2'
     implementation 'com.apollographql.apollo:apollo-android-support:1.0.0-alpha2'
     implementation 'com.apollographql.apollo:apollo-rx2-support:1.0.0-alpha2'
+
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    // optional - RxJava support for Room
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
 }
 repositories {
     mavenCentral()

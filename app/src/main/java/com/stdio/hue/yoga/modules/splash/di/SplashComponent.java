@@ -9,6 +9,5 @@ import dagger.Subcomponent;
  */
 @Subcomponent(modules = SplashModule.class)
 public interface SplashComponent {
-
     SplashPresenter getSplashPresenter();
 }

@@ -1,0 +1,92 @@
+query GetPose($update: Int) {
+    pose(update: $update) {
+                id
+                name
+				image
+				description
+				focus_id
+				type_id
+				ability_id
+				created_at
+				updated_at
+    }
+}
+query GetCategory($update: Int) {
+	  categories(update: $update) {
+                id
+                name
+				created_at
+				updated_at
+    }
+}
+query GetCollection($update: Int) {
+    collections(update: $update) {
+                name
+                id
+				image
+                description
+				category_id
+				created_at
+				updated_at
+    }
+}
+query GetClasses($update: Int) {
+		classes(update: $update){
+				name
+				id
+				description,
+				collection_id
+				image
+				video_url
+				duration_id
+				focus_id
+				ability_id
+				intensity_id
+				created_at
+				updated_at
+		}
+}
+query GetBanner($update: Int) {
+		banner(update: $update){
+				id
+				type
+				status
+				image
+				url
+				collection_id
+				created_at
+				updated_at
+		}
+}
+query GetAbility($update: Int) {
+		viewAllAbility(update: $update){
+				id
+				name
+				created_at
+				updated_at
+		}
+}
+query GetFocus($update: Int) {
+		viewAllFocus(update: $update){
+				id
+				name
+				created_at
+				updated_at
+		}
+}
+query GetIntensity($update: Int) {
+		viewAllIntensity(update: $update){
+				id
+				name
+		        created_at
+		        updated_at
+	  }
+}
+query GetDuration($update: Int) {
+	  viewAllDuration(update: $update){
+		        id
+		        name
+		        created_at
+		        updated_at
+	  }
+}

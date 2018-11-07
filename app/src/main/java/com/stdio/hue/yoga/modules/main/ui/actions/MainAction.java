@@ -1,6 +1,6 @@
 package com.stdio.hue.yoga.modules.main.ui.actions;
 
-import com.stdio.hue.yoga.network.BannerQuery;
+import com.stdio.hue.yoga.data.models.Banner;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class MainAction {
     public static final PublishSubject<MainAction> publisher = PublishSubject.create();
     private boolean isLoading;
     private String errorMessage;
-    private List<BannerQuery.Banner> banners;
+    private List<Banner> banners;
 
     public static MainAction isLoading(boolean isLoading) {
         MainAction action = new MainAction();
@@ -27,13 +27,13 @@ public class MainAction {
         return action;
     }
 
-    public static MainAction setBanners(List<BannerQuery.Banner> data) {
+    public static MainAction setBanners(List<Banner> data) {
         MainAction action = new MainAction();
         action.banners = data;
         return action;
     }
 
-    public List<BannerQuery.Banner> getBanners() {
+    public List<Banner> getBanners() {
         return banners;
     }
 

@@ -1,5 +1,6 @@
 package com.stdio.hue.yoga.modules.main.ui.fragments.classes;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.databinding.FragmentMainCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
+import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.CollectionsClassesMainAdapter;
@@ -36,6 +38,9 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         return R.layout.fragment_main_collections;
     }
 
+    private CollectionsClassesMainAdapter adapter;
+
+    @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
         PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState = getAppComponent().getMainComponent().getCollectionsClassesMainState();
@@ -43,7 +48,7 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
             int categoryId = getArguments().getInt(EXTRA_CATEGORY_ID);
             getPresenter().getCollectionsOfACategory(categoryId, 100, 1, null);
         }
-        CollectionsClassesMainAdapter adapter = new CollectionsClassesMainAdapter(this);
+        adapter = new CollectionsClassesMainAdapter(this);
         viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvCollections.setHasFixedSize(false);
         viewDataBinding.rvCollections.setAdapter(adapter);
@@ -60,10 +65,10 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
                         .subscribe(this::showToast)
         );
 
-        disposableManager.add(
-                collectionsClassesMainState.filter(c -> c.getCollections() != null)
-                        .map(CollectionsClassesMainAction::getCollections)
-                        .subscribe(adapter::updateData));
+//        disposableManager.add(
+//                collectionsClassesMainState.filter(c -> c.getCollections() != null)
+//                        .map(CollectionsClassesMainAction::getCollections)
+//                        .subscribe(adapter::updateData));
     }
 
     @Override
@@ -94,6 +99,6 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
 
     @Override
     public void recyclerViewListClicked(View view, int position) {
-
+        CollectionDetailActivity.start(getContext(), adapter.getCollection(position));
     }
 }

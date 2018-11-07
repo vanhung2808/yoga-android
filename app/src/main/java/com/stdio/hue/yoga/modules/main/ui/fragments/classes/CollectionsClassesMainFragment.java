@@ -1,5 +1,6 @@
 package com.stdio.hue.yoga.modules.main.ui.fragments.classes;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +12,6 @@ import com.stdio.hue.yoga.databinding.FragmentMainClassesCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
-import com.stdio.hue.yoga.modules.main.ui.adapters.CollectionsClassesMainPagerAdapter;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -32,6 +32,7 @@ public class CollectionsClassesMainFragment extends BaseYogaFragment<MainPresent
         return R.layout.fragment_main_classes_collections;
     }
 
+    @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
         PublishSubject<CollectionsClassesMainAction> mainState = getAppComponent().getMainComponent().getCollectionsClassesMainState();
@@ -49,12 +50,12 @@ public class CollectionsClassesMainFragment extends BaseYogaFragment<MainPresent
                         .subscribe(this::showToast)
         );
 
-        disposableManager.add(
-                mainState.filter(c -> c.getCategories() != null)
-                        .map(CollectionsClassesMainAction::getCategories)
-                        .subscribe(categories -> {
-                            viewDataBinding.vpCollections.setAdapter(new CollectionsClassesMainPagerAdapter(getChildFragmentManager(),categories));
-                        }));
+//        disposableManager.add(
+//                mainState.filter(c -> c.getCategories() != null)
+//                        .map(CollectionsClassesMainAction::getCategories)
+//                        .subscribe(categories -> {
+//                            viewDataBinding.vpCollections.setAdapter(new CollectionsClassesMainPagerAdapter(getChildFragmentManager(),categories));
+//                        }));
     }
 
     @Override

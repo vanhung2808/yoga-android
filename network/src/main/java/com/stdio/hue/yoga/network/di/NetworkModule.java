@@ -2,10 +2,7 @@ package com.stdio.hue.yoga.network.di;
 
 import com.apollographql.apollo.ApolloClient;
 import com.stdio.hue.yoga.network.BuildConfig;
-import com.stdio.hue.yoga.network.service.BannerService;
-import com.stdio.hue.yoga.network.service.CategoryService;
-import com.stdio.hue.yoga.network.service.ClassService;
-import com.stdio.hue.yoga.network.service.CollectionService;
+import com.stdio.hue.yoga.network.service.DataService;
 
 import org.json.JSONObject;
 
@@ -23,7 +20,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 @Module
 public class NetworkModule {
     @Provides
-    public OkHttpClient.Builder provideOkHttpClientBuilder() {
+    public OkHttpClient.Builder providesOkHttpClientBuilder() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
@@ -58,32 +55,15 @@ public class NetworkModule {
 
     @Provides
     @Named("Base")
-    public ApolloClient provideApolloClient(OkHttpClient.Builder httpClient) {
+    public ApolloClient providesApolloClient(OkHttpClient.Builder httpClient) {
         return ApolloClient.builder()
                 .serverUrl(BuildConfig.SERVER_URL)
                 .okHttpClient(httpClient.build())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .addConverterFactory(GsonConverterFactory.create()
                 .build();
     }
 
     @Provides
-    public BannerService provideBannerService(@Named("Base") ApolloClient apolloClient) {
-        return new BannerService(apolloClient);
-    }
-
-    @Provides
-    public CategoryService provideCategoryService(@Named("Base") ApolloClient apolloClient) {
-        return new CategoryService(apolloClient);
-    }
-
-    @Provides
-    public ClassService provideClassService(@Named("Base") ApolloClient apolloClient) {
-        return new ClassService(apolloClient);
-    }
-
-    @Provides
-    public CollectionService provideCollectionService(@Named("Base") ApolloClient apolloClient) {
-        return new CollectionService(apolloClient);
+    public DataService providesDataService(@Named("Base") ApolloClient apolloClient) {
+        return new DataService(apolloClient);
     }
 }
