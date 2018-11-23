@@ -14,17 +14,17 @@ public class ClassesMapper extends Mapper<GetClassesQuery.Class, Classes> {
             classes = new Classes();
             classes.setId(entity.id());
             classes.setName(entity.name());
-            classes.setCreatedAt(entity.created_at());
-            classes.setUpdatedAt(entity.updated_at());
+            classes.setCreatedAt(String.valueOf(entity.created_at()));
+            classes.setUpdatedAt(String.valueOf(entity.updated_at()));
             classes.setImage(entity.image());
             classes.setDescription(entity.description());
-            classes.setAbilityId(entity.ability_id());
-            classes.setCollectionId(entity.collection_id());
+            classes.setAbilityId(String.valueOf(entity.ability_id()));
+            classes.setCollectionId(String.valueOf(entity.collection_id()));
             classes.setDescription(entity.description());
-            classes.setDurationId(entity.duration_id());
-            classes.setFocusId(entity.focus_id());
+            classes.setDurationId(String.valueOf(entity.duration_id()));
+            classes.setFocusId(String.valueOf(entity.focus_id()));
             classes.setImage(entity.image());
-            classes.setIntensityId(entity.intensity_id());
+            classes.setIntensityId(String.valueOf(entity.intensity_id()));
             classes.setVideoUrl(entity.video_url());
         }
         return classes;

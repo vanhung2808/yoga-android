@@ -15,8 +15,8 @@ public class DurationMapper extends Mapper<GetDurationQuery.ViewAllDuration, Dur
             duration.setId(entity.id());
             duration.setName(entity.name());
             duration.setChecked(false);
-            duration.setCreatedAt(entity.created_at());
-            duration.setUpdatedAt(entity.updated_at());
+            duration.setCreatedAt(String.valueOf(entity.created_at()));
+            duration.setUpdatedAt(String.valueOf(entity.updated_at()));
         }
         return duration;
     }

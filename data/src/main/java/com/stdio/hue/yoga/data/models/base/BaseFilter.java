@@ -5,6 +5,9 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 
+import com.google.gson.Gson;
+import com.stdio.hue.yoga.data.models.NameEntity;
+
 import java.io.Serializable;
 
 /**
@@ -19,23 +22,23 @@ public class BaseFilter extends BaseObservable implements Serializable {
     @Ignore
     private boolean checked;
     @ColumnInfo(name = "created_at")
-    private long createdAt;
+    private String createdAt;
     @ColumnInfo(name = "updated_at")
-    private long updatedAt;
+    private String updatedAt;
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public long getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(long updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -71,5 +74,10 @@ public class BaseFilter extends BaseObservable implements Serializable {
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
+
+    public NameEntity getName(Gson gson) {
+        return gson.fromJson(name, NameEntity.class);
+    }
+
 }
 

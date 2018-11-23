@@ -17,7 +17,7 @@ public class Banner extends BaseObservable implements Serializable {
     @ColumnInfo(name = "id")
     private int id;
     @ColumnInfo(name = "type")
-    private int type;
+    private String type;
     @Ignore
     private Collection collection;
     @ColumnInfo(name = "image")
@@ -25,11 +25,11 @@ public class Banner extends BaseObservable implements Serializable {
     @ColumnInfo(name = "url")
     private String url;
     @ColumnInfo(name = "collection_id")
-    private int collectionId;
+    private String collectionId;
     @ColumnInfo(name = "created_at")
-    private long createdAt;
+    private String createdAt;
     @ColumnInfo(name = "updated_at")
-    private long updatedAt;
+    private String updatedAt;
 
     public int getId() {
         return id;
@@ -39,11 +39,11 @@ public class Banner extends BaseObservable implements Serializable {
         this.id = id;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -71,27 +71,28 @@ public class Banner extends BaseObservable implements Serializable {
         this.url = url;
     }
 
-    public int getCollectionId() {
+    public String getCollectionId() {
         return collectionId;
     }
 
-    public void setCollectionId(int collectionId) {
+    public void setCollectionId(String collectionId) {
         this.collectionId = collectionId;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public long getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(long updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

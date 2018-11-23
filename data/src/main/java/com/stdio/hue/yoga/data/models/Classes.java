@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 
 /**
@@ -20,27 +22,27 @@ public class Classes extends BaseObservable implements Serializable {
     @ColumnInfo(name = "image")
     private String image;
     @ColumnInfo(name = "duration")
-    private int duration;
+    private String duration;
     @ColumnInfo(name = "description")
     private String description;
     @ColumnInfo(name = "video_url")
     private String videoUrl;
     @ColumnInfo(name = "collection_id")
-    private int collectionId;
+    private String collectionId;
     @ColumnInfo(name = "duration_id")
-    private int durationId;
+    private String durationId;
     @ColumnInfo(name = "focus_id")
-    private int focusId;
+    private String focusId;
     @ColumnInfo(name = "ability_id")
-    private int abilityId;
+    private String abilityId;
     @ColumnInfo(name = "intensity_id")
-    private int intensityId;
+    private String intensityId;
     @ColumnInfo(name = "poster_video")
     private String posterVideo;
     @ColumnInfo(name = "created_at")
-    private long createdAt;
+    private String createdAt;
     @ColumnInfo(name = "updated_at")
-    private long updatedAt;
+    private String updatedAt;
 
 
     public String getImage() {
@@ -51,11 +53,11 @@ public class Classes extends BaseObservable implements Serializable {
         this.image = image;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -91,43 +93,43 @@ public class Classes extends BaseObservable implements Serializable {
         this.videoUrl = videoUrl;
     }
 
-    public int getCollectionId() {
+    public String getCollectionId() {
         return collectionId;
     }
 
-    public void setCollectionId(int collectionId) {
+    public void setCollectionId(String collectionId) {
         this.collectionId = collectionId;
     }
 
-    public int getDurationId() {
+    public String getDurationId() {
         return durationId;
     }
 
-    public void setDurationId(int durationId) {
+    public void setDurationId(String durationId) {
         this.durationId = durationId;
     }
 
-    public int getFocusId() {
+    public String getFocusId() {
         return focusId;
     }
 
-    public void setFocusId(int focusId) {
+    public void setFocusId(String focusId) {
         this.focusId = focusId;
     }
 
-    public int getAbilityId() {
+    public String getAbilityId() {
         return abilityId;
     }
 
-    public void setAbilityId(int abilityId) {
+    public void setAbilityId(String abilityId) {
         this.abilityId = abilityId;
     }
 
-    public int getIntensityId() {
+    public String getIntensityId() {
         return intensityId;
     }
 
-    public void setIntensityId(int intensityId) {
+    public void setIntensityId(String intensityId) {
         this.intensityId = intensityId;
     }
 
@@ -139,19 +141,23 @@ public class Classes extends BaseObservable implements Serializable {
         this.posterVideo = posterVideo;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public long getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(long updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public NameEntity getName(Gson gson) {
+        return gson.fromJson(name, NameEntity.class);
     }
 }

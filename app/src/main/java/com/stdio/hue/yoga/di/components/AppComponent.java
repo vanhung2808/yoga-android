@@ -1,7 +1,5 @@
 package com.stdio.hue.yoga.di.components;
 
-import android.content.Context;
-
 import com.stdio.hue.yoga.ProjectApplication;
 import com.stdio.hue.yoga.di.modules.AppModule;
 import com.stdio.hue.yoga.modules.main.di.MainComponent;
@@ -19,7 +17,7 @@ public interface AppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        Builder context(Context context);
+        Builder context(ProjectApplication projectApplication);
 
         AppComponent build();
     }

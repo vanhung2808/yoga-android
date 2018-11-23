@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.stdio.hue.yoga.ProjectApplication;
 import com.stdio.hue.yoga.data.di.DataModule;
 import com.stdio.hue.yoga.data.di.MapperModule;
-import com.stdio.hue.yoga.data.di.RepositoryModule;
 import com.stdio.hue.yoga.network.di.NetworkModule;
 
 import javax.inject.Named;
@@ -19,9 +19,15 @@ import dagger.Provides;
 /**
  * Created by hung.nguyendk on 4/29/18.
  */
-@Module(includes = {NetworkModule.class, DataModule.class, MapperModule.class, RepositoryModule.class})
+@Module(includes = {NetworkModule.class, DataModule.class, MapperModule.class, DaoModule.class, RepositoryModule.class})
 @Singleton
 public class AppModule {
+    @Provides
+    @Named("application")
+    Context provideContext(ProjectApplication application) {
+        return application.getApplicationContext();
+    }
+
     @Provides
     @Singleton
     @Named("default")

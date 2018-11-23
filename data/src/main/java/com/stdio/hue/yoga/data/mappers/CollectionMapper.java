@@ -14,11 +14,11 @@ public class CollectionMapper extends Mapper<GetCollectionQuery.Collection, Coll
             collection = new Collection();
             collection.setId(entity.id());
             collection.setName(entity.name());
-            collection.setCreatedAt(entity.created_at());
-            collection.setUpdatedAt(entity.updated_at());
+            collection.setCreatedAt(String.valueOf(entity.created_at()));
+            collection.setUpdatedAt(String.valueOf(entity.updated_at()));
             collection.setImage(entity.image());
             collection.setDescription(entity.description());
-            collection.setCategoryId(entity.category_id());
+            collection.setCategoryId(String.valueOf(entity.category_id()));
         }
         return collection;
     }

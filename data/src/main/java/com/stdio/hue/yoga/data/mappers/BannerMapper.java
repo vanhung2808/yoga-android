@@ -14,9 +14,9 @@ public class BannerMapper extends Mapper<GetBannerQuery.Banner, Banner> {
             banner = new Banner();
             banner.setId(entity.id());
             banner.setImage(entity.image());
-            banner.setType(entity.type());
+            banner.setType(String.valueOf(entity.type()));
             banner.setUrl(entity.url());
-            banner.setCollectionId(entity.collection_id());
+            banner.setCollectionId(String.valueOf(entity.collection_id()));
         }
         return banner;
     }

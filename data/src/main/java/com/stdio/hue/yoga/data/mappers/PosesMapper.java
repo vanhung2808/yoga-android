@@ -14,13 +14,13 @@ public class PosesMapper extends Mapper<GetPoseQuery.Pose, Poses> {
             poses = new Poses();
             poses.setId(entity.id());
             poses.setName(entity.name());
-            poses.setCreatedAt(entity.created_at());
-            poses.setUpdatedAt(entity.updated_at());
-            poses.setAbilityId(entity.ability_id());
+            poses.setCreatedAt(String.valueOf(entity.created_at()));
+            poses.setUpdatedAt(String.valueOf(entity.updated_at()));
+            poses.setAbilityId(String.valueOf(entity.ability_id()));
             poses.setDescription(entity.description());
-            poses.setFocusId(entity.focus_id());
+            poses.setFocusId(String.valueOf(entity.focus_id()));
             poses.setImage(entity.image());
-            poses.setTypeId(entity.type_id());
+            poses.setTypeId(String.valueOf(entity.type_id()));
         }
         return poses;
     }

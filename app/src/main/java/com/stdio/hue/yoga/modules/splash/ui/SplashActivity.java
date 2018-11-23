@@ -12,6 +12,7 @@ import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenter;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by hung.nguyendk on 4/29/18.
@@ -38,6 +39,8 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
             if (getPreferences(MODE_PRIVATE).getBoolean("new", false)) {
                 if (result) {
                     //Todo fetch new database change if have.
+                    MainActivity.start(this);
+                    finish();
                 } else {
                     disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
                         MainActivity.start(this);
@@ -46,11 +49,18 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
                 }
             } else {
                 if (result) {
-                    getPreferences(MODE_PRIVATE).edit().putBoolean("new", true);
+                    getPreferences(MODE_PRIVATE).edit().putBoolean("new", true).apply();
                     //Todo fetch all database and create localdb.
-                    getPresenter().getAllDataAndSaveLocal(null, "en");
-                    MainActivity.start(this);
-                    finish();
+                    disposableManager.add(
+                            getPresenter().getAllDataAndSaveLocal(null, "en")
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .doOnSubscribe(d -> loading(true))
+                                    .doOnError(throwable -> loading(false))
+                                    .doOnComplete(() -> loading(false))
+                                    .subscribe(resultGetData -> {
+                                        MainActivity.start(this);
+                                        finish();
+                                    }, throwable -> showToast(throwable.getMessage())));
                 } else {
                     showToast("Could not load data. Please connect to the network and restart the application.");
                 }

@@ -1,31 +1,35 @@
 package com.stdio.hue.yoga.modules.main.presenters;
 
+import android.annotation.SuppressLint;
+
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
+import com.stdio.hue.yoga.databases.repositories.BannerRepository;
+import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by TranHuuPhuc on 9/25/18.
  */
 public class MainPresenterImpl extends BasePresenter implements MainPresenter {
+    private PublishSubject<MainAction> mainActionPublishSubject;
+    private BannerRepository bannerRepository;
 
-    public MainPresenterImpl() {
+    public MainPresenterImpl(PublishSubject<MainAction> mainActionPublishSubject, BannerRepository bannerRepository) {
+        this.mainActionPublishSubject = mainActionPublishSubject;
+        this.bannerRepository = bannerRepository;
     }
 
+    @SuppressLint("RxSubscribeOnError")
     @Override
     public void getBanners() {
-//        disposable.add(getBannersUseCase.execute("vi")
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnSubscribe(d -> mainActionState.onNext(MainAction.isLoading(true)))
-//                .doOnError(throwable -> mainActionState.onNext(MainAction.isLoading(false)))
-//                .doOnComplete(() -> mainActionState.onNext(MainAction.isLoading(false)))
-//                .subscribe(baseResponse -> {
-//                    if (baseResponse.isHasError()) {
-//                        mainActionState.onNext(MainAction.error(baseResponse.getErrors().get(0).getMessage()));
-//                    } else {
-//                        if (baseResponse.getData() != null && !baseResponse.getData().isEmpty()) {
-//                            mainActionState.onNext(MainAction.setBanners(baseResponse.getData()));
-//                        }
-//                    }
-//                }, throwable -> mainActionState.onNext(MainAction.error(throwable.getMessage()))));
+        disposable.add(Observable.just(bannerRepository.getAllBanner())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(banners -> mainActionPublishSubject.onNext(MainAction.setBanners(banners))));
     }
 
     @Override
@@ -47,7 +51,8 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     }
 
     @Override
-    public void getCollectionsOfACategory(int categoryId, int limit, int pageIndex, String where) {
+    public void getCollectionsOfACategory(int categoryId, int limit, int pageIndex, String
+            where) {
 //        disposable.add(getCollectionOfCategoryUseCase.execute(limit, pageIndex, categoryId, where, "vi")
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .doOnSubscribe(d -> collectionsClassesMainState.onNext(CollectionsClassesMainAction.isLoading(true)))

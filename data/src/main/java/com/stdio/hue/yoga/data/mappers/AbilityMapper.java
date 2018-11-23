@@ -15,8 +15,8 @@ public class AbilityMapper extends Mapper<GetAbilityQuery.ViewAllAbility, Abilit
             ability.setId(entity.id());
             ability.setName(entity.name());
             ability.setChecked(false);
-            ability.setCreatedAt(entity.created_at());
-            ability.setUpdatedAt(entity.updated_at());
+            ability.setCreatedAt(String.valueOf(entity.created_at()));
+            ability.setUpdatedAt(String.valueOf(entity.updated_at()));
         }
         return ability;
     }

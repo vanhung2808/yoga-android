@@ -1,14 +1,23 @@
 package com.stdio.hue.yoga.modules.splash.di;
 
-import com.stdio.hue.yoga.data.usecases.servers.GetAbilitiesUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetBannersUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetCategoriesUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetClassesUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetCollectionsUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetDurationsUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetFocusUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetIntensitiesUseCase;
-import com.stdio.hue.yoga.data.usecases.servers.GetPosesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetAbilitiesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetBannersUseCase;
+import com.stdio.hue.yoga.data.usecases.GetCategoriesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetClassesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetCollectionsUseCase;
+import com.stdio.hue.yoga.data.usecases.GetDurationsUseCase;
+import com.stdio.hue.yoga.data.usecases.GetFocusUseCase;
+import com.stdio.hue.yoga.data.usecases.GetIntensitiesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetPosesUseCase;
+import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
+import com.stdio.hue.yoga.databases.repositories.BannerRepository;
+import com.stdio.hue.yoga.databases.repositories.CategoryRepository;
+import com.stdio.hue.yoga.databases.repositories.ClassesRepository;
+import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
+import com.stdio.hue.yoga.databases.repositories.DurationRepository;
+import com.stdio.hue.yoga.databases.repositories.FocusRepository;
+import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
+import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenter;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenterImpl;
 
@@ -21,7 +30,7 @@ import dagger.Provides;
 @Module
 public class SplashModule {
     @Provides
-    public SplashPresenter providesSplashPresenter(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getData, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase) {
-        return new SplashPresenterImpl(getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getData, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase);
+    public SplashPresenter providesSplashPresenter(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository) {
+        return new SplashPresenterImpl(getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getCollectionsUseCase, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase, bannerRepository, abilityRepository, categoryRepository, classesRepository, collectionRepository, durationRepository, focusRepository, intensityRepository, posesRepository);
     }
 }

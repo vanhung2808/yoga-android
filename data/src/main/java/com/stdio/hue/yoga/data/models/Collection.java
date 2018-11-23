@@ -2,9 +2,10 @@ package com.stdio.hue.yoga.data.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
+
+import com.google.gson.Gson;
 
 import java.io.Serializable;
 
@@ -25,13 +26,13 @@ public class Collection extends BaseObservable implements Serializable {
     @ColumnInfo(name = "total_classes")
     private int totalClasses;
     @ColumnInfo(name = "category_id")
-    private int categoryId;
+    private String categoryId;
     @ColumnInfo(name = "start_at")
-    private long startAt;
+    private String startAt;
     @ColumnInfo(name = "created_at")
-    private long createdAt;
+    private String createdAt;
     @ColumnInfo(name = "updated_at")
-    private long updatedAt;
+    private String updatedAt;
 
     public String getImage() {
         return image;
@@ -73,35 +74,39 @@ public class Collection extends BaseObservable implements Serializable {
         this.totalClasses = totalClasses;
     }
 
-    public int getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
-    public long getStartAt() {
+    public String getStartAt() {
         return startAt;
     }
 
-    public void setStartAt(long startAt) {
+    public void setStartAt(String startAt) {
         this.startAt = startAt;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public long getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(long updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public NameEntity getName(Gson gson) {
+        return gson.fromJson(name, NameEntity.class);
     }
 }

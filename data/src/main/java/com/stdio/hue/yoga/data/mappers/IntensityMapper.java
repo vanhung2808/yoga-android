@@ -15,8 +15,8 @@ public class IntensityMapper extends Mapper<GetIntensityQuery.ViewAllIntensity, 
             intensity.setId(entity.id());
             intensity.setName(entity.name());
             intensity.setChecked(false);
-            intensity.setCreatedAt(entity.created_at());
-            intensity.setUpdatedAt(entity.updated_at());
+            intensity.setCreatedAt(String.valueOf(entity.created_at()));
+            intensity.setUpdatedAt(String.valueOf(entity.updated_at()));
         }
         return intensity;
     }

@@ -14,8 +14,8 @@ public class CategoryMapper extends Mapper<GetCategoryQuery.Category, Category> 
             category = new Category();
             category.setId(entity.id());
             category.setName(entity.name());
-            category.setCreatedAt(entity.created_at());
-            category.setUpdatedAt(entity.updated_at());
+            category.setCreatedAt(String.valueOf(entity.created_at()));
+            category.setUpdatedAt(String.valueOf(entity.updated_at()));
         }
         return category;
     }
