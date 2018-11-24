@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface AbilityRepository {
     void insertAbility(List<Ability> abilities);
+
+    List<Ability> getAllAbility();
+
 }

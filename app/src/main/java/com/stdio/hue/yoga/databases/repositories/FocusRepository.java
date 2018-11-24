@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface FocusRepository {
     void insertFocus(List<Focus> focus);
+
+    List<Focus> getAllFocus();
+
 }

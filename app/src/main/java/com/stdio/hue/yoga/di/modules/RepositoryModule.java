@@ -28,8 +28,6 @@ import com.stdio.hue.yoga.databases.repositories.impl.FocusRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.IntensityRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.PosesRepositoryImpl;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -59,8 +57,8 @@ public class RepositoryModule {
     }
 
     @Provides
-    public CollectionRepository providesCollectionRepository(CollectionDao collectionDao) {
-        return new CollectionRepositoryImpl(collectionDao);
+    public CollectionRepository providesCollectionRepository(CollectionDao collectionDao, ClassesDao classesDao) {
+        return new CollectionRepositoryImpl(collectionDao, classesDao);
     }
 
     @Provides

@@ -27,4 +27,16 @@ public interface ClassesDao {
 
     @Update
     void updateAllClasses(List<Classes> classes);
+
+    @Query("SELECT COUNT(*) FROM classes WHERE classes.collection_id = :collectionId")
+    int countClassesOfCollection(int collectionId);
+
+    @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.ability_id = :id")
+    List<Classes> getClassesByAbilityId(int collectionId, int id);
+
+    @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.duration_id = :id")
+    List<Classes> getClassesByDurationId(int collectionId, int id);
+
+    @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.focus_id = :id")
+    List<Classes> getClassesByFocusId(int collectionId, int id);
 }

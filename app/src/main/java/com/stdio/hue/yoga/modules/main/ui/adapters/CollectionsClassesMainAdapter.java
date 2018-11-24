@@ -2,6 +2,7 @@ package com.stdio.hue.yoga.modules.main.ui.adapters;
 
 import android.databinding.ViewDataBinding;
 
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.data.models.Collection;
@@ -29,18 +30,16 @@ public class CollectionsClassesMainAdapter extends AbsBindingAdapter<ItemCollect
     @Override
     public void updateBinding(ViewDataBinding binding, int position) {
         if (binding instanceof ItemCollectionClassesMainBinding) {
-//            Collection collection = collections.get(position);
-//            ItemCollectionClassesMainBinding itemBind = (ItemCollectionClassesMainBinding) binding;
-//            itemBind.setCollectionName(collection.name());
-//            itemBind.setCollectionAvatar(collection.image());
-//            itemBind.setTotalClasses(collection.classes() != null ? collection.classes().size() : 0);
+            Collection collection = collections.get(position);
+            ItemCollectionClassesMainBinding itemBind = (ItemCollectionClassesMainBinding) binding;
+            itemBind.setCollectionName(collection.getNameEntity(new GsonBuilder().create()).getNameLocale());
+            itemBind.setCollectionAvatar(collection.getImage());
+            itemBind.setTotalClasses(collection.getTotalClasses());
         }
     }
 
     public Collection getCollection(int position) {
-//        Collection data = collections.get(position);
-//        return new Collection(data.id(), data.name(), data.image(), data.description(), data.classes().size());
-        return null;
+        return collections.get(position);
     }
 
     @Override

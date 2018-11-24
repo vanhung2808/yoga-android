@@ -1,5 +1,10 @@
 package com.stdio.hue.yoga.modules.main.ui.actions;
 
+import com.stdio.hue.yoga.data.models.Category;
+import com.stdio.hue.yoga.data.models.Collection;
+
+import java.util.List;
+
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -9,6 +14,8 @@ public class CollectionsClassesMainAction {
     public static final PublishSubject<CollectionsClassesMainAction> publisher = PublishSubject.create();
     private boolean isLoading;
     private String errorMessage;
+    private List<Category> categories;
+    private List<Collection> collections;
 
     public static CollectionsClassesMainAction isLoading(boolean isLoading) {
         CollectionsClassesMainAction action = new CollectionsClassesMainAction();
@@ -22,6 +29,18 @@ public class CollectionsClassesMainAction {
         return action;
     }
 
+    public static CollectionsClassesMainAction setCategories(List<Category> categories) {
+        CollectionsClassesMainAction action = new CollectionsClassesMainAction();
+        action.categories = categories;
+        return action;
+    }
+
+    public static CollectionsClassesMainAction setCollectionsOfCategory(List<Collection> collections) {
+        CollectionsClassesMainAction action = new CollectionsClassesMainAction();
+        action.collections = collections;
+        return action;
+    }
+
     public boolean isLoading() {
         return isLoading;
     }
@@ -30,4 +49,11 @@ public class CollectionsClassesMainAction {
         return errorMessage;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public List<Collection> getCollections() {
+        return collections;
+    }
 }

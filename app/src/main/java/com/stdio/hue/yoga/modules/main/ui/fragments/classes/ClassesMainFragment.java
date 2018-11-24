@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.BaseSliderView;
@@ -40,9 +42,12 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
         return R.layout.fragment_main_classes;
     }
 
+    private Gson gson;
+
     @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
+        gson = new GsonBuilder().create();
         initSlider();
         viewDataBinding.vpClasses.setAdapter(new ClassesMainPagerAdapter(getChildFragmentManager()));
         PublishSubject<MainAction> mainState = getAppComponent().getMainComponent().getMainState();
@@ -66,7 +71,7 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
                             viewDataBinding.slider.removeAllSliders();
                             for (Banner slider : banners) {
                                 TextSliderView textSliderView = new TextSliderView(getContext());
-                                textSliderView.description(slider.getCollection() == null || SHStringHelper.nullOrEmpty(slider.getCollection().getName()) ? "" : slider.getCollection().getName())
+                                textSliderView.description(slider.getCollection() == null || SHStringHelper.nullOrEmpty(slider.getCollection().getName()) ? "" : slider.getCollection().getNameEntity(gson).getNameLocale())
                                         .image(slider.getImage())
                                         .setScaleType(BaseSliderView.ScaleType.CenterCrop)
                                         .setOnSliderClickListener(this);

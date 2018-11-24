@@ -65,4 +65,8 @@ dependencies {
     implementation 'com.apollographql.apollo:apollo-runtime:1.0.0-alpha2'
     implementation 'com.apollographql.apollo:apollo-android-support:1.0.0-alpha2'
     implementation 'com.apollographql.apollo:apollo-rx2-support:1.0.0-alpha2'
+    //Support Activity Multilanguage
+    implementation 'com.akexorcist:localizationactivity:1.2.2'
+    //Support font
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 }

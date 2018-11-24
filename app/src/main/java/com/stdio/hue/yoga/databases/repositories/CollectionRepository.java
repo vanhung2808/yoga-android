@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface CollectionRepository {
     void insertCollection(List<Collection> collections);
+
+    List<Collection> getCollectionsOfCategory(int categoryId);
 }

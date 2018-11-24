@@ -40,6 +40,10 @@ public class PosesType extends BaseObservable implements Serializable {
         return createdAt;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
@@ -52,7 +56,7 @@ public class PosesType extends BaseObservable implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public NameEntity getName(Gson gson) {
+    public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
     }
 }

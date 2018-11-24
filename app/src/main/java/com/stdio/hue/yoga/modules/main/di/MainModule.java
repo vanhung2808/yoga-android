@@ -1,6 +1,8 @@
 package com.stdio.hue.yoga.modules.main.di;
 
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
+import com.stdio.hue.yoga.databases.repositories.CategoryRepository;
+import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenterImpl;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
@@ -26,8 +28,8 @@ public class MainModule {
     }
 
     @Provides
-    MainPresenter providesMainPresenter(PublishSubject<MainAction> mainActionPublishSubject, BannerRepository bannerRepository) {
-        return new MainPresenterImpl(mainActionPublishSubject, bannerRepository);
+    MainPresenter providesMainPresenter(PublishSubject<MainAction> mainActionPublishSubject, PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState, BannerRepository bannerRepository, CategoryRepository categoryRepository, CollectionRepository collectionRepository) {
+        return new MainPresenterImpl(mainActionPublishSubject, collectionsClassesMainState, bannerRepository, categoryRepository, collectionRepository);
     }
 
 }

@@ -12,6 +12,7 @@ import com.stdio.hue.yoga.databinding.FragmentMainClassesCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
+import com.stdio.hue.yoga.modules.main.ui.adapters.CollectionsClassesMainPagerAdapter;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -50,12 +51,10 @@ public class CollectionsClassesMainFragment extends BaseYogaFragment<MainPresent
                         .subscribe(this::showToast)
         );
 
-//        disposableManager.add(
-//                mainState.filter(c -> c.getCategories() != null)
-//                        .map(CollectionsClassesMainAction::getCategories)
-//                        .subscribe(categories -> {
-//                            viewDataBinding.vpCollections.setAdapter(new CollectionsClassesMainPagerAdapter(getChildFragmentManager(),categories));
-//                        }));
+        disposableManager.add(
+                mainState.filter(c -> c.getCategories() != null)
+                        .map(CollectionsClassesMainAction::getCategories)
+                        .subscribe(categories -> viewDataBinding.vpCollections.setAdapter(new CollectionsClassesMainPagerAdapter(getChildFragmentManager(), categories))));
     }
 
     @Override

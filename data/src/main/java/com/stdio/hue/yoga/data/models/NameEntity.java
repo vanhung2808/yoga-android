@@ -5,6 +5,7 @@ import android.databinding.BaseObservable;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 /**
  * Created by TranHuuPhuc on 11/23/18.
@@ -59,5 +60,19 @@ public class NameEntity extends BaseObservable implements Serializable {
 
     public void setNameCn(String nameCn) {
         this.nameCn = nameCn;
+    }
+
+    public String getNameLocale() {
+        switch (Locale.getDefault().getLanguage()) {
+            case "fr":
+                return nameFr != null ? nameFr : "";
+            case "zh":
+                return nameCn != null ? nameCn : "";
+            case "vi":
+                return nameVi != null ? nameVi : "";
+            case "en":
+            default:
+                return nameEn != null ? nameEn : "";
+        }
     }
 }

@@ -30,4 +30,7 @@ public interface CollectionDao {
 
     @Query("SELECT * FROM collection WHERE collection.id = :collectionId")
     Collection getCollection(int collectionId);
+
+    @Query("SELECT * FROM collection WHERE collection.category_id = :categoryId")
+    List<Collection> getCollectionsOfCategory(int categoryId);
 }

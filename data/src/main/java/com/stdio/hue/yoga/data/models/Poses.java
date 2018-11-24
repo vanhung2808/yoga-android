@@ -106,7 +106,11 @@ public class Poses extends BaseObservable implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public NameEntity getName(Gson gson) {
+    public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
+    }
+
+    public NameEntity getDescriptionLocale(Gson gson) {
+        return gson.fromJson(description, NameEntity.class);
     }
 }

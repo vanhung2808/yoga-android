@@ -28,7 +28,7 @@ public abstract class BaseViperActivity<P extends Presenter> extends BaseActivit
     protected CompositeDisposable disposableManager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         disposableManager = new CompositeDisposable();
         presenterDelegate = new PresenterDelegate(presenter = createPresenter());
@@ -37,7 +37,7 @@ public abstract class BaseViperActivity<P extends Presenter> extends BaseActivit
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         presenterDelegate.resume();
     }

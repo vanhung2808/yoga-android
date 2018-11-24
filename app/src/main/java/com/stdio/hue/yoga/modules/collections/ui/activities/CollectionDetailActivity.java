@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.ActivityCollectionDetailBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
+import com.stdio.hue.yoga.modules.collections.ui.adapters.CollectionDetailPagerAdapter;
 
 /**
  * Created by TranHuuPhuc on 10/20/18.
@@ -29,14 +31,21 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
 
     @Override
     protected void init() {
-        viewDataBinding.toolbar.setTitle(R.string.collections);
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_white);
+        viewDataBinding.toolbar.setTitle(R.string.collections);
+        viewDataBinding.collapsToolbar.setTitleEnabled(false);
         setSupportActionBar(viewDataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.collections);
         if (getIntent() != null) {
             Collection collection = (Collection) getIntent().getSerializableExtra(EXTRA_COLLECTION);
             viewDataBinding.setCollection(collection);
+            viewDataBinding.setName(collection.getNameEntity(new GsonBuilder().create()).getNameLocale());
+            viewDataBinding.setDescription(collection.getDescriptionLocale(new GsonBuilder().create()).getNameLocale());
+
+            viewDataBinding.vpCollection.setAdapter(new CollectionDetailPagerAdapter(getSupportFragmentManager(), collection.getId()));
+            viewDataBinding.tlCollection.setupWithViewPager(viewDataBinding.vpCollection);
         }
     }
 

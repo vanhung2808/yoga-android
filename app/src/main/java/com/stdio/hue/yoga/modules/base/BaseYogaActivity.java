@@ -79,7 +79,7 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
         init();
@@ -103,7 +103,7 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         resumeScreen();
     }

@@ -94,5 +94,4 @@ public class Banner extends BaseObservable implements Serializable {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

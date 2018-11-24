@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface DurationRepository {
     void insertDuration(List<Duration> durations);
+
+    List<Duration> getAllDuration();
+
 }

@@ -50,7 +50,7 @@ public abstract class BaseDataBindingActivity<T extends ViewDataBinding> extends
     protected abstract void destroyScreen();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
         disposableManager = new CompositeDisposable();
@@ -75,7 +75,7 @@ public abstract class BaseDataBindingActivity<T extends ViewDataBinding> extends
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         resumeScreen();
     }

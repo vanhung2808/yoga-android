@@ -22,4 +22,9 @@ public class AbilityRepositoryImpl implements AbilityRepository {
             abilityDao.insertAbility(ability);
         }
     }
+
+    @Override
+    public List<Ability> getAllAbility() {
+        return abilityDao.getAll();
+    }
 }

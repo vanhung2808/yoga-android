@@ -10,5 +10,5 @@ public interface MainPresenter extends Presenter {
 
     void getAllCategories();
 
-    void getCollectionsOfACategory(int categoryId, int limit, int pageIndex, String where);
+    void getCollectionsOfACategory(int categoryId);
 }

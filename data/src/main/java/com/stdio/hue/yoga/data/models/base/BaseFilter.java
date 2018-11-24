@@ -75,7 +75,7 @@ public class BaseFilter extends BaseObservable implements Serializable {
         this.checked = checked;
     }
 
-    public NameEntity getName(Gson gson) {
+    public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
     }
 

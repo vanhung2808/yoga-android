@@ -22,4 +22,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
             categoryDao.insertCategory(category);
         }
     }
+
+    @Override
+    public List<Category> getAllCategory() {
+        return categoryDao.getAll();
+    }
 }

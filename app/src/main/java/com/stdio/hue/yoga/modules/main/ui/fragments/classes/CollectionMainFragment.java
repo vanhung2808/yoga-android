@@ -46,7 +46,7 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState = getAppComponent().getMainComponent().getCollectionsClassesMainState();
         if (getArguments() != null) {
             int categoryId = getArguments().getInt(EXTRA_CATEGORY_ID);
-            getPresenter().getCollectionsOfACategory(categoryId, 100, 1, null);
+            getPresenter().getCollectionsOfACategory(categoryId);
         }
         adapter = new CollectionsClassesMainAdapter(this);
         viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -65,10 +65,10 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
                         .subscribe(this::showToast)
         );
 
-//        disposableManager.add(
-//                collectionsClassesMainState.filter(c -> c.getCollections() != null)
-//                        .map(CollectionsClassesMainAction::getCollections)
-//                        .subscribe(adapter::updateData));
+        disposableManager.add(
+                collectionsClassesMainState.filter(c -> c.getCollections() != null)
+                        .map(CollectionsClassesMainAction::getCollections)
+                        .subscribe(adapter::updateData));
     }
 
     @Override

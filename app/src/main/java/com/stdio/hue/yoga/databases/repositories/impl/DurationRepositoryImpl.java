@@ -22,4 +22,9 @@ public class DurationRepositoryImpl implements DurationRepository {
             durationDao.insertDuration(duration);
         }
     }
+
+    @Override
+    public List<Duration> getAllDuration() {
+        return durationDao.getAll();
+    }
 }

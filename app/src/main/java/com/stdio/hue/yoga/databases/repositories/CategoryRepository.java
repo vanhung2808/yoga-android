@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface CategoryRepository {
     void insertCategory(List<Category> categories);
+
+    List<Category> getAllCategory();
 }

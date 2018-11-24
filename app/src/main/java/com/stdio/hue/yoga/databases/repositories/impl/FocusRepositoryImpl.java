@@ -22,4 +22,9 @@ public class FocusRepositoryImpl implements FocusRepository {
             focusDao.insertFocus(focusChild);
         }
     }
+
+    @Override
+    public List<Focus> getAllFocus() {
+        return focusDao.getAll();
+    }
 }

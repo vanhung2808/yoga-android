@@ -9,6 +9,7 @@ import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.main.ui.activities.MainActivity;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenter;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -25,7 +26,7 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
 
     @Override
     protected void init() {
-
+        setDefaultLanguage(new Locale("en"));
     }
 
     @Override

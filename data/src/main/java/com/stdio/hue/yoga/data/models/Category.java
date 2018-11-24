@@ -56,7 +56,7 @@ public class Category extends BaseObservable implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public NameEntity getName(Gson gson) {
+    public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
     }
 }

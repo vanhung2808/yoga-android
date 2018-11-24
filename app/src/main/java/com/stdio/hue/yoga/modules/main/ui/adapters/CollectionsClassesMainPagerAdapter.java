@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.data.models.Category;
 import com.stdio.hue.yoga.modules.main.ui.fragments.classes.CollectionMainFragment;
 
@@ -34,6 +35,6 @@ public class CollectionsClassesMainPagerAdapter extends FragmentStatePagerAdapte
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return categories.get(position).getName();
+        return categories.get(position).getNameEntity(new GsonBuilder().create()).getNameLocale();
     }
 }
