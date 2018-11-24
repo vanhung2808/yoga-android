@@ -5,17 +5,20 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.stdio.hue.yoga.R;
-import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
+import com.stdio.hue.yoga.data.models.base.BaseFilter;
 import com.stdio.hue.yoga.databinding.ActivitySearchClassesBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
+import com.stdio.hue.yoga.modules.classes.searchs.presenters.SearchClassesPresenter;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.SearchClassesListener;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.fragments.SearchClassesFilterFragment;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.fragments.SearchClassesResultFragment;
 
+import java.util.List;
+
 /**
  * Created by TranHuuPhuc on 10/19/18.
  */
-public class SearchClassesActivity extends BaseYogaActivity<BasePresenter, ActivitySearchClassesBinding> implements SearchClassesListener {
+public class SearchClassesActivity extends BaseYogaActivity<SearchClassesPresenter, ActivitySearchClassesBinding> implements SearchClassesListener {
     public static void start(Context context) {
         Intent starter = new Intent(context, SearchClassesActivity.class);
         context.startActivity(starter);
@@ -58,13 +61,31 @@ public class SearchClassesActivity extends BaseYogaActivity<BasePresenter, Activ
 
     @NonNull
     @Override
-    protected BasePresenter createPresenter() {
-        return new BasePresenter();
+    protected SearchClassesPresenter createPresenter() {
+        return getAppComponent().getSearchClassesComponent().getSearchClassesPresenter();
     }
 
     @Override
-    public void onSearch() {
+    public void onSearch(List<BaseFilter> filterAbility,
+                         List<BaseFilter> filterDuration,
+                         List<BaseFilter> filterFocus,
+                         List<BaseFilter> filterIntensity,
+                         boolean hasSelectedFilterAbility,
+                         boolean hasSelectedFilterDuration,
+                         boolean hasSelectedFilterFocus,
+                         boolean hasSelectedFilterIntensity) {
         viewDataBinding.toolbar.setTitle(R.string.result);
-        replaceFragment(viewDataBinding.frameContent.getId(), SearchClassesResultFragment.newInstance(), true);
+        replaceFragment(
+                viewDataBinding.frameContent.getId(),
+                SearchClassesResultFragment.newInstance(filterAbility,
+                        filterDuration,
+                        filterFocus,
+                        filterIntensity,
+                        hasSelectedFilterAbility,
+                        hasSelectedFilterDuration,
+                        hasSelectedFilterFocus,
+                        hasSelectedFilterIntensity),
+                true
+        );
     }
 }

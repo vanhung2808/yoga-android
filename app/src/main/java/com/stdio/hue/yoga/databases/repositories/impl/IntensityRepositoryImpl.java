@@ -22,4 +22,9 @@ public class IntensityRepositoryImpl implements IntensityRepository {
             intensityDao.insertIntensity(intensity);
         }
     }
+
+    @Override
+    public List<Intensity> getAllIntensity() {
+        return intensityDao.getAll();
+    }
 }

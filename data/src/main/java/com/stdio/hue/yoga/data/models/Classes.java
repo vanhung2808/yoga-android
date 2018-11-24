@@ -43,6 +43,8 @@ public class Classes extends BaseObservable implements Serializable {
     private String createdAt;
     @ColumnInfo(name = "updated_at")
     private String updatedAt;
+    @ColumnInfo(name = "status_download")
+    private int statusDownload;
 
 
     public String getImage() {
@@ -157,7 +159,16 @@ public class Classes extends BaseObservable implements Serializable {
         this.updatedAt = updatedAt;
     }
 
+    public int getStatusDownload() {
+        return statusDownload;
+    }
+
+    public void setStatusDownload(int statusDownload) {
+        this.statusDownload = statusDownload;
+    }
+
     public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
     }
+
 }

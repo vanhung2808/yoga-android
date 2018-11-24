@@ -24,17 +24,37 @@ public class ClassesRepositoryImpl implements ClassesRepository {
     }
 
     @Override
-    public List<Classes> getClassesByDurationId(int collectionId, int id) {
-        return classesDao.getClassesByDurationId(collectionId, id);
+    public List<Classes> getClassesOfCollectionByDurationId(int collectionId, int id) {
+        return classesDao.getClassesOfCollectionByDurationId(collectionId, id);
     }
 
     @Override
-    public List<Classes> getClassesByAbilityId(int collectionId, int id) {
-        return classesDao.getClassesByAbilityId(collectionId, id);
+    public List<Classes> getClassesOfCollectionByAbilityId(int collectionId, int id) {
+        return classesDao.getClassesOfCollectionByAbilityId(collectionId, id);
     }
 
     @Override
-    public List<Classes> getClassesByFocusId(int collectionId, int id) {
-        return classesDao.getClassesByFocusId(collectionId, id);
+    public List<Classes> getClassesOfCollectionByFocusId(int collectionId, int id) {
+        return classesDao.getClassesOfCollectionByFocusId(collectionId, id);
+    }
+
+    @Override
+    public List<Classes> searchClassesByDurationId(int durationId) {
+        return classesDao.searchClassesByDurationId(durationId);
+    }
+
+    @Override
+    public List<Classes> searchClassesByAbilityId(int abilityId) {
+        return classesDao.searchClassesByAbilityId(abilityId);
+    }
+
+    @Override
+    public List<Classes> searchClassesByFocusId(int focusId) {
+        return classesDao.searchClassesByFocusId(focusId);
+    }
+
+    @Override
+    public List<Classes> searchClassesByIntensityId(int intensityId) {
+        return classesDao.searchClassesByIntensityId(intensityId);
     }
 }

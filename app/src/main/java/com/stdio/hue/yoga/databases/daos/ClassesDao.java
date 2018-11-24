@@ -32,11 +32,24 @@ public interface ClassesDao {
     int countClassesOfCollection(int collectionId);
 
     @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.ability_id = :id")
-    List<Classes> getClassesByAbilityId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByAbilityId(int collectionId, int id);
 
     @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.duration_id = :id")
-    List<Classes> getClassesByDurationId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByDurationId(int collectionId, int id);
 
     @Query("SELECT * FROM classes WHERE classes.collection_id = :collectionId AND classes.focus_id = :id")
-    List<Classes> getClassesByFocusId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByFocusId(int collectionId, int id);
+
+
+    @Query("SELECT * FROM classes WHERE  classes.duration_id = :durationId")
+    List<Classes> searchClassesByDurationId(int durationId);
+
+    @Query("SELECT * FROM classes WHERE  classes.ability_id = :abilityId")
+    List<Classes> searchClassesByAbilityId(int abilityId);
+
+    @Query("SELECT * FROM classes WHERE  classes.focus_id = :focusId")
+    List<Classes> searchClassesByFocusId(int focusId);
+
+    @Query("SELECT * FROM classes WHERE  classes.intensity_id = :intensityId")
+    List<Classes> searchClassesByIntensityId(int intensityId);
 }

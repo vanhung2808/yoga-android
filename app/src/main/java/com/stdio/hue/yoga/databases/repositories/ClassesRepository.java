@@ -10,9 +10,17 @@ import java.util.List;
 public interface ClassesRepository {
     void insertClasses(List<Classes> classes);
 
-    List<Classes> getClassesByDurationId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByDurationId(int collectionId, int id);
 
-    List<Classes> getClassesByAbilityId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByAbilityId(int collectionId, int id);
 
-    List<Classes> getClassesByFocusId(int collectionId, int id);
+    List<Classes> getClassesOfCollectionByFocusId(int collectionId, int id);
+
+    List<Classes> searchClassesByDurationId(int durationId);
+
+    List<Classes> searchClassesByAbilityId(int abilityId);
+
+    List<Classes> searchClassesByFocusId(int focusId);
+
+    List<Classes> searchClassesByIntensityId(int intensityId);
 }

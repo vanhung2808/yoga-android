@@ -33,6 +33,7 @@ public class ClassesCollectionDetailAdapter extends AbsBindingAdapter<ViewDataBi
         if (this.items == null) {
             this.items = new ArrayList<>();
         }
+        this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();
     }

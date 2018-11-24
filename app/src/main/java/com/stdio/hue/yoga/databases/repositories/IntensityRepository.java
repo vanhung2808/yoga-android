@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface IntensityRepository {
     void insertIntensity(List<Intensity> intensities);
+
+    List<Intensity> getAllIntensity();
 }

@@ -15,6 +15,7 @@ import com.stdio.hue.yoga.modules.collections.presenter.ClassesCollectionDetailP
 import com.stdio.hue.yoga.modules.collections.ui.actions.ClassesCollectionDetailAction;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesCollectionDetailAdapter;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesOfCollectionAdapter;
+import com.stdio.hue.yoga.shares.utils.Constant;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -40,12 +41,14 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
     }
 
     private ClassesCollectionDetailAdapter adapter;
+    private int tabStyle;
 
     @Override
     protected void init(@Nullable View view) {
         initAdapter();
         if (getArguments() != null) {
-            getPresenter().getFiltersType(getArguments().getInt(EXTRA_TAB_STYLE), getArguments().getInt(EXTRA_COLLECTION_IDEXTRA_COLLECTION_ID));
+            tabStyle = getArguments().getInt(EXTRA_TAB_STYLE);
+            getPresenter().getFiltersType(tabStyle, getArguments().getInt(EXTRA_COLLECTION_IDEXTRA_COLLECTION_ID));
         }
         PublishSubject<ClassesCollectionDetailAction> classesCollectionDetailAction = getAppComponent().getCollectionDetailComponent().getClassesCollectionDetailAction();
         disposableManager.add(
@@ -60,10 +63,27 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
                         .subscribe(this::showToast)
         );
 
-        disposableManager.add(
-                classesCollectionDetailAction.filter(c -> c.getFilterClassesList() != null)
-                        .map(ClassesCollectionDetailAction::getFilterClassesList)
-                        .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        if (tabStyle == Constant.TAB_ABILITY) {
+            disposableManager.add(
+                    classesCollectionDetailAction.filter(c -> c.getFilterAbilityClassesList() != null)
+                            .map(ClassesCollectionDetailAction::getFilterAbilityClassesList)
+                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        } else if (tabStyle == Constant.TAB_FOCUS) {
+            disposableManager.add(
+                    classesCollectionDetailAction.filter(c -> c.getFilterFocusClassesList() != null)
+                            .map(ClassesCollectionDetailAction::getFilterFocusClassesList)
+                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        } else if (tabStyle == Constant.TAB_INTENSITY) {
+            disposableManager.add(
+                    classesCollectionDetailAction.filter(c -> c.getFilterIntensityClassesList() != null)
+                            .map(ClassesCollectionDetailAction::getFilterIntensityClassesList)
+                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        } else {
+            disposableManager.add(
+                    classesCollectionDetailAction.filter(c -> c.getFilterDurationClassesList() != null)
+                            .map(ClassesCollectionDetailAction::getFilterDurationClassesList)
+                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        }
     }
 
     private void initAdapter() {

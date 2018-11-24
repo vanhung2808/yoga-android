@@ -65,12 +65,12 @@ public class ClassesCollectionDetailPresenterImpl extends BasePresenter implemen
                 .subscribe(durations -> {
                     List<FilterClasses> filterClassesList = new ArrayList<>();
                     for (Duration duration : durations) {
-                        List<Classes> listClasses = classesRepository.getClassesByDurationId(collectionId, duration.getId());
+                        List<Classes> listClasses = classesRepository.getClassesOfCollectionByDurationId(collectionId, duration.getId());
                         if (listClasses != null && !listClasses.isEmpty()) {
                             filterClassesList.add(new FilterClasses(listClasses, duration.getNameEntity(gson).getNameLocale()));
                         }
                     }
-                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterClasses(filterClassesList));
+                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterDurationClasses(filterClassesList));
                 }));
     }
 
@@ -81,12 +81,12 @@ public class ClassesCollectionDetailPresenterImpl extends BasePresenter implemen
                 .subscribe(focusList -> {
                     List<FilterClasses> filterClassesList = new ArrayList<>();
                     for (Focus focus : focusList) {
-                        List<Classes> listClasses = classesRepository.getClassesByFocusId(collectionId, focus.getId());
+                        List<Classes> listClasses = classesRepository.getClassesOfCollectionByFocusId(collectionId, focus.getId());
                         if (listClasses != null && !listClasses.isEmpty()) {
                             filterClassesList.add(new FilterClasses(listClasses, focus.getNameEntity(gson).getNameLocale()));
                         }
                     }
-                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterClasses(filterClassesList));
+                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterFocusClasses(filterClassesList));
                 }));
     }
 
@@ -97,12 +97,12 @@ public class ClassesCollectionDetailPresenterImpl extends BasePresenter implemen
                 .subscribe(abilities -> {
                     List<FilterClasses> filterClassesList = new ArrayList<>();
                     for (Ability ability : abilities) {
-                        List<Classes> listClasses = classesRepository.getClassesByAbilityId(collectionId, ability.getId());
+                        List<Classes> listClasses = classesRepository.getClassesOfCollectionByAbilityId(collectionId, ability.getId());
                         if (listClasses != null && !listClasses.isEmpty()) {
                             filterClassesList.add(new FilterClasses(listClasses, ability.getNameEntity(gson).getNameLocale()));
                         }
                     }
-                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterClasses(filterClassesList));
+                    classesCollectionDetailActionPublishSubject.onNext(ClassesCollectionDetailAction.setFilterAbilityClasses(filterClassesList));
                 }));
     }
 }

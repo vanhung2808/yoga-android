@@ -13,7 +13,7 @@ public class ClassesCollectionDetailAction {
     public static final PublishSubject<ClassesCollectionDetailAction> publisher = PublishSubject.create();
     private boolean isLoading;
     private String errorMessage;
-    private List<FilterClasses> filterClassesList;
+    private List<FilterClasses> filterDurationClassesList, filterFocusClassesList, filterAbilityClassesList, filterIntensityClassesList;
 
     public static ClassesCollectionDetailAction isLoading(boolean isLoading) {
         ClassesCollectionDetailAction action = new ClassesCollectionDetailAction();
@@ -27,10 +27,44 @@ public class ClassesCollectionDetailAction {
         return action;
     }
 
-    public static ClassesCollectionDetailAction setFilterClasses(List<FilterClasses> data) {
+    public static ClassesCollectionDetailAction setFilterDurationClasses(List<FilterClasses> data) {
         ClassesCollectionDetailAction action = new ClassesCollectionDetailAction();
-        action.filterClassesList = data;
+        action.filterDurationClassesList = data;
         return action;
+    }
+
+    public static ClassesCollectionDetailAction setFilterAbilityClasses(List<FilterClasses> data) {
+        ClassesCollectionDetailAction action = new ClassesCollectionDetailAction();
+        action.filterAbilityClassesList = data;
+        return action;
+    }
+
+    public static ClassesCollectionDetailAction setFilterIntensityClasses(List<FilterClasses> data) {
+        ClassesCollectionDetailAction action = new ClassesCollectionDetailAction();
+        action.filterIntensityClassesList = data;
+        return action;
+    }
+
+    public static ClassesCollectionDetailAction setFilterFocusClasses(List<FilterClasses> data) {
+        ClassesCollectionDetailAction action = new ClassesCollectionDetailAction();
+        action.filterFocusClassesList = data;
+        return action;
+    }
+
+    public List<FilterClasses> getFilterAbilityClassesList() {
+        return filterAbilityClassesList;
+    }
+
+    public List<FilterClasses> getFilterDurationClassesList() {
+        return filterDurationClassesList;
+    }
+
+    public List<FilterClasses> getFilterFocusClassesList() {
+        return filterFocusClassesList;
+    }
+
+    public List<FilterClasses> getFilterIntensityClassesList() {
+        return filterIntensityClassesList;
     }
 
     public boolean isLoading() {
@@ -39,9 +73,5 @@ public class ClassesCollectionDetailAction {
 
     public String getError() {
         return errorMessage;
-    }
-
-    public List<FilterClasses> getFilterClassesList() {
-        return filterClassesList;
     }
 }
