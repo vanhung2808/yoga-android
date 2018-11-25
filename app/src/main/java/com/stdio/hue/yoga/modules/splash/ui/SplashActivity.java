@@ -39,6 +39,10 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
         disposableManager.add(isInternetOn().subscribe(result -> {
             if (getPreferences(MODE_PRIVATE).getBoolean("new", false)) {
                 if (result) {
+                    disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
+                        MainActivity.start(this);
+                        finish();
+                    }));
 //                    int timeUpdate = getPreferences(MODE_PRIVATE).getInt("timeupdate", 0);
 //                    long timeCurrent = System.currentTimeMillis();
 //                    disposableManager.add(
@@ -49,8 +53,7 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
 //                                    .doOnComplete(() -> loading(false))
 //                                    .subscribe(resultGetData -> {
 //                                        getPreferences(MODE_PRIVATE).edit().putInt("timeupdate", (int) timeCurrent).apply();
-//                                        MainActivity.start(this);
-//                                        finish();
+
 //                                    }, throwable -> showToast(throwable.getMessage())));
                 } else {
                     disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
