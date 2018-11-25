@@ -1,7 +1,5 @@
 package com.stdio.hue.yoga.modules.classes.searchs.presenters.impl;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.data.models.Ability;

@@ -15,7 +15,7 @@ import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
-import com.stdio.hue.yoga.modules.main.ui.adapters.CollectionsClassesMainAdapter;
+import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainAdapter;
 
 import io.reactivex.subjects.PublishSubject;
 

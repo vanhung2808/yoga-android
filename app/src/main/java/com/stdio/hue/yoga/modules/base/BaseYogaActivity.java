@@ -6,6 +6,8 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.ProjectApplication;
 import com.stdio.hue.yoga.base.core.BaseViperActivity;
 import com.stdio.hue.yoga.base.core.mvp.Presenter;
@@ -19,6 +21,7 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
     protected V viewDataBinding;
 
     protected LoadingDialog loadingDialog;
+    protected Gson gson;
 
     protected void showLoadingDialog() {
         if (loadingDialog == null) {
@@ -82,6 +85,7 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        gson = new GsonBuilder().create();
         init();
     }
 

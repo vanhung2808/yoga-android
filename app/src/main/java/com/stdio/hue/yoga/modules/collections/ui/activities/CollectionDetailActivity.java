@@ -41,7 +41,7 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
         if (getIntent() != null) {
             Collection collection = (Collection) getIntent().getSerializableExtra(EXTRA_COLLECTION);
             viewDataBinding.setCollection(collection);
-            viewDataBinding.setName(collection.getNameEntity(new GsonBuilder().create()).getNameLocale());
+            viewDataBinding.setName(collection.getNameEntity(gson).getNameLocale());
             viewDataBinding.setDescription(collection.getDescriptionLocale(new GsonBuilder().create()).getNameLocale());
 
             viewDataBinding.vpCollection.setAdapter(new CollectionDetailPagerAdapter(getSupportFragmentManager(), collection.getId()));

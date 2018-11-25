@@ -1,4 +1,4 @@
-package com.stdio.hue.yoga.modules.main.ui.adapters;
+package com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

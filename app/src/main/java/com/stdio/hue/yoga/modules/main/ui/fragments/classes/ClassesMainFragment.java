@@ -8,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.BaseSliderView;
@@ -20,7 +18,7 @@ import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.activities.SearchClassesActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
-import com.stdio.hue.yoga.modules.main.ui.adapters.ClassesMainPagerAdapter;
+import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.ClassesMainPagerAdapter;
 import com.stdio.hue.yoga.shares.utils.SHStringHelper;
 
 import io.reactivex.subjects.PublishSubject;
@@ -42,12 +40,9 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
         return R.layout.fragment_main_classes;
     }
 
-    private Gson gson;
-
     @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
-        gson = new GsonBuilder().create();
         initSlider();
         viewDataBinding.vpClasses.setAdapter(new ClassesMainPagerAdapter(getChildFragmentManager()));
         PublishSubject<MainAction> mainState = getAppComponent().getMainComponent().getMainState();

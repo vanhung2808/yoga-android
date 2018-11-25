@@ -4,12 +4,21 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.view.View;
 
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.databinding.FragmentMainScheduleBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
+import com.stdio.hue.yoga.shares.utils.AppBarStateChangeListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by TranHuuPhuc on 9/19/18.
@@ -28,9 +37,75 @@ public class ScheduleMainFragment extends BaseYogaFragment<BasePresenter, Fragme
         return R.layout.fragment_main_schedule;
     }
 
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
+
     @Override
     protected void init(@Nullable View view) {
+        initAppBar();
+        initCalendar();
+        viewDataBinding.datePickerTextView.setText(dateFormat.format(new Date()));
+        setCurrentDate(new Date());
+        initEvent();
+    }
 
+    private void initEvent() {
+        viewDataBinding.ivAdd.setOnClickListener(view -> {
+
+        });
+        viewDataBinding.ivBackCalendar.setOnClickListener(view -> {
+            viewDataBinding.compactcalendarView.scrollLeft();
+        });
+        viewDataBinding.ivNextCalendar.setOnClickListener(view -> {
+            viewDataBinding.compactcalendarView.scrollRight();
+        });
+        viewDataBinding.ivSetting.setOnClickListener(view -> {
+
+        });
+        viewDataBinding.ivLogBook.setOnClickListener(view -> {
+
+        });
+    }
+
+    private void initCalendar() {
+        viewDataBinding.compactcalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
+        viewDataBinding.compactcalendarView.setLocale(TimeZone.getDefault(), Locale.ENGLISH);
+        viewDataBinding.compactcalendarView.setShouldDrawDaysHeader(true);
+        viewDataBinding.compactcalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                setTitle(dateFormat.format(dateClicked));
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                setTitle(dateFormat.format(firstDayOfNewMonth));
+            }
+        });
+    }
+
+    private void initAppBar() {
+        viewDataBinding.appbarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                if (state == State.COLLAPSED) {
+                    viewDataBinding.ivAdd.setVisibility(View.GONE);
+                } else {
+                    viewDataBinding.ivAdd.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
+    private void setTitle(String title) {
+        if (viewDataBinding.datePickerTextView != null) {
+            viewDataBinding.datePickerTextView.setText(title);
+        }
+    }
+
+    private void setCurrentDate(Date date) {
+        if (viewDataBinding.compactcalendarView != null) {
+            viewDataBinding.compactcalendarView.setCurrentDate(date);
+        }
     }
 
     @Override

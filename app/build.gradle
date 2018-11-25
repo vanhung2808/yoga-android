@@ -69,4 +69,5 @@ dependencies {
     implementation 'com.akexorcist:localizationactivity:1.2.2'
     //Support font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 }

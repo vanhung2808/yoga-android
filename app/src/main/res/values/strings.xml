@@ -12,4 +12,6 @@
     <string name="tab_the_add_button_to_create_a_new_class">Tab the add button to create a new class.</string>
     <string name="search">Search</string>
     <string name="result">Result</string>
+    <string name="favorites">Favorites</string>
+    <string name="blocks">Blocks</string>
 </resources>

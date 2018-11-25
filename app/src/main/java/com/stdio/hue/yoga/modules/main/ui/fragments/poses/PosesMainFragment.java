@@ -1,10 +1,10 @@
 package com.stdio.hue.yoga.modules.main.ui.fragments.poses;
 
 import android.content.Context;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
@@ -31,7 +31,37 @@ public class PosesMainFragment extends BaseYogaFragment<BasePresenter, FragmentM
 
     @Override
     protected void init(@Nullable View view) {
+        initEvent();
+    }
 
+    private void initEvent() {
+        viewDataBinding.btPoses.setOnClickListener(view -> {
+            viewDataBinding.btPoses.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btPoses.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btBlocks.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btBlocks.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.btFavorites.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btFavorites.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.vpPoses.setCurrentItem(0);
+        });
+        viewDataBinding.btBlocks.setOnClickListener(view -> {
+            viewDataBinding.btBlocks.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btBlocks.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btPoses.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btPoses.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.btFavorites.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btFavorites.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.vpPoses.setCurrentItem(1);
+        });
+        viewDataBinding.btFavorites.setOnClickListener(view -> {
+            viewDataBinding.btFavorites.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btFavorites.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btBlocks.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btBlocks.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.btPoses.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+            viewDataBinding.btPoses.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.vpPoses.setCurrentItem(2);
+        });
     }
 
     @Override

@@ -42,7 +42,7 @@ public class ClassesOfCollectionAdapter extends AbsBindingAdapter<ViewDataBindin
             ItemClassesBinding itemBind = (ItemClassesBinding) binding;
             Classes classes = items.get(position);
             itemBind.setClassesImage(classes.getImage());
-            itemBind.setClassesName(classes.getNameEntity(new GsonBuilder().create()).getNameLocale());
+            itemBind.setClassesName(classes.getNameEntity(getGson()).getNameLocale());
             itemBind.setClassesTime(classes.getDuration());
             itemBind.cvContent.setOnClickListener(view -> {
                 listener.onItemClassesClick(classes);

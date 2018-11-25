@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.ProjectApplication;
 import com.stdio.hue.yoga.base.core.BaseViperFragment;
 import com.stdio.hue.yoga.base.core.mvp.Presenter;
@@ -23,6 +25,7 @@ import com.stdio.hue.yoga.shares.widget.LoadingDialog;
  */
 public abstract class BaseYogaFragment<P extends Presenter, V extends ViewDataBinding> extends BaseViperFragment<P> {
     protected V viewDataBinding;
+    protected Gson gson;
 
     private boolean isAttach;
 
@@ -85,6 +88,7 @@ public abstract class BaseYogaFragment<P extends Presenter, V extends ViewDataBi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        gson = new GsonBuilder().create();
         init(view);
     }
 

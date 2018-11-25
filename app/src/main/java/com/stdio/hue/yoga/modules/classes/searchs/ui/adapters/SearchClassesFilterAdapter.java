@@ -49,19 +49,19 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
             ItemSearchClassesFilterBinding itemBind = (ItemSearchClassesFilterBinding) binding;
             itemBind.rvFilter.setLayoutManager(new GridLayoutManager(itemBind.getRoot().getContext(), 3, LinearLayoutManager.VERTICAL, false));
             if (position == 0) {
-                itemBind.tvTypeFilter.setText("DurationEntity");
+                itemBind.tvTypeFilter.setText("Duration:");
                 durationFilterAdapter.addData(durations);
                 itemBind.rvFilter.setAdapter(durationFilterAdapter);
             } else if (position == 1) {
-                itemBind.tvTypeFilter.setText("AbilityEntity");
+                itemBind.tvTypeFilter.setText("Ability:");
                 abilityFilterAdapter.addData(abilities);
                 itemBind.rvFilter.setAdapter(abilityFilterAdapter);
             } else if (position == 2) {
-                itemBind.tvTypeFilter.setText("FocusEntity");
+                itemBind.tvTypeFilter.setText("Focus:");
                 focusFilterAdapter.addData(focuses);
                 itemBind.rvFilter.setAdapter(focusFilterAdapter);
             } else {
-                itemBind.tvTypeFilter.setText("IntensityEntity");
+                itemBind.tvTypeFilter.setText("Intensity:");
                 intensityFilterAdapter.addData(intensities);
                 itemBind.rvFilter.setAdapter(intensityFilterAdapter);
             }

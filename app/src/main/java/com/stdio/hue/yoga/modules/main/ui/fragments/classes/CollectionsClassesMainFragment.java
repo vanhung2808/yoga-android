@@ -12,7 +12,7 @@ import com.stdio.hue.yoga.databinding.FragmentMainClassesCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
-import com.stdio.hue.yoga.modules.main.ui.adapters.CollectionsClassesMainPagerAdapter;
+import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainPagerAdapter;
 
 import io.reactivex.subjects.PublishSubject;
 

@@ -9,14 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /**
  * Created by tran.huu.phuc on 10/7/16.
  */
 public abstract class AbsBindingAdapter<T extends ViewDataBinding> extends RecyclerView.Adapter<AbsBindingHolder<? extends ViewDataBinding>> {
     private RecyclerViewClickListener itemListener;
+    private Gson gson;
 
     public AbsBindingAdapter(RecyclerViewClickListener itemListener) {
         this.itemListener = itemListener;
+        gson = new GsonBuilder().create();
     }
 
 
@@ -40,6 +45,10 @@ public abstract class AbsBindingAdapter<T extends ViewDataBinding> extends Recyc
 
     public interface RecyclerViewClickListener {
         void recyclerViewListClicked(View view, int position);
+    }
+
+    public Gson getGson() {
+        return gson;
     }
 }
 

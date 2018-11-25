@@ -3,7 +3,6 @@ package com.stdio.hue.yoga.modules.classes.searchs.ui.adapters;
 import android.databinding.ViewDataBinding;
 import android.support.v4.content.ContextCompat;
 
-import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.data.models.base.BaseFilter;
@@ -43,7 +42,7 @@ public class FilterAdapter extends AbsBindingAdapter<ViewDataBinding> {
             ItemFilterClassesBinding itemBind = (ItemFilterClassesBinding) binding;
             BaseFilter baseFilter = items.get(position);
             itemBind.setFilter(baseFilter);
-            itemBind.setName(baseFilter.getNameEntity(new GsonBuilder().create()).getNameLocale());
+            itemBind.setName(baseFilter.getNameEntity(getGson()).getNameLocale());
             itemBind.cbFilter.setOnCheckedChangeListener((compoundButton, b) -> {
                 if (b) {
                     updateStateOfItem(baseFilter.getId());
