@@ -39,19 +39,19 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
         disposableManager.add(isInternetOn().subscribe(result -> {
             if (getPreferences(MODE_PRIVATE).getBoolean("new", false)) {
                 if (result) {
-                    int timeUpdate = getPreferences(MODE_PRIVATE).getInt("timeupdate", 0);
-                    long timeCurrent = System.currentTimeMillis();
-                    disposableManager.add(
-                            getPresenter().getAllDataAndSaveLocal(timeUpdate, "en")
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .doOnSubscribe(d -> loading(true))
-                                    .doOnError(throwable -> loading(false))
-                                    .doOnComplete(() -> loading(false))
-                                    .subscribe(resultGetData -> {
-                                        getPreferences(MODE_PRIVATE).edit().putInt("timeupdate", (int) timeCurrent).apply();
-                                        MainActivity.start(this);
-                                        finish();
-                                    }, throwable -> showToast(throwable.getMessage())));
+//                    int timeUpdate = getPreferences(MODE_PRIVATE).getInt("timeupdate", 0);
+//                    long timeCurrent = System.currentTimeMillis();
+//                    disposableManager.add(
+//                            getPresenter().getAllDataAndSaveLocal(timeUpdate, "en")
+//                                    .observeOn(AndroidSchedulers.mainThread())
+//                                    .doOnSubscribe(d -> loading(true))
+//                                    .doOnError(throwable -> loading(false))
+//                                    .doOnComplete(() -> loading(false))
+//                                    .subscribe(resultGetData -> {
+//                                        getPreferences(MODE_PRIVATE).edit().putInt("timeupdate", (int) timeCurrent).apply();
+//                                        MainActivity.start(this);
+//                                        finish();
+//                                    }, throwable -> showToast(throwable.getMessage())));
                 } else {
                     disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
                         MainActivity.start(this);
