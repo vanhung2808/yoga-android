@@ -1,4 +1,4 @@
-query GetPose($update: Int) {
+query GetPose($update: String) {
     pose(update: $update) {
                 id
                 name
@@ -11,7 +11,7 @@ query GetPose($update: Int) {
 				updated_at
     }
 }
-query GetCategory($update: Int) {
+query GetCategory($update: String) {
 	  categories(update: $update) {
                 id
                 name
@@ -19,7 +19,7 @@ query GetCategory($update: Int) {
 				updated_at
     }
 }
-query GetCollection($update: Int) {
+query GetCollection($update: String) {
     collections(update: $update) {
                 name
                 id
@@ -30,7 +30,7 @@ query GetCollection($update: Int) {
 				updated_at
     }
 }
-query GetClasses($update: Int) {
+query GetClasses($update: String) {
 		classes(update: $update){
 				name
 				id
@@ -44,9 +44,10 @@ query GetClasses($update: Int) {
 				intensity_id
 				created_at
 				updated_at
+				duration
 		}
 }
-query GetBanner($update: Int) {
+query GetBanner($update: String) {
 		banner(update: $update){
 				id
 				type
@@ -58,7 +59,7 @@ query GetBanner($update: Int) {
 				updated_at
 		}
 }
-query GetAbility($update: Int) {
+query GetAbility($update: String) {
 		viewAllAbility(update: $update){
 				id
 				name
@@ -66,7 +67,7 @@ query GetAbility($update: Int) {
 				updated_at
 		}
 }
-query GetFocus($update: Int) {
+query GetFocus($update: String) {
 		viewAllFocus(update: $update){
 				id
 				name
@@ -74,7 +75,7 @@ query GetFocus($update: Int) {
 				updated_at
 		}
 }
-query GetIntensity($update: Int) {
+query GetIntensity($update: String) {
 		viewAllIntensity(update: $update){
 				id
 				name
@@ -82,11 +83,20 @@ query GetIntensity($update: Int) {
 		        updated_at
 	  }
 }
-query GetDuration($update: Int) {
+query GetDuration($update: String) {
 	  viewAllDuration(update: $update){
 		        id
 		        name
 		        created_at
 		        updated_at
 	  }
+}
+query GetNews($update: String) {
+      postAll(update: $update) {
+                title
+   	            id
+	            content
+	            created_at
+	            updated_at
+      }
 }

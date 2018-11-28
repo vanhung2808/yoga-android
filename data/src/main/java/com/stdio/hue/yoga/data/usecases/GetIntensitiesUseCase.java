@@ -27,7 +27,7 @@ public class GetIntensitiesUseCase extends BaseUseCase {
         this.intensityMapper = intensityMapper;
     }
 
-    public Observable<BaseResponse<List<Intensity>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Intensity>>> execute(String timeUpdate, String language) {
         return dataService.getIntensities(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

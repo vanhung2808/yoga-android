@@ -27,7 +27,7 @@ public class GetClassesUseCase extends BaseUseCase {
         this.classesMapper = classesMapper;
     }
 
-    public Observable<BaseResponse<List<Classes>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Classes>>> execute(String timeUpdate, String language) {
         return dataService.getClasses(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

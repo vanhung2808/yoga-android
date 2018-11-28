@@ -27,7 +27,7 @@ public class GetCategoriesUseCase extends BaseUseCase {
         this.categoryMapper = categoryMapper;
     }
 
-    public Observable<BaseResponse<List<Category>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Category>>> execute(String timeUpdate, String language) {
         return dataService.getCategories(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

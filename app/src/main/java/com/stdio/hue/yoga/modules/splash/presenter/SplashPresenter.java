@@ -8,5 +8,5 @@ import io.reactivex.Observable;
  * Created by hung.nguyendk on 4/29/18.
  */
 public interface SplashPresenter extends Presenter {
-    Observable<Boolean> getAllDataAndSaveLocal(Integer timeUpdate, String language);
+    Observable<Boolean> getAllDataAndSaveLocal(String timeUpdate, String language);
 }

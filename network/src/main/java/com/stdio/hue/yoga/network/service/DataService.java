@@ -26,7 +26,7 @@ public class DataService {
         this.apolloClient = apolloClient;
     }
 
-    public Observable<Response<GetAbilityQuery.Data>> getAbilities(Integer timeUpdate, String language) {
+    public Observable<Response<GetAbilityQuery.Data>> getAbilities(String timeUpdate, String language) {
         GetAbilityQuery getAbilityQuery = GetAbilityQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -35,7 +35,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetBannerQuery.Data>> getBanners(Integer timeUpdate, String language) {
+    public Observable<Response<GetBannerQuery.Data>> getBanners(String timeUpdate, String language) {
         GetBannerQuery getBannerQuery = GetBannerQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -44,7 +44,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetCategoryQuery.Data>> getCategories(Integer timeUpdate, String language) {
+    public Observable<Response<GetCategoryQuery.Data>> getCategories(String timeUpdate, String language) {
         GetCategoryQuery getCategoryQuery = GetCategoryQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -53,7 +53,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetClassesQuery.Data>> getClasses(Integer timeUpdate, String language) {
+    public Observable<Response<GetClassesQuery.Data>> getClasses(String timeUpdate, String language) {
         GetClassesQuery getClassesQuery = GetClassesQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -62,7 +62,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetCollectionQuery.Data>> getCollections(Integer timeUpdate, String language) {
+    public Observable<Response<GetCollectionQuery.Data>> getCollections(String timeUpdate, String language) {
         GetCollectionQuery getCollectionQuery = GetCollectionQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -71,7 +71,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetDurationQuery.Data>> getDurations(Integer timeUpdate, String language) {
+    public Observable<Response<GetDurationQuery.Data>> getDurations(String timeUpdate, String language) {
         GetDurationQuery getDurationQuery = GetDurationQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -80,7 +80,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetFocusQuery.Data>> getFocus(Integer timeUpdate, String language) {
+    public Observable<Response<GetFocusQuery.Data>> getFocus(String timeUpdate, String language) {
         GetFocusQuery getFocusQuery = GetFocusQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -89,7 +89,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetIntensityQuery.Data>> getIntensities(Integer timeUpdate, String language) {
+    public Observable<Response<GetIntensityQuery.Data>> getIntensities(String timeUpdate, String language) {
         GetIntensityQuery getIntensityQuery = GetIntensityQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -98,7 +98,7 @@ public class DataService {
         return Rx2Apollo.from(apolloCall);
     }
 
-    public Observable<Response<GetPoseQuery.Data>> getPoses(Integer timeUpdate, String language) {
+    public Observable<Response<GetPoseQuery.Data>> getPoses(String timeUpdate, String language) {
         GetPoseQuery getPoseQuery = GetPoseQuery.builder().update(timeUpdate).build();
         apolloClient.defaultCacheHeaders().toBuilder()
                 .addHeader("Content-Type", "application/json")

@@ -27,7 +27,7 @@ public class GetCollectionsUseCase extends BaseUseCase {
         this.collectionMapper = collectionMapper;
     }
 
-    public Observable<BaseResponse<List<Collection>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Collection>>> execute(String timeUpdate, String language) {
         return dataService.getCollections(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

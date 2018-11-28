@@ -27,7 +27,7 @@ public class GetPosesUseCase extends BaseUseCase {
         this.posesMapper = posesMapper;
     }
 
-    public Observable<BaseResponse<List<Poses>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Poses>>> execute(String timeUpdate, String language) {
         return dataService.getPoses(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

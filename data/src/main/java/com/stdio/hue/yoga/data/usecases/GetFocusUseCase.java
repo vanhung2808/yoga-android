@@ -27,7 +27,7 @@ public class GetFocusUseCase extends BaseUseCase {
         this.focusMapper = focusMapper;
     }
 
-    public Observable<BaseResponse<List<Focus>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Focus>>> execute(String timeUpdate, String language) {
         return dataService.getFocus(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

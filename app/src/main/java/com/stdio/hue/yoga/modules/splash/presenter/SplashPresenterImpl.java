@@ -69,7 +69,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
     }
 
     @Override
-    public Observable<Boolean> getAllDataAndSaveLocal(Integer timeUpdate, String language) {
+    public Observable<Boolean> getAllDataAndSaveLocal(String timeUpdate, String language) {
         return Observable.combineLatest(
                 getAbilities(timeUpdate, language),
                 getBanners(timeUpdate, language),
@@ -84,7 +84,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 .observeOn(AndroidSchedulers.mainThread()).map(result -> result);
     }
 
-    private Observable<Boolean> getAbilities(Integer timeUpdate, String language) {
+    private Observable<Boolean> getAbilities(String timeUpdate, String language) {
         return getAbilitiesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     abilityRepository.insertAbility(results.getData());
@@ -92,7 +92,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getBanners(Integer timeUpdate, String language) {
+    private Observable<Boolean> getBanners(String timeUpdate, String language) {
         return getBannersUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     bannerRepository.insertBanner(results.getData());
@@ -100,7 +100,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getCategories(Integer timeUpdate, String language) {
+    private Observable<Boolean> getCategories(String timeUpdate, String language) {
         return getCategoriesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     categoryRepository.insertCategory(results.getData());
@@ -108,7 +108,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getClasses(Integer timeUpdate, String language) {
+    private Observable<Boolean> getClasses(String timeUpdate, String language) {
         return getClassesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     classesRepository.insertClasses(results.getData());
@@ -116,7 +116,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getCollections(Integer timeUpdate, String language) {
+    private Observable<Boolean> getCollections(String timeUpdate, String language) {
         return getCollectionsUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     collectionRepository.insertCollection(results.getData());
@@ -124,7 +124,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getDurations(Integer timeUpdate, String language) {
+    private Observable<Boolean> getDurations(String timeUpdate, String language) {
         return getDurationsUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     durationRepository.insertDuration(results.getData());
@@ -132,7 +132,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getFocus(Integer timeUpdate, String language) {
+    private Observable<Boolean> getFocus(String timeUpdate, String language) {
         return getFocusUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     focusRepository.insertFocus(results.getData());
@@ -140,7 +140,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getIntensities(Integer timeUpdate, String language) {
+    private Observable<Boolean> getIntensities(String timeUpdate, String language) {
         return getIntensitiesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     intensityRepository.insertIntensity(results.getData());
@@ -148,7 +148,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 });
     }
 
-    private Observable<Boolean> getPoses(Integer timeUpdate, String language) {
+    private Observable<Boolean> getPoses(String timeUpdate, String language) {
         return getPosesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     posesRepository.insertPoses(results.getData());

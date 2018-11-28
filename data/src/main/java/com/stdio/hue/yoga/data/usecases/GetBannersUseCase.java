@@ -27,7 +27,7 @@ public class GetBannersUseCase extends BaseUseCase {
         this.bannerMapper = bannerMapper;
     }
 
-    public Observable<BaseResponse<List<Banner>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Banner>>> execute(String timeUpdate, String language) {
         return dataService.getBanners(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

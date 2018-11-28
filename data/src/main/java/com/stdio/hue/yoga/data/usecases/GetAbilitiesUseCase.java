@@ -27,7 +27,7 @@ public class GetAbilitiesUseCase extends BaseUseCase {
         this.abilityMapper = abilityMapper;
     }
 
-    public Observable<BaseResponse<List<Ability>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Ability>>> execute(String timeUpdate, String language) {
         return dataService.getAbilities(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {

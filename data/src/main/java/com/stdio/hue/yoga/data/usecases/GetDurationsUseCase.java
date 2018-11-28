@@ -27,7 +27,7 @@ public class GetDurationsUseCase extends BaseUseCase {
         this.durationMapper = durationMapper;
     }
 
-    public Observable<BaseResponse<List<Duration>>> execute(Integer timeUpdate, String language) {
+    public Observable<BaseResponse<List<Duration>>> execute(String timeUpdate, String language) {
         return dataService.getDurations(timeUpdate, language)
                 .subscribeOn(Schedulers.io())
                 .map(dataResponse -> {
