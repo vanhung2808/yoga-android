@@ -15,6 +15,7 @@ import com.stdio.hue.yoga.modules.collections.presenter.ClassesCollectionDetailP
 import com.stdio.hue.yoga.modules.collections.ui.actions.ClassesCollectionDetailAction;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesCollectionDetailAdapter;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesOfCollectionAdapter;
+import com.stdio.hue.yoga.modules.upgrade.ui.activities.UpgradeActivity;
 import com.stdio.hue.yoga.shares.utils.Constant;
 
 import io.reactivex.subjects.PublishSubject;
@@ -121,5 +122,6 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
     @Override
     public void onItemClassesClick(Classes classes) {
         //Todo show Classes Detail Screen
+        UpgradeActivity.start(getContext());
     }
 }

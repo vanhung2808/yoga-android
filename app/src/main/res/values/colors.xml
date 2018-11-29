@@ -8,5 +8,6 @@
     <color name="colorGrayLight">#D8D8D8</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#9B9B9B</color>
+    <color name="colorGrayLighter">#F3F3F4</color>
     <color name="colorPink">#FF4B71</color>
 </resources>

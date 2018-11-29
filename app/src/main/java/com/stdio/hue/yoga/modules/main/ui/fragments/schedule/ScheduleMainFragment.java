@@ -12,6 +12,7 @@ import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.databinding.FragmentMainScheduleBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
+import com.stdio.hue.yoga.modules.settings.ui.activities.SettingActivity;
 import com.stdio.hue.yoga.shares.utils.AppBarStateChangeListener;
 
 import java.text.SimpleDateFormat;
@@ -59,7 +60,7 @@ public class ScheduleMainFragment extends BaseYogaFragment<BasePresenter, Fragme
             viewDataBinding.compactcalendarView.scrollRight();
         });
         viewDataBinding.ivSetting.setOnClickListener(view -> {
-
+            SettingActivity.start(getContext());
         });
         viewDataBinding.ivLogBook.setOnClickListener(view -> {
 

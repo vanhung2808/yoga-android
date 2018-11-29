@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--Audio-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/audio"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <include
+                    android:id="@+id/cell_collection_classes"
+                    layout="@layout/cell_setting_selected" />
+
+                <include
+                    android:id="@+id/cell_customer_classes"
+                    layout="@layout/cell_setting_selected" />
+
+                <include
+                    android:id="@+id/cell_sound_audio"
+                    layout="@layout/cell_setting_sound" />
+
+                <include
+                    android:id="@+id/cell_music"
+                    layout="@layout/cell_setting_selected" />
+
+                <include
+                    android:id="@+id/cell_sound_music"
+                    layout="@layout/cell_setting_sound" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/volume_cannot_be_changed_for_playlist_containing_drm_protected_songs"
+                    android:textSize="12sp" />
+                <!--Playback-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/playback"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <include
+                    android:id="@+id/cell_show_progress_bar"
+                    layout="@layout/cell_setting_switch" />
+
+                <include
+                    android:id="@+id/cell_swipe_to_skip_pose"
+                    layout="@layout/cell_setting_switch" />
+                <!--Scheduled Classes-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/scheduled_classes"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <include
+                    android:id="@+id/cell_alert"
+                    layout="@layout/cell_setting_selected" />
+                <!--Health Data Connections-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/health_data_connections"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <include
+                    android:id="@+id/cell_health_app"
+                    layout="@layout/cell_setting_selected" />
+
+                <include
+                    android:id="@+id/cell_jawbone_up"
+                    layout="@layout/cell_setting_selected" />
+                <!--Info-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/info"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_health_disclaimer_amp_warn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/health_disclaimer_amp_warn"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_faq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/faq"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/feedback"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_subcription_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/subcription_info"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_visit_website"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/visit_website"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_follow_us_on_facebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/follow_us_on_facebook"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_follow_us_on_twitter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/follow_us_on_twitter"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+                <!--Downloading-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/downloading"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <include
+                    android:id="@+id/cell_cellura_data"
+                    layout="@layout/cell_setting_switch" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/turn_on_to_enable_downloading_of_classes_over_the_cellular_network_wifi_will_still_be_used_when_available"
+                    android:textSize="12sp" />
+                <!--Crash Diagnostics-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/crash_diagnostics"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <include
+                    android:id="@+id/cell_sent_report"
+                    layout="@layout/cell_setting_switch" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/help_improve_yoga_studio_by_sending_anonymous_reports_upon_application_crash_or_failure_reports_do_not_include_any_personal_or_private_data_requires_a_restart_before_changes_will_take_effect"
+                    android:textSize="12sp" />
+                <!--In App Purchases-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/in_app_purchases"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_restore_purchases"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/restore_purchases"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/restore_content_purchases_you_have_made_in_the_past"
+                    android:textSize="12sp" />
+                <!--PROFILE-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/profile"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/teresagonzales_gmail_com"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/teresa_gonzales"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/beginner"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/log_out"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_create_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/create_account"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

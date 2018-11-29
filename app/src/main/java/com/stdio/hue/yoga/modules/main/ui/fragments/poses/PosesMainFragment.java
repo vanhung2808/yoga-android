@@ -11,6 +11,7 @@ import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.databinding.FragmentMainPosesBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
+import com.stdio.hue.yoga.modules.main.ui.adapters.homeposes.PosesMainPagerAdapter;
 
 /**
  * Created by TranHuuPhuc on 9/19/18.
@@ -35,6 +36,7 @@ public class PosesMainFragment extends BaseYogaFragment<BasePresenter, FragmentM
     }
 
     private void initEvent() {
+        viewDataBinding.vpPoses.setAdapter(new PosesMainPagerAdapter(getChildFragmentManager()));
         viewDataBinding.btPoses.setOnClickListener(view -> {
             viewDataBinding.btPoses.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
             viewDataBinding.btPoses.setBackgroundResource(R.drawable.background_gray_light_corner);
