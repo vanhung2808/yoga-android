@@ -12,6 +12,7 @@ import com.stdio.hue.yoga.data.mappers.DurationMapper;
 import com.stdio.hue.yoga.data.mappers.ErrorMapper;
 import com.stdio.hue.yoga.data.mappers.FocusMapper;
 import com.stdio.hue.yoga.data.mappers.IntensityMapper;
+import com.stdio.hue.yoga.data.mappers.NewsMapper;
 import com.stdio.hue.yoga.data.mappers.PosesMapper;
 import com.stdio.hue.yoga.data.usecases.GetAbilitiesUseCase;
 import com.stdio.hue.yoga.data.usecases.GetBannersUseCase;
@@ -21,6 +22,7 @@ import com.stdio.hue.yoga.data.usecases.GetCollectionsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetDurationsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetFocusUseCase;
 import com.stdio.hue.yoga.data.usecases.GetIntensitiesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetNewsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetPosesUseCase;
 import com.stdio.hue.yoga.network.di.NetworkModule;
 import com.stdio.hue.yoga.network.service.DataService;
@@ -96,5 +98,10 @@ public class DataModule {
     @Provides
     public GetPosesUseCase providesGetPosesUseCase(Gson gson, DataService dataService, ErrorMapper errorMapper, PosesMapper posesMapper) {
         return new GetPosesUseCase(gson, dataService, errorMapper, posesMapper);
+    }
+
+    @Provides
+    public GetNewsUseCase providesGetNewsUseCase(Gson gson, DataService dataService, ErrorMapper errorMapper, NewsMapper newsMapper) {
+        return new GetNewsUseCase(gson, dataService, errorMapper, newsMapper);
     }
 }

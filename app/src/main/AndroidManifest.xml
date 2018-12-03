@@ -26,6 +26,7 @@
         <activity android:name=".modules.main.ui.activities.MainActivity" />
         <activity android:name=".modules.classes.searchs.ui.activities.SearchClassesActivity" />
         <activity android:name=".modules.collections.ui.activities.CollectionDetailActivity" />
+        <activity android:name=".modules.newsdetail.ui.activity.NewsDetailActivity" />
 
     </application>
 </manifest>

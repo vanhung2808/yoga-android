@@ -9,6 +9,7 @@ import com.stdio.hue.yoga.data.mappers.DurationMapper;
 import com.stdio.hue.yoga.data.mappers.ErrorMapper;
 import com.stdio.hue.yoga.data.mappers.FocusMapper;
 import com.stdio.hue.yoga.data.mappers.IntensityMapper;
+import com.stdio.hue.yoga.data.mappers.NewsMapper;
 import com.stdio.hue.yoga.data.mappers.PosesMapper;
 
 import javax.inject.Singleton;
@@ -69,5 +70,10 @@ public class MapperModule {
     @Provides
     PosesMapper providesPosesMapper() {
         return new PosesMapper();
+    }
+
+    @Provides
+    NewsMapper provideNewsMapper(){
+        return new NewsMapper();
     }
 }

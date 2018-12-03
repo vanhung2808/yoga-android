@@ -12,6 +12,7 @@ import com.stdio.hue.yoga.network.GetCollectionQuery;
 import com.stdio.hue.yoga.network.GetDurationQuery;
 import com.stdio.hue.yoga.network.GetFocusQuery;
 import com.stdio.hue.yoga.network.GetIntensityQuery;
+import com.stdio.hue.yoga.network.GetNewsQuery;
 import com.stdio.hue.yoga.network.GetPoseQuery;
 
 import io.reactivex.Observable;
@@ -106,4 +107,14 @@ public class DataService {
         ApolloCall<GetPoseQuery.Data> apolloCall = apolloClient.query(getPoseQuery);
         return Rx2Apollo.from(apolloCall);
     }
+
+    public Observable<Response<GetNewsQuery.Data>> getNews(String timeUpdate, String language) {
+        GetNewsQuery getNewsQuery = GetNewsQuery.builder().update(timeUpdate).build();
+        apolloClient.defaultCacheHeaders().toBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Content-Language", language);
+        ApolloCall<GetNewsQuery.Data> apolloCall = apolloClient.query(getNewsQuery);
+        return Rx2Apollo.from(apolloCall);
+    }
+    
 }

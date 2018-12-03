@@ -3139,6 +3139,18 @@
               "deprecationReason": null
             },
             {
+              "name": "like_post",
+              "description": "like post",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "created_at",
               "description": "date created",
               "args": [],

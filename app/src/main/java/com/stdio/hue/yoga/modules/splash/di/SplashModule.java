@@ -8,6 +8,7 @@ import com.stdio.hue.yoga.data.usecases.GetCollectionsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetDurationsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetFocusUseCase;
 import com.stdio.hue.yoga.data.usecases.GetIntensitiesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetNewsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetPosesUseCase;
 import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
@@ -17,6 +18,7 @@ import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
 import com.stdio.hue.yoga.databases.repositories.DurationRepository;
 import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
+import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenter;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenterImpl;
@@ -30,7 +32,7 @@ import dagger.Provides;
 @Module
 public class SplashModule {
     @Provides
-    public SplashPresenter providesSplashPresenter(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository) {
-        return new SplashPresenterImpl(getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getCollectionsUseCase, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase, bannerRepository, abilityRepository, categoryRepository, classesRepository, collectionRepository, durationRepository, focusRepository, intensityRepository, posesRepository);
+    public SplashPresenter providesSplashPresenter(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
+        return new SplashPresenterImpl(getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getCollectionsUseCase, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase, getNewsUseCase, bannerRepository, abilityRepository, categoryRepository, classesRepository, collectionRepository, durationRepository, focusRepository, intensityRepository, posesRepository, newsRepository);
     }
 }

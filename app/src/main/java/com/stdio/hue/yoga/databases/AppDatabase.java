@@ -13,6 +13,7 @@ import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.data.models.Duration;
 import com.stdio.hue.yoga.data.models.Focus;
 import com.stdio.hue.yoga.data.models.Intensity;
+import com.stdio.hue.yoga.data.models.News;
 import com.stdio.hue.yoga.data.models.Poses;
 import com.stdio.hue.yoga.data.models.PosesType;
 import com.stdio.hue.yoga.databases.daos.AbilityDao;
@@ -23,12 +24,13 @@ import com.stdio.hue.yoga.databases.daos.CollectionDao;
 import com.stdio.hue.yoga.databases.daos.DurationDao;
 import com.stdio.hue.yoga.databases.daos.FocusDao;
 import com.stdio.hue.yoga.databases.daos.IntensityDao;
+import com.stdio.hue.yoga.databases.daos.NewsDao;
 import com.stdio.hue.yoga.databases.daos.PosesDao;
 
 /**
  * Created by TranHuuPhuc on 11/7/18.
  */
-@Database(entities = {Ability.class, Banner.class, Category.class, Classes.class, Collection.class, Duration.class, Focus.class, Intensity.class, Poses.class, PosesType.class}, version = 1, exportSchema = false)
+@Database(entities = {Ability.class, Banner.class, Category.class, Classes.class, Collection.class, Duration.class, Focus.class, Intensity.class, Poses.class, PosesType.class, News.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
 
@@ -59,4 +61,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract IntensityDao intensityDao();
 
     public abstract PosesDao posesDao();
+
+    public abstract NewsDao newsDao();
 }

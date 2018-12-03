@@ -11,4 +11,6 @@ public interface MainPresenter extends Presenter {
     void getAllCategories();
 
     void getCollectionsOfACategory(int categoryId);
+
+    void getAllNews();
 }
