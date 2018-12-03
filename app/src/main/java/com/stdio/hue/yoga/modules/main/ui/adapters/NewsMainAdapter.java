@@ -2,6 +2,7 @@ package com.stdio.hue.yoga.modules.main.ui.adapters;
 
 import android.databinding.ViewDataBinding;
 import android.util.Log;
+import android.view.View;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
@@ -19,8 +20,9 @@ public class NewsMainAdapter extends AbsBindingAdapter<ItemNewsMainBinding>{
     private List<News> items;
     private NewsMainAdapterListener listener;
 
-    public NewsMainAdapter(RecyclerViewClickListener itemListener) {
+    public NewsMainAdapter(RecyclerViewClickListener itemListener, NewsMainAdapterListener listener) {
         super(itemListener);
+        this.listener = listener;
     }
 
     @Override
@@ -32,12 +34,15 @@ public class NewsMainAdapter extends AbsBindingAdapter<ItemNewsMainBinding>{
     public void updateBinding(ViewDataBinding binding, int position) {
         if (binding instanceof ItemNewsMainBinding) {
             News news = items.get(position);
+            ItemNewsMainBinding itemBind = (ItemNewsMainBinding) binding;
             if(news != null){
-                ItemNewsMainBinding itemBind = (ItemNewsMainBinding) binding;
                 itemBind.setTitleNews(news.getNameEntity(getGson()).getNameLocale());
                 itemBind.setImageNews(news.getImage());
                 itemBind.setTotalFavorite(String.valueOf(news.getTotalFavorite()));
             }
+            itemBind.cbFavorite.setOnClickListener(v -> {
+                listener.onClickFavorite(position);
+            });
         }
     }
 
@@ -52,7 +57,12 @@ public class NewsMainAdapter extends AbsBindingAdapter<ItemNewsMainBinding>{
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void updateData(List<News> news) {
@@ -62,10 +72,6 @@ public class NewsMainAdapter extends AbsBindingAdapter<ItemNewsMainBinding>{
         this.items.clear();
         this.items.addAll(news);
         notifyDataSetChanged();
-    }
-
-    public void setListener(NewsMainAdapterListener listener) {
-        this.listener = listener;
     }
 
     public interface NewsMainAdapterListener{

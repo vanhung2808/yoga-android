@@ -62,13 +62,13 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <ImageView
-                            android:id="@+id/iv_favorite"
-                            android:layout_width="20dp"
-                            android:src="@drawable/ic_favorite_white"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"/>
+                        <CheckBox
+                            android:id="@+id/cb_favorite"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/checkbox_selector"
+                            android:button="@null"
+                            android:layout_gravity="center"/>
 
                         <TextView
                             android:id="@+id/tv_favorite"
@@ -86,7 +86,9 @@
                 <WebView
                     android:id="@+id/wv_news_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
 

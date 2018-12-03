@@ -93,7 +93,7 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
 
         PublishSubject<NewsAction> newsMainState = getAppComponent().getMainComponent().getNewsMainState();
         getPresenter().getAllNews();
-        adapter = new NewsMainAdapter(this);
+        adapter = new NewsMainAdapter(this, this);
         viewDataBinding.rvMainNews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvMainNews.setHasFixedSize(false);
         viewDataBinding.rvMainNews.setAdapter(adapter);

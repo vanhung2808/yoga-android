@@ -78,13 +78,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
 
-            <ImageView
-                android:id="@+id/iv_favorite"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_favorite_white"/>
+            <CheckBox
+                android:id="@+id/cb_favorite"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/tv_total_favorite"
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
             
         </LinearLayout>
 
