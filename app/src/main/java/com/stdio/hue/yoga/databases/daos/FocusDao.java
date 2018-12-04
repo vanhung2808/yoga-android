@@ -27,4 +27,7 @@ public interface FocusDao {
 
     @Update
     void updateAllFocus(Focus... focus);
+    
+    @Query("SELECT focus.name FROM focus WHERE focus.id = :focusId")
+    String getFocusName(String focusId);
 }

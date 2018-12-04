@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
+import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.FragmentMainCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
@@ -17,6 +18,7 @@ import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainAdapter;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
 
 import static com.stdio.hue.yoga.shares.utils.Constant.EXTRA_CATEGORY_ID;
@@ -39,19 +41,19 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
     }
 
     private CollectionsClassesMainAdapter adapter;
+    private int categoryId;
 
     @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
+        initAdapter();
         PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState = getAppComponent().getMainComponent().getCollectionsClassesMainState();
         if (getArguments() != null) {
-            int categoryId = getArguments().getInt(EXTRA_CATEGORY_ID);
-            getPresenter().getCollectionsOfACategory(categoryId);
+            categoryId = getArguments().getInt(EXTRA_CATEGORY_ID);
+            disposableManager.add(getPresenter().getCollectionsOfACategory(categoryId)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(collections -> adapter.updateData(collections)));
         }
-        adapter = new CollectionsClassesMainAdapter(this);
-        viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        viewDataBinding.rvCollections.setHasFixedSize(false);
-        viewDataBinding.rvCollections.setAdapter(adapter);
 
         disposableManager.add(
                 collectionsClassesMainState.map(CollectionsClassesMainAction::isLoading)
@@ -64,11 +66,13 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
                         .map(CollectionsClassesMainAction::getError)
                         .subscribe(this::showToast)
         );
+    }
 
-        disposableManager.add(
-                collectionsClassesMainState.filter(c -> c.getCollections() != null)
-                        .map(CollectionsClassesMainAction::getCollections)
-                        .subscribe(adapter::updateData));
+    private void initAdapter() {
+        adapter = new CollectionsClassesMainAdapter(this);
+        viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        viewDataBinding.rvCollections.setHasFixedSize(false);
+        viewDataBinding.rvCollections.setAdapter(adapter);
     }
 
     @Override
@@ -99,6 +103,9 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
 
     @Override
     public void recyclerViewListClicked(View view, int position) {
-        CollectionDetailActivity.start(getContext(), adapter.getCollection(position));
+        Collection collection = adapter.getCollection(position);
+        if (!collection.getCategoryId().equals("4")) {
+            CollectionDetailActivity.start(getContext(), collection);
+        }
     }
 }

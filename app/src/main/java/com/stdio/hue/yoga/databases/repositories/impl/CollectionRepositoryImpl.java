@@ -1,5 +1,7 @@
 package com.stdio.hue.yoga.databases.repositories.impl;
 
+import android.util.Log;
+
 import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databases.daos.ClassesDao;
 import com.stdio.hue.yoga.databases.daos.CollectionDao;
@@ -29,6 +31,7 @@ public class CollectionRepositoryImpl implements CollectionRepository {
     @Override
     public List<Collection> getCollectionsOfCategory(int categoryId) {
         List<Collection> collections = collectionDao.getCollectionsOfCategory(categoryId);
+        Log.e("PHUC", categoryId + " - getCollectionsOfCategory size = " + collections.size());
         for (Collection collection : collections) {
             collection.setTotalClasses(classesDao.countClassesOfCollection(collection.getId()));
         }

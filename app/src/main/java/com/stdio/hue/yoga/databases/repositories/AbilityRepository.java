@@ -12,4 +12,5 @@ public interface AbilityRepository {
 
     List<Ability> getAllAbility();
 
+    String getAbilityName(String abilityId);
 }

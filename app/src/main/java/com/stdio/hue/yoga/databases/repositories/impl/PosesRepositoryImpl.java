@@ -22,4 +22,9 @@ public class PosesRepositoryImpl implements PosesRepository {
             posesDao.insertPoses(posesChild);
         }
     }
+
+    @Override
+    public List<Poses> getPosesOfClasses(int classesId) {
+        return posesDao.getPosesOfClasses(classesId);
+    }
 }

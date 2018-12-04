@@ -2,6 +2,7 @@ package com.stdio.hue.yoga.di.components;
 
 import com.stdio.hue.yoga.ProjectApplication;
 import com.stdio.hue.yoga.di.modules.AppModule;
+import com.stdio.hue.yoga.modules.classes.detail.di.ClassesDetailComponent;
 import com.stdio.hue.yoga.modules.classes.searchs.di.SearchClassesComponent;
 import com.stdio.hue.yoga.modules.collections.di.CollectionDetailComponent;
 import com.stdio.hue.yoga.modules.main.di.MainComponent;
@@ -33,4 +34,6 @@ public interface AppComponent {
     CollectionDetailComponent getCollectionDetailComponent();
 
     SearchClassesComponent getSearchClassesComponent();
+
+    ClassesDetailComponent getClassesDetailComponent();
 }

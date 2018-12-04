@@ -20,6 +20,9 @@ import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 
+import java.util.Arrays;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
@@ -69,8 +72,8 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
     }
 
     @Override
-    public Observable<Boolean> getAllDataAndSaveLocal(String timeUpdate, String language) {
-        return Observable.combineLatest(
+    public Observable<Object[]> getAllDataAndSaveLocal(String timeUpdate, String language) {
+        List<Observable<?>> list = Arrays.asList(
                 getAbilities(timeUpdate, language),
                 getBanners(timeUpdate, language),
                 getCategories(timeUpdate, language),
@@ -79,9 +82,8 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 getDurations(timeUpdate, language),
                 getFocus(timeUpdate, language),
                 getIntensities(timeUpdate, language),
-                getPoses(timeUpdate, language),
-                (ability, banner, category, classes, collection, duration, focus, intensity, poses) -> true)
-                .observeOn(AndroidSchedulers.mainThread()).map(result -> result);
+                getPoses(timeUpdate, language));
+        return Observable.combineLatest(list, objects -> objects).observeOn(AndroidSchedulers.mainThread());
     }
 
     private Observable<Boolean> getAbilities(String timeUpdate, String language) {

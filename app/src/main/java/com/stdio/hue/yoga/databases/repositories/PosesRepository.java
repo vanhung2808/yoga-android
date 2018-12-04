@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface PosesRepository {
     void insertPoses(List<Poses> poses);
+
+    List<Poses> getPosesOfClasses(int classesId);
 }

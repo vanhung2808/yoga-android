@@ -27,4 +27,9 @@ public class FocusRepositoryImpl implements FocusRepository {
     public List<Focus> getAllFocus() {
         return focusDao.getAll();
     }
+
+    @Override
+    public String getFocusName(String focusId) {
+        return focusDao.getFocusName(focusId);
+    }
 }
