@@ -43,18 +43,17 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
                         MainActivity.start(this);
                         finish();
                     }));
-//                    int timeUpdate = getPreferences(MODE_PRIVATE).getInt("timeupdate", 0);
-//                    long timeCurrent = System.currentTimeMillis();
-//                    disposableManager.add(
-//                            getPresenter().getAllDataAndSaveLocal(timeUpdate, "en")
-//                                    .observeOn(AndroidSchedulers.mainThread())
-//                                    .doOnSubscribe(d -> loading(true))
-//                                    .doOnError(throwable -> loading(false))
-//                                    .doOnComplete(() -> loading(false))
-//                                    .subscribe(resultGetData -> {
-//                                        getPreferences(MODE_PRIVATE).edit().putInt("timeupdate", (int) timeCurrent).apply();
-
-//                                    }, throwable -> showToast(throwable.getMessage())));
+                    String timeUpdate = getPreferences(MODE_PRIVATE).getString("timeupdate", "");
+                    String timeCurrent = String.valueOf(System.currentTimeMillis());
+                    disposableManager.add(
+                            getPresenter().getAllDataAndSaveLocal(timeUpdate, "en")
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .doOnSubscribe(d -> loading(true))
+                                    .doOnError(throwable -> loading(false))
+                                    .doOnComplete(() -> loading(false))
+                                    .subscribe(resultGetData -> {
+                                        getPreferences(MODE_PRIVATE).edit().putString("timeupdate", timeCurrent).apply();
+                                    }, throwable -> showToast(throwable.getMessage())));
                 } else {
                     disposableManager.add(Observable.just(true).delay(1500, TimeUnit.MILLISECONDS).subscribe(v -> {
                         MainActivity.start(this);
@@ -64,7 +63,7 @@ public class SplashActivity extends BaseYogaActivity<SplashPresenter, ViewDataBi
             } else {
                 if (result) {
                     getPreferences(MODE_PRIVATE).edit().putBoolean("new", true).apply();
-                    getPreferences(MODE_PRIVATE).edit().putInt("timeupdate", (int) System.currentTimeMillis()).apply();
+                    getPreferences(MODE_PRIVATE).edit().putString("timeupdate", String.valueOf(System.currentTimeMillis())).apply();
                     disposableManager.add(
                             getPresenter().getAllDataAndSaveLocal(null, "en")
                                     .observeOn(AndroidSchedulers.mainThread())

@@ -3,11 +3,14 @@ package com.stdio.hue.yoga.modules.main.presenters;
 import android.annotation.SuppressLint;
 
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
+import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
 import com.stdio.hue.yoga.databases.repositories.CategoryRepository;
 import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,10 +53,9 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     }
 
     @Override
-    public void getCollectionsOfACategory(int categoryId) {
-        disposable.add(Observable.just(collectionRepository.getCollectionsOfCategory(categoryId))
-                .observeOn(AndroidSchedulers.mainThread())
+    public Observable<List<Collection>> getCollectionsOfACategory(int categoryId) {
+        return Observable.just(collectionRepository.getCollectionsOfCategory(categoryId))
                 .subscribeOn(Schedulers.io())
-                .subscribe(collections -> collectionsClassesMainState.onNext(CollectionsClassesMainAction.setCollectionsOfCategory(collections))));
+                .map(collections -> collections);
     }
 }

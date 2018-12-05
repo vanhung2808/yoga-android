@@ -28,6 +28,7 @@
         <activity android:name=".modules.collections.ui.activities.CollectionDetailActivity" />
         <activity android:name=".modules.upgrade.ui.activities.UpgradeActivity" />
         <activity android:name=".modules.settings.ui.activities.SettingActivity" />
+        <activity android:name=".modules.classes.detail.ui.activities.ClassesDetailActivity" />
 
     </application>
 </manifest>

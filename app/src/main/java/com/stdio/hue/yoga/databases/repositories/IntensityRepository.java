@@ -11,4 +11,6 @@ public interface IntensityRepository {
     void insertIntensity(List<Intensity> intensities);
 
     List<Intensity> getAllIntensity();
+
+    String getIntensityName(String intensityId);
 }

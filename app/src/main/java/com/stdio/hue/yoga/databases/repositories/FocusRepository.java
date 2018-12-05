@@ -12,4 +12,5 @@ public interface FocusRepository {
 
     List<Focus> getAllFocus();
 
+    String getFocusName(String focusId);
 }

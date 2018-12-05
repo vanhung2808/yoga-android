@@ -27,4 +27,9 @@ public class AbilityRepositoryImpl implements AbilityRepository {
     public List<Ability> getAllAbility() {
         return abilityDao.getAll();
     }
+
+    @Override
+    public String getAbilityName(String abilityId) {
+        return abilityDao.getAbilityName(abilityId);
+    }
 }

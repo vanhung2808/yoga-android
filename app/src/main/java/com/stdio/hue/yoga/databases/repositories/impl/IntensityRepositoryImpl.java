@@ -27,4 +27,9 @@ public class IntensityRepositoryImpl implements IntensityRepository {
     public List<Intensity> getAllIntensity() {
         return intensityDao.getAll();
     }
+
+    @Override
+    public String getIntensityName(String intensityId) {
+        return intensityDao.getIntensityName(intensityId);
+    }
 }

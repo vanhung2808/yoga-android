@@ -27,4 +27,7 @@ public interface IntensityDao {
 
     @Update
     void updateAllIntensity(Intensity... intensities);
+
+    @Query("SELECT intensity.name FROM intensity WHERE intensity.id = :intensityId")
+    String getIntensityName(String intensityId);
 }

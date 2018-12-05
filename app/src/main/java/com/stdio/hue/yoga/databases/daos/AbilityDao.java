@@ -27,4 +27,7 @@ public interface AbilityDao {
 
     @Update
     void updateAbilities(List<Ability> abilities);
+
+    @Query("SELECT ability.name FROM ability WHERE ability.id = :abilityId")
+    String getAbilityName(String abilityId);
 }

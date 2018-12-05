@@ -27,4 +27,7 @@ public interface PosesDao {
 
     @Update
     void updateAllPoses(List<Poses> poses);
+
+    @Query("SELECT * FROM poses")
+    List<Poses> getPosesOfClasses();
 }
