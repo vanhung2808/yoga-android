@@ -25,6 +25,11 @@ public class PosesRepositoryImpl implements PosesRepository {
 
     @Override
     public List<Poses> getPosesOfClasses(int classesId) {
-        return posesDao.getPosesOfClasses();
+        return posesDao.getPosesOfClasses(classesId);
+    }
+
+    @Override
+    public void updatePoses(Poses poses) {
+        posesDao.updateFavoritePoses(poses);
     }
 }

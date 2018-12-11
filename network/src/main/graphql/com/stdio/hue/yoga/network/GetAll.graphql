@@ -1,14 +1,17 @@
 query GetPose($update: String) {
     pose(update: $update) {
-                id
                 name
-				image
-				description
-				focus_id
-				type_id
-				ability_id
-				created_at
-				updated_at
+                    description
+                		id
+                		updated_at
+                		created_at
+                    class_id
+                    duration
+                    image
+                    ability_id
+                    focus_id
+                    duration_id
+                    type_id
     }
 }
 query GetCategory($update: String) {

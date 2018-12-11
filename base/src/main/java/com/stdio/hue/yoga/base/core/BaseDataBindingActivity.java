@@ -3,8 +3,11 @@ package com.stdio.hue.yoga.base.core;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+
+import java.io.File;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -16,6 +19,7 @@ public abstract class BaseDataBindingActivity<T extends ViewDataBinding> extends
 
     protected T viewDataBinding;
     protected CompositeDisposable disposableManager;
+
     /**
      * setup content layout
      *
@@ -91,5 +95,13 @@ public abstract class BaseDataBindingActivity<T extends ViewDataBinding> extends
         super.onDestroy();
         disposableManager.clear();
         destroyScreen();
+    }
+
+    public Uri getExitsVideo(String videoName) {
+        File file = new File(getFilesDir(), videoName);
+        if (file.exists()) {
+            return Uri.parse(file.getPath());
+        }
+        return null;
     }
 }

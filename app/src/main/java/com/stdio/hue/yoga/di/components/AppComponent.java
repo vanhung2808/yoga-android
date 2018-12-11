@@ -6,6 +6,7 @@ import com.stdio.hue.yoga.modules.classes.detail.di.ClassesDetailComponent;
 import com.stdio.hue.yoga.modules.classes.searchs.di.SearchClassesComponent;
 import com.stdio.hue.yoga.modules.collections.di.CollectionDetailComponent;
 import com.stdio.hue.yoga.modules.main.di.MainComponent;
+import com.stdio.hue.yoga.modules.poses.detail.di.PosesDetailComponent;
 import com.stdio.hue.yoga.modules.splash.di.SplashComponent;
 
 import javax.inject.Singleton;
@@ -36,4 +37,6 @@ public interface AppComponent {
     SearchClassesComponent getSearchClassesComponent();
 
     ClassesDetailComponent getClassesDetailComponent();
+
+    PosesDetailComponent getPosesDetailComponent();
 }

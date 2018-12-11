@@ -33,6 +33,14 @@ public class Poses extends BaseObservable implements Serializable {
     private String createdAt;
     @ColumnInfo(name = "updated_at")
     private String updatedAt;
+    @ColumnInfo(name = "class_id")
+    private String classId;
+    @ColumnInfo(name = "duration")
+    private String duration;
+    @ColumnInfo(name = "duration_id")
+    private String durationId;
+    @ColumnInfo(name = "is_favorite")
+    private boolean isFavorite;
 
     public int getId() {
         return id;
@@ -106,11 +114,47 @@ public class Poses extends BaseObservable implements Serializable {
         this.updatedAt = updatedAt;
     }
 
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getDurationId() {
+        return durationId;
+    }
+
+    public void setDurationId(String durationId) {
+        this.durationId = durationId;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     public NameEntity getNameEntity(Gson gson) {
         return gson.fromJson(name, NameEntity.class);
     }
 
     public NameEntity getDescriptionLocale(Gson gson) {
         return gson.fromJson(description, NameEntity.class);
+    }
+
+    public NameEntity getDurationLocale(Gson gson) {
+        return gson.fromJson(duration, NameEntity.class);
     }
 }

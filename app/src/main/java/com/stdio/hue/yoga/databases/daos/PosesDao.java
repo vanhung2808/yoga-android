@@ -28,6 +28,9 @@ public interface PosesDao {
     @Update
     void updateAllPoses(List<Poses> poses);
 
-    @Query("SELECT * FROM poses")
-    List<Poses> getPosesOfClasses();
+    @Query("SELECT * FROM poses WHERE poses.class_id = :classesId")
+    List<Poses> getPosesOfClasses(int classesId);
+
+    @Update
+    int updateFavoritePoses(Poses poses);
 }

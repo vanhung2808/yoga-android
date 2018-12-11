@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="totalPosesAndTime"
+            type="String" />
+
+        <variable
             name="classesImage"
             type="String" />
 
@@ -72,9 +76,9 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/tv_download_classes"
+                        android:id="@+id/ll_download_classes"
                         android:layout_width="180dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_margin="20dp"
                         android:background="@drawable/background_gradient"
                         android:gravity="center_vertical"
@@ -86,21 +90,29 @@
 
                         <FrameLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp">
+                            android:layout_height="wrap_content">
+
+                            <com.github.abdularis.buttonprogress.DownloadButtonProgress
+                                android:id="@+id/bt_download"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_margin="5dp"
+                                android:visibility="gone" />
 
                             <ImageView
+                                android:id="@+id/iv_play_video"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_download_white" />
+                                android:padding="10dp"
+                                android:src="@drawable/ic_play_arrow"
+                                android:visibility="gone" />
                         </FrameLayout>
 
                         <TextView
                             android:id="@+id/tv_classes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="51 Poses - 15 mins"
+                            android:text="@{totalPosesAndTime}"
                             android:textColor="@color/colorWhite"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -142,7 +154,7 @@
                     android:paddingEnd="15dp"
                     android:text="@{classesName}"
                     android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -177,7 +189,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_weight="1"
                     android:text="@{abilityName}"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tv_focus_name"
@@ -187,7 +199,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_weight="1"
                     android:text="@{focusName}"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tv_intensity_name"
@@ -197,7 +209,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_weight="1"
                     android:text="@{intensityName}"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

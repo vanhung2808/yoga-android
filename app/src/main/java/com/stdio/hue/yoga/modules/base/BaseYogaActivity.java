@@ -3,6 +3,7 @@ package com.stdio.hue.yoga.modules.base;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 
@@ -13,6 +14,8 @@ import com.stdio.hue.yoga.base.core.BaseViperActivity;
 import com.stdio.hue.yoga.base.core.mvp.Presenter;
 import com.stdio.hue.yoga.di.components.AppComponent;
 import com.stdio.hue.yoga.shares.widget.LoadingDialog;
+
+import java.io.File;
 
 /**
  * Created by TranHuuPhuc on 7/6/18.
@@ -124,4 +127,11 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
         destroyScreen();
     }
 
+    public Uri getExitsVideo(String videoName) {
+        File file = new File(getFilesDir(), videoName);
+        if (file.exists()) {
+            return Uri.parse(file.getPath());
+        }
+        return null;
+    }
 }

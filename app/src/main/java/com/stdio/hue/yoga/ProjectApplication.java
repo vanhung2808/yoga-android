@@ -2,13 +2,17 @@ package com.stdio.hue.yoga;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.multidex.MultiDexApplication;
 
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
+import com.downloader.PRDownloader;
+import com.downloader.PRDownloaderConfig;
 import com.stdio.hue.yoga.databases.AppDatabase;
 import com.stdio.hue.yoga.di.components.AppComponent;
 import com.stdio.hue.yoga.di.components.DaggerAppComponent;
+import com.stdio.hue.yoga.services.DownloadService;
 
 /**
  * Created by TranHuuPhuc on 7/6/18.
@@ -24,6 +28,11 @@ public class ProjectApplication extends MultiDexApplication {
         Room.databaseBuilder(this, AppDatabase.class, "yogadb")
                 .allowMainThreadQueries()
                 .build();
+        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
+                .setDatabaseEnabled(true)
+                .build();
+        PRDownloader.initialize(getApplicationContext(), config);
+        startService(new Intent(this, DownloadService.class));
         getAppComponent().inject(this);
     }
 

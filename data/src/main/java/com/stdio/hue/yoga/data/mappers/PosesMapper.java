@@ -21,6 +21,9 @@ public class PosesMapper extends Mapper<GetPoseQuery.Pose, Poses> {
             poses.setFocusId(String.valueOf(entity.focus_id()));
             poses.setImage(entity.image());
             poses.setTypeId(String.valueOf(entity.type_id()));
+            poses.setClassId(String.valueOf(entity.class_id()));
+            poses.setDuration(String.valueOf(entity.duration()));
+            poses.setDurationId(String.valueOf(entity.duration_id()));
         }
         return poses;
     }

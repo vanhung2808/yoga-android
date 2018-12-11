@@ -11,4 +11,6 @@ public interface PosesRepository {
     void insertPoses(List<Poses> poses);
 
     List<Poses> getPosesOfClasses(int classesId);
+
+    void updatePoses(Poses poses);
 }

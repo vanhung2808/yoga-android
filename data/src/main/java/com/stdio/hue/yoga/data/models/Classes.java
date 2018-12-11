@@ -45,7 +45,26 @@ public class Classes extends BaseObservable implements Serializable {
     private String updatedAt;
     @ColumnInfo(name = "status_download")
     private int statusDownload;
+    @ColumnInfo(name = "path_file_download")
+    private int pathFileDownload;
+    @ColumnInfo(name = "download_id")
+    private int downloadId;
 
+    public int getDownloadId() {
+        return downloadId;
+    }
+
+    public void setDownloadId(int downloadId) {
+        this.downloadId = downloadId;
+    }
+
+    public int getPathFileDownload() {
+        return pathFileDownload;
+    }
+
+    public void setPathFileDownload(int pathFileDownload) {
+        this.pathFileDownload = pathFileDownload;
+    }
 
     public String getImage() {
         return image;

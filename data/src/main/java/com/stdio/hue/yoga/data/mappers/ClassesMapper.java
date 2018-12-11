@@ -26,6 +26,7 @@ public class ClassesMapper extends Mapper<GetClassesQuery.Class, Classes> {
             classes.setImage(entity.image());
             classes.setIntensityId(String.valueOf(entity.intensity_id()));
             classes.setVideoUrl(entity.video_url());
+            classes.setDuration(entity.duration());
         }
         return classes;
     }
