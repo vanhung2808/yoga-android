@@ -13,4 +13,6 @@ public interface PosesRepository {
     List<Poses> getPosesOfClasses(int classesId);
 
     void updatePoses(Poses poses);
+
+    Poses getPosesDetail(int posesId);
 }

@@ -32,4 +32,9 @@ public class PosesRepositoryImpl implements PosesRepository {
     public void updatePoses(Poses poses) {
         posesDao.updateFavoritePoses(poses);
     }
+
+    @Override
+    public Poses getPosesDetail(int posesId) {
+        return posesDao.getPosesDetail(posesId);
+    }
 }

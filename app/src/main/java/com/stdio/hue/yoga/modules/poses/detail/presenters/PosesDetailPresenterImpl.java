@@ -27,14 +27,16 @@ public class PosesDetailPresenterImpl extends BasePresenter implements PosesDeta
     }
 
     @Override
-    public Observable<List<String>> getData(String abilityId, String focusId) {
+    public Observable<List<Object>> getData(int posesId,String abilityId, String focusId) {
         return Observable.combineLatest(
                 getAbilityName(abilityId),
                 getFocusName(focusId),
-                (ability, focus) -> {
-                    List<String> list = new ArrayList<>();
+                getPosesDetail(posesId),
+                (ability, focus, poses) -> {
+                    List<Object> list = new ArrayList<>();
                     list.add(ability);
                     list.add(focus);
+                    list.add(poses);
                     return list;
                 })
                 .subscribeOn(Schedulers.io())
@@ -52,5 +54,9 @@ public class PosesDetailPresenterImpl extends BasePresenter implements PosesDeta
 
     private Observable<String> getAbilityName(String abilityId) {
         return Observable.just(abilityRepository.getAbilityName(abilityId));
+    }
+
+    private Observable<Poses> getPosesDetail(int posesId) {
+        return Observable.just(posesRepository.getPosesDetail(posesId));
     }
 }

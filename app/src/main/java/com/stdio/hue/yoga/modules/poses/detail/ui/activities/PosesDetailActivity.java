@@ -1,5 +1,6 @@
 package com.stdio.hue.yoga.modules.poses.detail.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -34,26 +35,28 @@ public class PosesDetailActivity extends BaseYogaActivity<PosesDetailPresenter, 
 
     private Poses poses;
 
+    @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init() {
         initToolbar();
         if (getIntent() != null) {
             poses = (Poses) getIntent().getSerializableExtra(EXTRA_POSES);
-            viewDataBinding.setPosesName(poses.getNameEntity(gson).getNameLocale());
-            viewDataBinding.setPosesImage(poses.getImage());
-            HtmlTextViewHelper.showHtmlTextView(poses.getDescriptionLocale(gson).getNameLocale(), viewDataBinding.tvDescription);
-            if (poses.isFavorite()) {
-                viewDataBinding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_pose));
-            } else {
-                viewDataBinding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_unfavorite_pose));
-            }
-            disposableManager.add(getPresenter().getData(poses.getAbilityId(), poses.getFocusId())
+            disposableManager.add(getPresenter().getData(poses.getId(), poses.getAbilityId(), poses.getFocusId())
                     .doOnSubscribe(d -> loading(true))
                     .doOnError(throwable -> loading(false))
                     .doOnComplete(() -> loading(false))
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(results -> {
-                        viewDataBinding.setAbilityName(ConvertJsonToNameEntity.getNameEntity(gson, results.get(0)).getNameLocale());
-                        viewDataBinding.setFocusName(ConvertJsonToNameEntity.getNameEntity(gson, results.get(1)).getNameLocale());
+                        poses = (Poses) results.get(2);
+                        viewDataBinding.setPosesName(poses.getNameEntity(gson).getNameLocale());
+                        viewDataBinding.setPosesImage(poses.getImage());
+                        HtmlTextViewHelper.showHtmlTextView(poses.getDescriptionLocale(gson).getNameLocale(), viewDataBinding.tvDescription);
+                        if (poses.isFavorite()) {
+                            viewDataBinding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_pose));
+                        } else {
+                            viewDataBinding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_unfavorite_pose));
+                        }
+                        viewDataBinding.setAbilityName(ConvertJsonToNameEntity.getNameEntity(gson, (String) results.get(0)).getNameLocale());
+                        viewDataBinding.setFocusName(ConvertJsonToNameEntity.getNameEntity(gson, (String) results.get(1)).getNameLocale());
                         viewDataBinding.setIntensityName(ConvertJsonToNameEntity.getNameEntity(gson, poses.getDuration()).getNameLocale());
                     }));
         }

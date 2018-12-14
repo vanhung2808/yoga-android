@@ -33,4 +33,7 @@ public interface PosesDao {
 
     @Update
     int updateFavoritePoses(Poses poses);
+
+    @Query("SELECT * FROM poses WHERE poses.id = :posesId")
+    Poses getPosesDetail(int posesId);
 }

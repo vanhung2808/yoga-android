@@ -11,7 +11,7 @@ import io.reactivex.Observable;
  * Created by TranHuuPhuc on 12/10/18.
  */
 public interface PosesDetailPresenter extends Presenter {
-    Observable<List<String>> getData(String abilityId, String focusId);
+    Observable<List<Object>> getData(int posesId, String abilityId, String focusId);
 
     void updatePosesFavorite(Poses poses);
 }
