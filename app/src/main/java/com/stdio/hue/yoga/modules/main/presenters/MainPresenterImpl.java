@@ -7,8 +7,10 @@ import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
 import com.stdio.hue.yoga.databases.repositories.CategoryRepository;
 import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
+import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
+import com.stdio.hue.yoga.modules.main.ui.actions.NewsAction;
 
 import java.util.List;
 
@@ -23,16 +25,21 @@ import io.reactivex.subjects.PublishSubject;
 public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     private PublishSubject<MainAction> mainActionPublishSubject;
     private PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState;
+    private PublishSubject<NewsAction> newsActionPublishSubject;
     private BannerRepository bannerRepository;
     private CategoryRepository categoryRepository;
     private CollectionRepository collectionRepository;
+    private NewsRepository newsRepository;
 
-    public MainPresenterImpl(PublishSubject<MainAction> mainActionPublishSubject, PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState, BannerRepository bannerRepository, CategoryRepository categoryRepository, CollectionRepository collectionRepository) {
+
+    public MainPresenterImpl(PublishSubject<MainAction> mainActionPublishSubject, PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState, PublishSubject<NewsAction> newsActionPublishSubject, BannerRepository bannerRepository, CategoryRepository categoryRepository, CollectionRepository collectionRepository, NewsRepository newsRepository) {
         this.mainActionPublishSubject = mainActionPublishSubject;
         this.collectionsClassesMainState = collectionsClassesMainState;
+        this.newsActionPublishSubject = newsActionPublishSubject;
         this.bannerRepository = bannerRepository;
         this.categoryRepository = categoryRepository;
         this.collectionRepository = collectionRepository;
+        this.newsRepository = newsRepository;
     }
 
     @SuppressLint("RxSubscribeOnError")
@@ -57,5 +64,13 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
         return Observable.just(collectionRepository.getCollectionsOfCategory(categoryId))
                 .subscribeOn(Schedulers.io())
                 .map(collections -> collections);
+    }
+
+    @Override
+    public void getAllNews() {
+        disposable.add(Observable.just(newsRepository.getAllNews())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(news -> newsActionPublishSubject.onNext(NewsAction.setNews(news))));
     }
 }

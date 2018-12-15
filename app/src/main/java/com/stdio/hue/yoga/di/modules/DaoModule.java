@@ -11,6 +11,7 @@ import com.stdio.hue.yoga.databases.daos.CollectionDao;
 import com.stdio.hue.yoga.databases.daos.DurationDao;
 import com.stdio.hue.yoga.databases.daos.FocusDao;
 import com.stdio.hue.yoga.databases.daos.IntensityDao;
+import com.stdio.hue.yoga.databases.daos.NewsDao;
 import com.stdio.hue.yoga.databases.daos.PosesDao;
 
 import javax.inject.Named;
@@ -69,4 +70,8 @@ public class DaoModule {
         return AppDatabase.getInstance(context).posesDao();
     }
 
+    @Provides
+    NewsDao providesNewsDao(@Named("application") Context context) {
+        return AppDatabase.getInstance(context).newsDao();
+    }
 }

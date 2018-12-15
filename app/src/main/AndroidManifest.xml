@@ -31,7 +31,7 @@
         <activity android:name=".modules.classes.detail.ui.activities.ClassesDetailActivity" />
         <activity android:name=".modules.video.VideoActivity" />
         <activity android:name=".modules.poses.detail.ui.activities.PosesDetailActivity" />
-
+        <activity android:name=".modules.newsdetail.ui.activity.NewsDetailActivity" />
         <service android:name=".services.DownloadService" />
     </application>
 </manifest>

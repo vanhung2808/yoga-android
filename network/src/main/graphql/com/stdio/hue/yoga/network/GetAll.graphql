@@ -98,6 +98,8 @@ query GetNews($update: String) {
       postAll(update: $update) {
                 title
    	            id
+	            image
+                like_post
 	            content
 	            created_at
 	            updated_at

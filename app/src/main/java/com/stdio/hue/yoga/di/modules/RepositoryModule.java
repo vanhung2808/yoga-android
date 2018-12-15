@@ -8,6 +8,7 @@ import com.stdio.hue.yoga.databases.daos.CollectionDao;
 import com.stdio.hue.yoga.databases.daos.DurationDao;
 import com.stdio.hue.yoga.databases.daos.FocusDao;
 import com.stdio.hue.yoga.databases.daos.IntensityDao;
+import com.stdio.hue.yoga.databases.daos.NewsDao;
 import com.stdio.hue.yoga.databases.daos.PosesDao;
 import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
@@ -17,6 +18,7 @@ import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
 import com.stdio.hue.yoga.databases.repositories.DurationRepository;
 import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
+import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 import com.stdio.hue.yoga.databases.repositories.impl.AbilityRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.BannerRepositoryImpl;
@@ -26,6 +28,7 @@ import com.stdio.hue.yoga.databases.repositories.impl.CollectionRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.DurationRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.FocusRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.IntensityRepositoryImpl;
+import com.stdio.hue.yoga.databases.repositories.impl.NewsRepositoryImpl;
 import com.stdio.hue.yoga.databases.repositories.impl.PosesRepositoryImpl;
 
 import dagger.Module;
@@ -79,5 +82,10 @@ public class RepositoryModule {
     @Provides
     public PosesRepository providesPosesRepository(PosesDao posesDao) {
         return new PosesRepositoryImpl(posesDao);
+    }
+
+    @Provides
+    public NewsRepository providesNewsRepository(NewsDao newsDao) {
+        return new NewsRepositoryImpl(newsDao);
     }
 }

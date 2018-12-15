@@ -9,6 +9,7 @@ import com.stdio.hue.yoga.data.usecases.GetCollectionsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetDurationsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetFocusUseCase;
 import com.stdio.hue.yoga.data.usecases.GetIntensitiesUseCase;
+import com.stdio.hue.yoga.data.usecases.GetNewsUseCase;
 import com.stdio.hue.yoga.data.usecases.GetPosesUseCase;
 import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
 import com.stdio.hue.yoga.databases.repositories.BannerRepository;
@@ -18,6 +19,7 @@ import com.stdio.hue.yoga.databases.repositories.CollectionRepository;
 import com.stdio.hue.yoga.databases.repositories.DurationRepository;
 import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
+import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 
 import java.util.Arrays;
@@ -39,6 +41,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
     private GetFocusUseCase getFocusUseCase;
     private GetIntensitiesUseCase getIntensitiesUseCase;
     private GetPosesUseCase getPosesUseCase;
+    private GetNewsUseCase getNewsUseCase;
 
     private BannerRepository bannerRepository;
     private AbilityRepository abilityRepository;
@@ -49,8 +52,9 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
     private FocusRepository focusRepository;
     private IntensityRepository intensityRepository;
     private PosesRepository posesRepository;
+    private NewsRepository newsRepository;
 
-    public SplashPresenterImpl(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository) {
+    public SplashPresenterImpl(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
         this.getAbilitiesUseCase = getAbilitiesUseCase;
         this.getBannersUseCase = getBannersUseCase;
         this.getCategoriesUseCase = getCategoriesUseCase;
@@ -60,6 +64,8 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         this.getFocusUseCase = getFocusUseCase;
         this.getIntensitiesUseCase = getIntensitiesUseCase;
         this.getPosesUseCase = getPosesUseCase;
+        this.getNewsUseCase = getNewsUseCase;
+
         this.bannerRepository = bannerRepository;
         this.abilityRepository = abilityRepository;
         this.categoryRepository = categoryRepository;
@@ -69,6 +75,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         this.focusRepository = focusRepository;
         this.intensityRepository = intensityRepository;
         this.posesRepository = posesRepository;
+        this.newsRepository = newsRepository;
     }
 
     @Override
@@ -82,7 +89,8 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
                 getDurations(timeUpdate, language),
                 getFocus(timeUpdate, language),
                 getIntensities(timeUpdate, language),
-                getPoses(timeUpdate, language));
+                getPoses(timeUpdate, language),
+                getNews(timeUpdate, language));
         return Observable.combineLatest(list, objects -> objects).observeOn(AndroidSchedulers.mainThread());
     }
 
@@ -154,6 +162,14 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         return getPosesUseCase.execute(timeUpdate, language)
                 .map(results -> {
                     posesRepository.insertPoses(results.getData());
+                    return true;
+                });
+    }
+
+    private Observable<Boolean> getNews(String timeUpdate, String language) {
+        return getNewsUseCase.execute(timeUpdate, language)
+                .map(results -> {
+                    newsRepository.insertNews(results.getData());
                     return true;
                 });
     }
