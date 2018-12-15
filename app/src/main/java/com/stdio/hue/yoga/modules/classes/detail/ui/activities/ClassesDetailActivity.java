@@ -23,7 +23,7 @@ import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.classes.detail.presenters.ClassesDetailPresenter;
 import com.stdio.hue.yoga.modules.classes.detail.ui.adapters.ClassesDetailAdapter;
 import com.stdio.hue.yoga.modules.poses.detail.ui.activities.PosesDetailActivity;
-import com.stdio.hue.yoga.modules.video.VideoActivity;
+import com.stdio.hue.yoga.modules.video.ui.activity.VideoActivity;
 import com.stdio.hue.yoga.services.DownloadService;
 import com.stdio.hue.yoga.shares.utils.ConvertJsonToNameEntity;
 import com.stdio.hue.yoga.shares.utils.SHStringHelper;
