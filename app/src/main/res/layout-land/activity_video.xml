@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:configChanges="orientation|screenSize"
         android:background="@color/colorBlack"
-        android:configChanges="orientation|screenSize">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/pv_video"
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical" />
+            android:layout_height="match_parent"/>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,26 +39,14 @@
                 app:layout_constraintStart_toEndOf="@+id/iv_close"
                 app:layout_constraintTop_toTopOf="@+id/iv_close" />
 
-            <FrameLayout
-                android:id="@+id/fl_volumn"
+            <ImageView
+                android:id="@+id/iv_volumn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:src="@drawable/ic_media_controller_volumn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/background_video_controller_gray" />
-
-                <ImageView
-                    android:id="@+id/iv_volumn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_volume_on" />
-            </FrameLayout>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 

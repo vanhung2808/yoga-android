@@ -2,6 +2,7 @@ package com.stdio.hue.yoga.modules.video.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v4.content.ContextCompat;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -37,31 +38,41 @@ public class VideoActivity extends BaseDataBindingActivity<ActivityVideoBinding>
     private String videoName;
     private SimpleExoPlayer player;
     private float currentVolume;
+    private boolean isLand;
 
     @Override
     protected void init() {
+        isLand = false;
         if (getIntent() != null) {
             videoName = getIntent().getStringExtra(EXTRA_VIDEO_NAME);
             player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
             viewDataBinding.pvVideo.setPlayer(player);
+            viewDataBinding.pvVideo.setFastForwardIncrementMs(15000);
+            viewDataBinding.pvVideo.setRewindIncrementMs(15000);
             DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "yoga-android"));
             MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(getExitsVideo(videoName));
             player.prepare(mediaSource);
             player.setPlayWhenReady(true);
 
             currentVolume = player.getVolume();
-            viewDataBinding.ivVolumn.setOnClickListener(v -> {
+            viewDataBinding.flVolumn.setOnClickListener(v -> {
                 if (player.getVolume() != 0) {
                     player.setVolume(0f);
-                    viewDataBinding.ivVolumn.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_sound_min_gray));
+                    viewDataBinding.ivVolumn.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_volume_off));
                 } else {
-                    viewDataBinding.ivVolumn.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_sound_max_gray));
+                    viewDataBinding.ivVolumn.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_volume_on));
                     player.setVolume(currentVolume);
                 }
             });
 
             viewDataBinding.ivZoom.setOnClickListener(v -> {
-                
+                if (isLand) {
+                    isLand = false;
+                    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                } else {
+                    isLand = true;
+                    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                }
             });
 
             viewDataBinding.ivClose.setOnClickListener(view -> finish());
