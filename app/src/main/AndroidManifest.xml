@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:name=".ProjectApplication"
@@ -30,10 +31,12 @@
         <activity android:name=".modules.upgrade.ui.activities.UpgradeActivity" />
         <activity android:name=".modules.settings.ui.activities.SettingActivity" />
         <activity android:name=".modules.classes.detail.ui.activities.ClassesDetailActivity" />
-        <activity android:name=".modules.video.ui.activity.VideoActivity"
-            android:configChanges="orientation|screenSize|layoutDirection"/>
+        <activity
+            android:name=".modules.video.ui.activity.VideoActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".modules.poses.detail.ui.activities.PosesDetailActivity" />
         <activity android:name=".modules.newsdetail.ui.activity.NewsDetailActivity" />
+
         <service android:name=".services.DownloadService" />
 
     </application>

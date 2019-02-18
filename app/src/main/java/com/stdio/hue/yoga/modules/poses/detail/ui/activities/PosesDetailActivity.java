@@ -77,12 +77,12 @@ public class PosesDetailActivity extends BaseYogaActivity<PosesDetailPresenter, 
 
     private void initToolbar() {
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_white);
-        viewDataBinding.toolbar.setTitle(R.string.classes);
+        viewDataBinding.toolbar.setTitle(R.string.poses);
         viewDataBinding.collapsToolbar.setTitleEnabled(false);
         setSupportActionBar(viewDataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.classes);
+        getSupportActionBar().setTitle(R.string.poses);
     }
 
     @Override

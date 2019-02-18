@@ -8,12 +8,15 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.TransactionDetails;
 import com.github.abdularis.buttonprogress.DownloadButtonProgress;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.data.models.Classes;
@@ -23,6 +26,7 @@ import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.classes.detail.presenters.ClassesDetailPresenter;
 import com.stdio.hue.yoga.modules.classes.detail.ui.adapters.ClassesDetailAdapter;
 import com.stdio.hue.yoga.modules.poses.detail.ui.activities.PosesDetailActivity;
+import com.stdio.hue.yoga.modules.upgrade.ui.activities.UpgradeActivity;
 import com.stdio.hue.yoga.modules.video.ui.activity.VideoActivity;
 import com.stdio.hue.yoga.services.DownloadService;
 import com.stdio.hue.yoga.shares.utils.ConvertJsonToNameEntity;
@@ -79,10 +83,33 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
             }
         }
     };
+    private BillingProcessor billingProcessor;
 
     @Override
     protected void init() {
         initToolbar();
+        billingProcessor = new BillingProcessor(this, null, new BillingProcessor.IBillingHandler() {
+            @Override
+            public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
+
+            }
+
+            @Override
+            public void onPurchaseHistoryRestored() {
+
+            }
+
+            @Override
+            public void onBillingError(int errorCode, @Nullable Throwable error) {
+
+            }
+
+            @Override
+            public void onBillingInitialized() {
+
+            }
+        });
+        billingProcessor.initialize();
         initButtonDownload();
         if (getIntent() != null) {
             classes = (Classes) getIntent().getSerializableExtra(EXTRA_CLASSES);
@@ -142,11 +169,15 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
             @Override
             public void onIdleButtonClick(View view) {
                 //Todo show icon download
-                if (!SHStringHelper.nullOrEmpty(classes.getVideoUrl())) {
-                    mBindService.startDownloadVideo(classes);
-                    viewDataBinding.btDownload.setDeterminate();
-                    viewDataBinding.btDownload.setMaxProgress(100);
-                    isIdle = false;
+                if (!billingProcessor.isPurchased("android.test.purchased")) {
+                    UpgradeActivity.start(ClassesDetailActivity.this);
+                } else {
+                    if (!SHStringHelper.nullOrEmpty(classes.getVideoUrl())) {
+                        mBindService.startDownloadVideo(classes);
+                        viewDataBinding.btDownload.setDeterminate();
+                        viewDataBinding.btDownload.setMaxProgress(100);
+                        isIdle = false;
+                    }
                 }
             }
 
@@ -165,8 +196,11 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
         });
 
         viewDataBinding.ivPlayVideo.setOnClickListener(view -> {
-            showToast("Open video");
-            VideoActivity.start(this, "classes" + classes.getId() + ".mp4");
+            if (!billingProcessor.isPurchased("android.test.purchased")) {
+                UpgradeActivity.start(ClassesDetailActivity.this);
+            } else {
+                VideoActivity.start(this, "classes" + classes.getId() + ".mp4");
+            }
         });
         viewDataBinding.ivCopy.setOnClickListener(view -> disposableManager.add(RxDialog.confirmDialog(this, getString(R.string.app_name), "A copy will be created in Custom Classes", "Copy Class", "Cancel")
                 .map(v -> v)

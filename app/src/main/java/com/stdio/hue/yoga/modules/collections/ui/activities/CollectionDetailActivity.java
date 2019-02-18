@@ -11,6 +11,7 @@ import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.ActivityCollectionDetailBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.CollectionDetailPagerAdapter;
+import com.stdio.hue.yoga.shares.utils.HtmlTextViewHelper;
 
 /**
  * Created by TranHuuPhuc on 10/20/18.
@@ -42,8 +43,7 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
             Collection collection = (Collection) getIntent().getSerializableExtra(EXTRA_COLLECTION);
             viewDataBinding.setCollection(collection);
             viewDataBinding.setName(collection.getNameEntity(gson).getNameLocale());
-            viewDataBinding.setDescription(collection.getDescriptionLocale(new GsonBuilder().create()).getNameLocale());
-
+            HtmlTextViewHelper.showHtmlTextView(collection.getDescriptionLocale(new GsonBuilder().create()).getNameLocale(), viewDataBinding.tvCollectionDescription);
             viewDataBinding.vpCollection.setAdapter(new CollectionDetailPagerAdapter(getSupportFragmentManager(), collection.getId()));
             viewDataBinding.tlCollection.setupWithViewPager(viewDataBinding.vpCollection);
         }

@@ -12,9 +12,6 @@
             name="name"
             type="String" />
 
-        <variable
-            name="description"
-            type="String" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -99,7 +96,6 @@
                         android:ellipsize="end"
                         android:gravity="center"
                         android:maxLines="3"
-                        android:text="@{description}"
                         android:textColor="@color/colorWhite"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
