@@ -11,13 +11,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
 import com.github.abdularis.buttonprogress.DownloadButtonProgress;
+import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.data.models.Classes;
 import com.stdio.hue.yoga.data.models.Poses;
@@ -30,10 +29,8 @@ import com.stdio.hue.yoga.modules.upgrade.ui.activities.UpgradeActivity;
 import com.stdio.hue.yoga.modules.video.ui.activity.VideoActivity;
 import com.stdio.hue.yoga.services.DownloadService;
 import com.stdio.hue.yoga.shares.utils.ConvertJsonToNameEntity;
+import com.stdio.hue.yoga.shares.utils.HtmlTextViewHelper;
 import com.stdio.hue.yoga.shares.utils.SHStringHelper;
-import com.stdio.hue.yoga.shares.widget.RxDialog;
-
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
@@ -122,6 +119,7 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
             }
             viewDataBinding.setClassesName(classes.getNameEntity(gson).getNameLocale());
             viewDataBinding.setClassesImage(classes.getImage());
+            HtmlTextViewHelper.showHtmlTextView(classes.getDescriptionLocale(new GsonBuilder().create()).getNameLocale(), viewDataBinding.tvDescription);
             disposableManager.add(getPresenter().getData(classes.getId(), classes.getAbilityId(), classes.getIntensityId(), classes.getFocusId())
                     .doOnSubscribe(d -> loading(true))
                     .doOnError(throwable -> loading(false))
@@ -130,10 +128,7 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
                         viewDataBinding.setAbilityName(ConvertJsonToNameEntity.getNameEntity(gson, (String) results.get(0)).getNameLocale());
                         viewDataBinding.setIntensityName(ConvertJsonToNameEntity.getNameEntity(gson, (String) results.get(1)).getNameLocale());
                         viewDataBinding.setFocusName(ConvertJsonToNameEntity.getNameEntity(gson, (String) results.get(2)).getNameLocale());
-                        List<Poses> poses = (List<Poses>) results.get(3);
-                        viewDataBinding.setTotalPosesAndTime(poses.size() + " Poses - " + ConvertJsonToNameEntity.getNameEntity(gson, classes.getDuration()).getNameLocale());
-                        viewDataBinding.rvPoses.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
-                        viewDataBinding.rvPoses.setAdapter(new ClassesDetailAdapter(poses, this));
+                        viewDataBinding.setTime(ConvertJsonToNameEntity.getNameEntity(gson, classes.getDuration()).getNameLocale());
                     }));
         }
         serviceConnection = new ServiceConnection() {
@@ -202,20 +197,6 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
                 VideoActivity.start(this, "classes" + classes.getId() + ".mp4");
             }
         });
-        viewDataBinding.ivCopy.setOnClickListener(view -> disposableManager.add(RxDialog.confirmDialog(this, getString(R.string.app_name), "A copy will be created in Custom Classes", "Copy Class", "Cancel")
-                .map(v -> v)
-                .subscribe(v -> {
-                    if (v) {
-
-                    }
-                })));
-        viewDataBinding.ivEdit.setOnClickListener(view -> disposableManager.add(RxDialog.confirmDialog(this, getString(R.string.app_name), "Studio classes cannot be edited. Would you like to create an editable copy in Custom Classes?", "Copy Class", "Cancel")
-                .map(v -> v)
-                .subscribe(v -> {
-                    if (v) {
-
-                    }
-                })));
     }
 
     private void initToolbar() {

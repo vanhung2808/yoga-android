@@ -22,9 +22,11 @@ import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenter;
 import com.stdio.hue.yoga.modules.splash.presenter.SplashPresenterImpl;
+import com.stdio.hue.yoga.modules.splash.ui.SplashAction;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by hung.nguyendk on 4/29/18.
@@ -32,7 +34,12 @@ import dagger.Provides;
 @Module
 public class SplashModule {
     @Provides
-    public SplashPresenter providesSplashPresenter(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
-        return new SplashPresenterImpl(getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getCollectionsUseCase, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase, getNewsUseCase, bannerRepository, abilityRepository, categoryRepository, classesRepository, collectionRepository, durationRepository, focusRepository, intensityRepository, posesRepository, newsRepository);
+    public SplashPresenter providesSplashPresenter(PublishSubject<SplashAction> splashPublishSubject, GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
+        return new SplashPresenterImpl(splashPublishSubject, getAbilitiesUseCase, getBannersUseCase, getCategoriesUseCase, getClassesUseCase, getCollectionsUseCase, getDurationsUseCase, getFocusUseCase, getIntensitiesUseCase, getPosesUseCase, getNewsUseCase, bannerRepository, abilityRepository, categoryRepository, classesRepository, collectionRepository, durationRepository, focusRepository, intensityRepository, posesRepository, newsRepository);
+    }
+
+    @Provides
+    PublishSubject<SplashAction> providesSplashActionPublishSubject() {
+        return SplashAction.publisher;
     }
 }

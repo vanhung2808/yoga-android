@@ -83,9 +83,6 @@ public class MainActivity extends BaseYogaActivity<BasePresenter, ActivityMainBi
             case R.id.navigation_classes:
                 viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_CLASSES);
                 break;
-            case R.id.navigation_poses:
-                viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_POSES);
-                break;
             case R.id.navigation_news:
                 viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_NEWS);
                 break;

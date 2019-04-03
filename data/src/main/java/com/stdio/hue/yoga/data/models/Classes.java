@@ -190,4 +190,8 @@ public class Classes extends BaseObservable implements Serializable {
         return gson.fromJson(name, NameEntity.class);
     }
 
+    public NameEntity getDescriptionLocale(Gson gson) {
+        return gson.fromJson(description, NameEntity.class);
+    }
+
 }

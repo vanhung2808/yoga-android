@@ -5,9 +5,8 @@ package com.stdio.hue.yoga.shares.utils;
  */
 public class Constant {
     public static final int TAB_HOME_CLASSES = 0;
-    public static final int TAB_HOME_POSES = 1;
-    public static final int TAB_HOME_NEWS = 2;
-    public static final int TAB_HOME_SCHEDULE = 3;
+    public static final int TAB_HOME_NEWS = 1;
+    public static final int TAB_HOME_SCHEDULE = 2;
     public static final int TAB_HOME_CLASSES_COLLECTIONS = 0;
     public static final int TAB_HOME_CLASSES_CUSTOM = 1;
 

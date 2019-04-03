@@ -21,17 +21,20 @@ import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
 import com.stdio.hue.yoga.databases.repositories.NewsRepository;
 import com.stdio.hue.yoga.databases.repositories.PosesRepository;
+import com.stdio.hue.yoga.modules.splash.ui.SplashAction;
 
 import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by hung.nguyendk on 4/29/18.
  */
 public class SplashPresenterImpl extends BasePresenter implements SplashPresenter {
+    private PublishSubject<SplashAction> splashPublishSubject;
     private GetAbilitiesUseCase getAbilitiesUseCase;
     private GetBannersUseCase getBannersUseCase;
     private GetCategoriesUseCase getCategoriesUseCase;
@@ -54,7 +57,8 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
     private PosesRepository posesRepository;
     private NewsRepository newsRepository;
 
-    public SplashPresenterImpl(GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
+    public SplashPresenterImpl(PublishSubject<SplashAction> splashPublishSubject, GetAbilitiesUseCase getAbilitiesUseCase, GetBannersUseCase getBannersUseCase, GetCategoriesUseCase getCategoriesUseCase, GetClassesUseCase getClassesUseCase, GetCollectionsUseCase getCollectionsUseCase, GetDurationsUseCase getDurationsUseCase, GetFocusUseCase getFocusUseCase, GetIntensitiesUseCase getIntensitiesUseCase, GetPosesUseCase getPosesUseCase, GetNewsUseCase getNewsUseCase, BannerRepository bannerRepository, AbilityRepository abilityRepository, CategoryRepository categoryRepository, ClassesRepository classesRepository, CollectionRepository collectionRepository, DurationRepository durationRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository, NewsRepository newsRepository) {
+        this.splashPublishSubject = splashPublishSubject;
         this.getAbilitiesUseCase = getAbilitiesUseCase;
         this.getBannersUseCase = getBannersUseCase;
         this.getCategoriesUseCase = getCategoriesUseCase;
@@ -65,7 +69,6 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         this.getIntensitiesUseCase = getIntensitiesUseCase;
         this.getPosesUseCase = getPosesUseCase;
         this.getNewsUseCase = getNewsUseCase;
-
         this.bannerRepository = bannerRepository;
         this.abilityRepository = abilityRepository;
         this.categoryRepository = categoryRepository;
@@ -96,6 +99,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getAbilities(String timeUpdate, String language) {
         return getAbilitiesUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     abilityRepository.insertAbility(results.getData());
                     return true;
@@ -104,6 +108,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getBanners(String timeUpdate, String language) {
         return getBannersUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     bannerRepository.insertBanner(results.getData());
                     return true;
@@ -112,6 +117,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getCategories(String timeUpdate, String language) {
         return getCategoriesUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     categoryRepository.insertCategory(results.getData());
                     return true;
@@ -120,6 +126,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getClasses(String timeUpdate, String language) {
         return getClassesUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     classesRepository.insertClasses(results.getData());
                     return true;
@@ -128,6 +135,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getCollections(String timeUpdate, String language) {
         return getCollectionsUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     collectionRepository.insertCollection(results.getData());
                     return true;
@@ -136,6 +144,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getDurations(String timeUpdate, String language) {
         return getDurationsUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     durationRepository.insertDuration(results.getData());
                     return true;
@@ -144,6 +153,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getFocus(String timeUpdate, String language) {
         return getFocusUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     focusRepository.insertFocus(results.getData());
                     return true;
@@ -152,6 +162,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getIntensities(String timeUpdate, String language) {
         return getIntensitiesUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     intensityRepository.insertIntensity(results.getData());
                     return true;
@@ -160,6 +171,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getPoses(String timeUpdate, String language) {
         return getPosesUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     posesRepository.insertPoses(results.getData());
                     return true;
@@ -168,6 +180,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
 
     private Observable<Boolean> getNews(String timeUpdate, String language) {
         return getNewsUseCase.execute(timeUpdate, language)
+                .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
                     newsRepository.insertNews(results.getData());
                     return true;

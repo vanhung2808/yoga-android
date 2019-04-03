@@ -79,20 +79,6 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
     }
 
     private void initEvent() {
-        viewDataBinding.btCollections.setOnClickListener(view -> {
-            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
-            viewDataBinding.btCollections.setBackgroundResource(R.drawable.background_gray_light_corner);
-            viewDataBinding.btCustom.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
-            viewDataBinding.btCustom.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
-            viewDataBinding.vpClasses.setCurrentItem(0);
-        });
-        viewDataBinding.btCustom.setOnClickListener(view -> {
-            viewDataBinding.btCustom.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
-            viewDataBinding.btCustom.setBackgroundResource(R.drawable.background_gray_light_corner);
-            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGray));
-            viewDataBinding.btCollections.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
-            viewDataBinding.vpClasses.setCurrentItem(1);
-        });
         viewDataBinding.ivSearch.setOnClickListener(view -> SearchClassesActivity.start(getContext()));
     }
 

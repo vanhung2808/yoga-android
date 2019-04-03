@@ -1,17 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="progress"
+            type="int" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_splash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/app_name"
-            android:textColor="@color/colorGreenLight"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="16dp"
+            android:text="@string/yoga"
+            android:textColor="@color/colorWhite"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_logo"
+            app:layout_constraintStart_toStartOf="@+id/iv_logo"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-    </RelativeLayout>
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="150dp" />
+
+        <com.marcinmoskala.arcseekbar.ArcSeekBar
+            android:id="@+id/sb_process"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="100dp"
+            android:background="@color/colorBlackLighter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:progress="@{progress}"
+            app:progressBackgroundColor="@color/colorBlackLight"
+            app:progressBackgroundWidth="20dp"
+            app:progressWidth="20dp"
+            app:roundEdges="false"
+            app:thumb="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/tv_status_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:gravity="center"
+            android:text="@{@string/downloading + ' ' + progress + '%'}"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sb_process"
+            app:layout_constraintEnd_toEndOf="@+id/sb_process"
+            app:layout_constraintStart_toStartOf="@+id/sb_process"
+            app:layout_constraintTop_toTopOf="@+id/sb_process" />
+    </android.support.constraint.ConstraintLayout>
 </layout>
