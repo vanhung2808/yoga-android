@@ -33,12 +33,12 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
     @Override
     protected void init() {
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_white);
-        viewDataBinding.toolbar.setTitle(R.string.collections);
         viewDataBinding.collapsToolbar.setTitleEnabled(false);
+        viewDataBinding.toolbarTitle.setText(R.string.collections);
         setSupportActionBar(viewDataBinding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.collections);
         if (getIntent() != null) {
             Collection collection = (Collection) getIntent().getSerializableExtra(EXTRA_COLLECTION);
             viewDataBinding.setCollection(collection);

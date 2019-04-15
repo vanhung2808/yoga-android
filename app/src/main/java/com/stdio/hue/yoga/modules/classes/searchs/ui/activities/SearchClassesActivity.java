@@ -31,9 +31,10 @@ public class SearchClassesActivity extends BaseYogaActivity<SearchClassesPresent
 
     @Override
     protected void init() {
-        viewDataBinding.toolbar.setTitle(R.string.search);
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_green);
+        viewDataBinding.toolbarTitle.setText(R.string.search);
         setSupportActionBar(viewDataBinding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         replaceFragment(viewDataBinding.frameContent.getId(), SearchClassesFilterFragment.newInstance(), false);
@@ -74,7 +75,7 @@ public class SearchClassesActivity extends BaseYogaActivity<SearchClassesPresent
                          boolean hasSelectedFilterDuration,
                          boolean hasSelectedFilterFocus,
                          boolean hasSelectedFilterIntensity) {
-        viewDataBinding.toolbar.setTitle(R.string.result);
+        viewDataBinding.toolbarTitle.setText(R.string.result);
         replaceFragment(
                 viewDataBinding.frameContent.getId(),
                 SearchClassesResultFragment.newInstance(filterAbility,

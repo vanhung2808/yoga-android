@@ -21,7 +21,7 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * Created by TranHuuPhuc on 10/20/18.
  */
-public class SearchClassesFilterFragment extends BaseYogaFragment<SearchClassesPresenter, FragmentSearchClassesFilterBinding> {
+public class SearchClassesFilterFragment extends BaseYogaFragment<SearchClassesPresenter, FragmentSearchClassesFilterBinding> implements SearchClassesFilterAdapter.SearchClassesFilterAdapterListener {
     public static SearchClassesFilterFragment newInstance() {
         Bundle args = new Bundle();
         SearchClassesFilterFragment fragment = new SearchClassesFilterFragment();
@@ -41,7 +41,7 @@ public class SearchClassesFilterFragment extends BaseYogaFragment<SearchClassesP
     protected void init(@Nullable View view) {
         PublishSubject<SearchClassesAction> searchClassesAction = getAppComponent().getSearchClassesComponent().getSearchClassesAction();
         getPresenter().getFilterData();
-        adapter = new SearchClassesFilterAdapter();
+        adapter = new SearchClassesFilterAdapter(this);
         viewDataBinding.rvFilter.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         viewDataBinding.rvFilter.setAdapter(adapter);
         disposableManager.add(
@@ -61,18 +61,6 @@ public class SearchClassesFilterFragment extends BaseYogaFragment<SearchClassesP
                         .map(SearchClassesAction::getFilter)
                         .subscribe(filters -> adapter.updateData(filters)));
         viewDataBinding.tvClearAll.setOnClickListener(view1 -> adapter.clearAllSelector());
-        viewDataBinding.btSearch.setOnClickListener(
-                view1 -> listener.onSearch(
-                        adapter.getFilterAbility(),
-                        adapter.getFilterDuration(),
-                        adapter.getFilterFocus(),
-                        adapter.getFilterIntensity(),
-                        adapter.getHasSelectedFilterAbility(),
-                        adapter.getHasSelectedFilterDuration(),
-                        adapter.getHasSelectedFilterFocus(),
-                        adapter.getHasSelectedFilterIntensity()
-                )
-        );
     }
 
     @Override
@@ -101,5 +89,19 @@ public class SearchClassesFilterFragment extends BaseYogaFragment<SearchClassesP
     @Override
     protected SearchClassesPresenter createPresenter() {
         return getAppComponent().getSearchClassesComponent().getSearchClassesPresenter();
+    }
+
+    @Override
+    public void onSearchClick() {
+        listener.onSearch(
+                adapter.getFilterAbility(),
+                adapter.getFilterDuration(),
+                adapter.getFilterFocus(),
+                adapter.getFilterIntensity(),
+                adapter.getHasSelectedFilterAbility(),
+                adapter.getHasSelectedFilterDuration(),
+                adapter.getHasSelectedFilterFocus(),
+                adapter.getHasSelectedFilterIntensity()
+        );
     }
 }

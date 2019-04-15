@@ -200,13 +200,14 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
     }
 
     private void initToolbar() {
-        viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_white);
-        viewDataBinding.toolbar.setTitle(R.string.classes);
+        viewDataBinding.toolbar.setNavigationIcon
+                (R.drawable.ic_back_white);
+        viewDataBinding.toolbarTitle.setText(R.string.classes);
         viewDataBinding.collapsToolbar.setTitleEnabled(false);
         setSupportActionBar(viewDataBinding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.classes);
     }
 
     @Override

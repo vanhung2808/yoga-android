@@ -2,11 +2,11 @@
     <string name="app_name">Yoga Studio</string>
     <string name="schedule">Schedule</string>
     <string name="poses">Poses</string>
-    <string name="classes">Classes</string>
-    <string name="collections">Collections</string>
+    <string name="classes">Class</string>
+    <string name="collections">Collection</string>
     <string name="custom">Custom</string>
     <string name="news">News</string>
-    <string name="no_classes_found">No classes found!</string>
+    <string name="no_classes_found">No class found!</string>
     <string name="clear_all">Clear all</string>
     <string name="loading">Loading...</string>
     <string name="tab_the_add_button_to_create_a_new_class">Tab the add button to create a new class.</string>
@@ -16,7 +16,7 @@
     <string name="blocks">Blocks</string>
     <string name="receive_monthly_class_amp_feature_updates"><![CDATA[Receive monthly class & feature updates]]></string>
     <string name="access_hours_of_exclusive_content">Access hours of exclusive content</string>
-    <string name="unlock_all_new_collections">Unlock all new collections</string>
+    <string name="unlock_all_new_collections">Unlock all new collection</string>
     <string name="upgrade_now">Upgrade Now!</string>
     <string name="ready_for_more">Ready for more?</string>
     <string name="us_pricing_displayed_by_continuing_i_agree_to_yoga_studio_s_terms_and_conditions_and_privacy_policy">US pricing displayed. By continuing, I agree to Yoga Studio’s Terms and Conditions and Privacy Policy</string>
@@ -55,8 +55,8 @@
     <string name="teresa_gonzales">Teresa Gonzales</string>
     <string name="teresagonzales_gmail_com">teresagonzales@gmail.com</string>
     <string name="settings">Settings</string>
-    <string name="collection_classes">Collection Classes</string>
-    <string name="customer_classes">Customer Classes</string>
+    <string name="collection_classes">Collection Class</string>
+    <string name="customer_classes">Customer Class</string>
     <string name="music">Music</string>
     <string name="swipe_to_skip_pose">Swipe to Skip Pose</string>
     <string name="show_progress_bar">Show Progress Bar</string>
@@ -74,4 +74,8 @@
     <string name="description">Description</string>
     <string name="yoga">YOGA</string>
     <string name="msg_not_connect_internet">Could not load data. Please connect to the network and restart the application.</string>
+    <string name="duration_filter">Duration:</string>
+    <string name="ability_filter">Ability:</string>
+    <string name="focus_filter">Focus:</string>
+    <string name="intensity_filter">Intensity:</string>
 </resources>

@@ -70,7 +70,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
-                android:text='@{totalClasses + " classes"}'
+                android:text='@{totalClasses + (totalClasses > 1 ? " classes" : " class")}'
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_collection"

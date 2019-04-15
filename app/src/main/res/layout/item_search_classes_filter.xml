@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
                 android:padding="15dp"
+                android:rotation="90"
                 android:src="@drawable/ic_arrow_right" />
 
         </FrameLayout>
@@ -33,7 +34,6 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_filter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>

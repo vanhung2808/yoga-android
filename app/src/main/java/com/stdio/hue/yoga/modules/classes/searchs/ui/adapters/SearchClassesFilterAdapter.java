@@ -9,6 +9,7 @@ import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.data.models.base.BaseFilter;
 import com.stdio.hue.yoga.databinding.ItemSearchClassesFilterBinding;
+import com.stdio.hue.yoga.databinding.ItemSearchFooterBinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,12 +19,17 @@ import java.util.List;
  * Created by TranHuuPhuc on 10/20/18.
  */
 public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBinding> {
+    private static final int TYPE_FILTER = 1;
+    private static final int TYPE_FOOTER = 2;
+    private static final int TOTAL_ITEM = 5;
     private List<BaseFilter> durations, abilities, focuses, intensities;
     private boolean durationHasSelected, abilityHasSelected, focusHasSelected, intensityHasSelected;
     private FilterAdapter durationFilterAdapter, abilityFilterAdapter, focusFilterAdapter, intensityFilterAdapter;
+    private SearchClassesFilterAdapterListener listener;
 
-    public SearchClassesFilterAdapter() {
+    public SearchClassesFilterAdapter(SearchClassesFilterAdapterListener listener) {
         super(null);
+        this.listener = listener;
         durations = new ArrayList<>();
         abilities = new ArrayList<>();
         focuses = new ArrayList<>();
@@ -40,7 +46,11 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
 
     @Override
     protected int getLayoutResourceId(int viewType) {
-        return R.layout.item_search_classes_filter;
+        if (viewType == TYPE_FILTER) {
+            return R.layout.item_search_classes_filter;
+        } else {
+            return R.layout.item_search_footer;
+        }
     }
 
     @Override
@@ -49,19 +59,19 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
             ItemSearchClassesFilterBinding itemBind = (ItemSearchClassesFilterBinding) binding;
             itemBind.rvFilter.setLayoutManager(new GridLayoutManager(itemBind.getRoot().getContext(), 3, LinearLayoutManager.VERTICAL, false));
             if (position == 0) {
-                itemBind.tvTypeFilter.setText("Duration:");
+                itemBind.tvTypeFilter.setText(R.string.duration_filter);
                 durationFilterAdapter.addData(durations);
                 itemBind.rvFilter.setAdapter(durationFilterAdapter);
             } else if (position == 1) {
-                itemBind.tvTypeFilter.setText("Ability:");
+                itemBind.tvTypeFilter.setText(R.string.ability_filter);
                 abilityFilterAdapter.addData(abilities);
                 itemBind.rvFilter.setAdapter(abilityFilterAdapter);
             } else if (position == 2) {
-                itemBind.tvTypeFilter.setText("Focus:");
+                itemBind.tvTypeFilter.setText(R.string.focus_filter);
                 focusFilterAdapter.addData(focuses);
                 itemBind.rvFilter.setAdapter(focusFilterAdapter);
             } else {
-                itemBind.tvTypeFilter.setText("Intensity:");
+                itemBind.tvTypeFilter.setText(R.string.intensity_filter);
                 intensityFilterAdapter.addData(intensities);
                 itemBind.rvFilter.setAdapter(intensityFilterAdapter);
             }
@@ -74,6 +84,9 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
                     itemBind.ivExpand.setRotation(90);
                 }
             });
+        } else if (binding instanceof ItemSearchFooterBinding) {
+            ItemSearchFooterBinding itemBind = (ItemSearchFooterBinding) binding;
+            itemBind.btSearch.setOnClickListener(v -> listener.onSearchClick());
         }
     }
 
@@ -91,7 +104,15 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
 
     @Override
     public int getItemCount() {
-        return 4;
+        return TOTAL_ITEM;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == TOTAL_ITEM - 1) {
+            return TYPE_FOOTER;
+        }
+        return TYPE_FILTER;
     }
 
     public void clearAllSelector() {
@@ -141,5 +162,9 @@ public class SearchClassesFilterAdapter extends AbsBindingAdapter<ViewDataBindin
 
     public boolean getHasSelectedFilterIntensity() {
         return intensityFilterAdapter.hasSelected();
+    }
+
+    public interface SearchClassesFilterAdapterListener {
+        void onSearchClick();
     }
 }

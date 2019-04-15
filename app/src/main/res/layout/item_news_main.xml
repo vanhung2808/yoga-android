@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -20,10 +19,10 @@
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -65,36 +64,37 @@
 
         <TextView
             android:id="@+id/tv_title_news"
-            android:text="@{titleNews}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@{titleNews}"
             android:textSize="20sp" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:id="@+id/ll_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/cb_favorite"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
+                android:layout_gravity="center"
                 android:background="@drawable/checkbox_selector"
-                android:button="@null"
-                android:layout_gravity="center"/>
+                android:button="@null" />
 
             <TextView
                 android:id="@+id/tv_total_favorite"
-                android:text="@{totalFavorite}"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:textSize="16sp" />
-            
+                android:layout_marginStart="8dp"
+                android:gravity="center|center_vertical"
+                android:text="@{totalFavorite}"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
     </LinearLayout>
