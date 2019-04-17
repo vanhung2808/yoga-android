@@ -80,8 +80,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_classes_white"
+                        android:drawablePadding="5dp"
                         android:gravity="center"
-                        android:text='@{collection.totalClasses + " Classes"}'
+                        android:text='@{collection.totalClasses +(collection.totalClasses > 1 ? " Classes" : " Class")}'
                         android:textColor="@color/colorWhite"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toTopOf="@+id/tv_collection_description"
@@ -92,7 +93,7 @@
                         android:id="@+id/tv_collection_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_margin="8dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:maxLines="3"
@@ -135,6 +136,7 @@
                 android:id="@+id/tl_collection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:tabTextAppearance="@style/TextAppearance.AppCompat"
                 app:tabIndicatorColor="@color/colorGreenLight"
                 app:tabSelectedTextColor="@color/colorGreenLight" />
 

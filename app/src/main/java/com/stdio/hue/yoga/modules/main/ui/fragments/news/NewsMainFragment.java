@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.AbsBindingAdapter;
@@ -157,6 +156,6 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
 
     @Override
     public void onClickFavorite(int position) {
-        Toast.makeText(getContext(), "On Click " + position, Toast.LENGTH_SHORT).show();
+        
     }
 }

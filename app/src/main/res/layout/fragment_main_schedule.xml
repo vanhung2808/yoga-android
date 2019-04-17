@@ -45,6 +45,7 @@
                         app:compactCalendarCurrentSelectedDayTextColor="#FF4B71"
                         app:compactCalendarEventIndicatorStyle="small_indicator"
                         app:compactCalendarMultiEventIndicatorColor="#FF4B71"
+                        app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
                         app:compactCalendarTextColor="#fff"
                         app:compactCalendarTextSize="14sp" />
                 </LinearLayout>

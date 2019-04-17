@@ -68,9 +68,10 @@ public class ScheduleMainFragment extends BaseYogaFragment<BasePresenter, Fragme
     }
 
     private void initCalendar() {
+        viewDataBinding.compactcalendarView.setDayColumnNames(new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"});
         viewDataBinding.compactcalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
         viewDataBinding.compactcalendarView.setLocale(TimeZone.getDefault(), Locale.ENGLISH);
-        viewDataBinding.compactcalendarView.setShouldDrawDaysHeader(true);
+        viewDataBinding.compactcalendarView.setUseThreeLetterAbbreviation(true);
         viewDataBinding.compactcalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {

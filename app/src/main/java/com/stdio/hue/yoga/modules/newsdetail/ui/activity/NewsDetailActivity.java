@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.data.models.News;
 import com.stdio.hue.yoga.databinding.ActivityNewsDetailBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
-import com.stdio.hue.yoga.modules.newsdetail.ui.adapter.WebViewClientAdapter;
 
 public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, ActivityNewsDetailBinding> {
     private static final String EXTRA_NEWS = "extra-news";
@@ -68,10 +69,15 @@ public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, Activity
     }
 
     private void loadWeb(String url) {
-        viewDataBinding.wvNewsDetail.setWebViewClient(new WebViewClientAdapter(url));
         viewDataBinding.wvNewsDetail.getSettings().setLoadsImagesAutomatically(true);
         viewDataBinding.wvNewsDetail.getSettings().setJavaScriptEnabled(true);
         viewDataBinding.wvNewsDetail.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        viewDataBinding.wvNewsDetail.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                view.loadUrl("javascript:(function(){ document.body.style.padding = '20px'; document.body.style.backgroundColor = '#ffffff'})();");
+            }
+        });
         viewDataBinding.wvNewsDetail.loadUrl(url);
     }
 }
