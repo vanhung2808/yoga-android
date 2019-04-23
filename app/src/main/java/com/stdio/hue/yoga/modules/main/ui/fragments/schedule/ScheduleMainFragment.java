@@ -7,9 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.view.View;
 
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
+import com.stdio.hue.yoga.common.compactcalendarview.CompactCalendarView;
 import com.stdio.hue.yoga.databinding.FragmentMainScheduleBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.settings.ui.activities.SettingActivity;

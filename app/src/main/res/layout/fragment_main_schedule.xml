@@ -32,7 +32,7 @@
                     app:layout_collapseParallaxMultiplier="1.0"
                     app:layout_scrollFlags="scroll|enterAlways">
 
-                    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                    <com.stdio.hue.yoga.common.compactcalendarview.CompactCalendarView
                         android:id="@+id/compactcalendar_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
