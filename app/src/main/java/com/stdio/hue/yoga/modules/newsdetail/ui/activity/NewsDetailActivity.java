@@ -30,7 +30,8 @@ public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, Activity
     @Override
     protected void init() {
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_green);
-        viewDataBinding.toolbar.setTitle(R.string.news);
+        viewDataBinding.toolbar.setTitle("");
+        viewDataBinding.toolbarTitle.setText(R.string.news);
         setSupportActionBar(viewDataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -40,6 +41,11 @@ public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, Activity
             viewDataBinding.setTotalFavorite(String.valueOf(news.getTotalFavorite()));
             loadWeb(news.getContentLocale(gson).getNameLocale());
         }
+        initEvent();
+    }
+
+    private void initEvent() {
+
     }
 
     @Override
@@ -75,7 +81,7 @@ public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, Activity
         viewDataBinding.wvNewsDetail.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                view.loadUrl("javascript:(function(){ document.body.style.padding = '20px'; document.body.style.backgroundColor = '#ffffff'})();");
+                view.loadUrl("javascript:(function(){ document.body.style.backgroundColor = '#ffffff'})();");
             }
         });
         viewDataBinding.wvNewsDetail.loadUrl(url);
