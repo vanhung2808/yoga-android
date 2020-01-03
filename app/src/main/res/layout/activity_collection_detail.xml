@@ -138,7 +138,8 @@
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="@color/colorGreenLight"
                 app:tabSelectedTextColor="@color/colorGreenLight"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat" />
+                app:tabTextColor="@color/gray_light"
+                app:tabTextAppearance="@style/textInTabAppearance" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_collection"

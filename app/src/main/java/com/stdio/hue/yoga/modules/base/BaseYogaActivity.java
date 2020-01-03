@@ -31,6 +31,8 @@ import com.stdio.hue.yoga.shares.widget.LoadingDialog;
 import java.io.File;
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by TranHuuPhuc on 7/6/18.
  */
@@ -114,7 +116,7 @@ public abstract class BaseYogaActivity<P extends Presenter, V extends ViewDataBi
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

@@ -8,13 +8,13 @@ import android.view.View;
 
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
-import com.stdio.hue.yoga.databinding.FragmentMainClassesCustomBinding;
+import com.stdio.hue.yoga.databinding.FragmentMainClassesDownloadedBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 
 /**
  * Created by TranHuuPhuc on 9/26/18.
  */
-public class CustomClassesMainFragment extends BaseYogaFragment<BasePresenter, FragmentMainClassesCustomBinding> {
+public class CustomClassesMainFragment extends BaseYogaFragment<BasePresenter, FragmentMainClassesDownloadedBinding> {
     public static CustomClassesMainFragment newInstance() {
         Bundle args = new Bundle();
         CustomClassesMainFragment fragment = new CustomClassesMainFragment();
@@ -24,7 +24,7 @@ public class CustomClassesMainFragment extends BaseYogaFragment<BasePresenter, F
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_main_classes_custom;
+        return R.layout.fragment_main_classes_downloaded;
     }
 
     @Override

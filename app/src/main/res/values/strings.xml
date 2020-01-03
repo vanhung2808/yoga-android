@@ -78,4 +78,6 @@
     <string name="ability_filter">Ability:</string>
     <string name="focus_filter">Focus:</string>
     <string name="intensity_filter">Intensity:</string>
+    <string name="downloaded">Downloaded</string>
+
 </resources>

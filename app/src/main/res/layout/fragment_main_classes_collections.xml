@@ -11,8 +11,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/colorGreenLight"
+            app:tabTextColor="@color/gray_light"
             app:tabMode="scrollable"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat"
+            app:tabTextAppearance="@style/textInTabAppearance"
             app:tabSelectedTextColor="@color/colorGreenLight" />
 
         <android.support.v4.view.ViewPager

@@ -20,6 +20,7 @@ import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.ClassesMainPagerAdapter;
 import com.stdio.hue.yoga.shares.utils.SHStringHelper;
+import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -78,8 +79,16 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
         initEvent();
     }
 
+    @SuppressLint("ResourceAsColor")
     private void initEvent() {
         viewDataBinding.ivSearch.setOnClickListener(view -> SearchClassesActivity.start(getContext()));
+        ViewUtils.setOnDelayClick(viewDataBinding.btCollections, v -> {
+            viewDataBinding.vpClasses.setCurrentItem(0);
+        });
+        ViewUtils.setOnDelayClick(viewDataBinding.btDownloaded, v -> {
+            viewDataBinding.vpClasses.setCurrentItem(1);
+        });
+
     }
 
     private void initSlider() {
@@ -114,4 +123,5 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
     public void onSliderClick(BaseSliderView slider) {
         //Todo open webview link slider
     }
+
 }

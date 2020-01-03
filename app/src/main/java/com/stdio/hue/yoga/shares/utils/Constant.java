@@ -8,7 +8,7 @@ public class Constant {
     public static final int TAB_HOME_NEWS = 1;
     public static final int TAB_HOME_SCHEDULE = 2;
     public static final int TAB_HOME_CLASSES_COLLECTIONS = 0;
-    public static final int TAB_HOME_CLASSES_CUSTOM = 1;
+    public static final int TAB_HOME_CLASSES_DOWNLOADED = 1;
 
     public static final int TAB_ABILITY = 0;
     public static final int TAB_FOCUS = 1;

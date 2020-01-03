@@ -38,7 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/colorWhite"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,19 +55,48 @@
                     android:layout_toStartOf="@+id/iv_search"
                     android:gravity="center"
                     android:orientation="horizontal">
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        >
+                        <RadioButton
+                            fontPath="@string/fonts_helveticaneue_bold"
+                            android:button="@android:color/transparent"
+                            android:id="@+id/bt_collections"
+                            android:checked="true"
 
-                    <Button
-                        android:id="@+id/bt_collections"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/background_gray_light_corner"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/collections"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/button_collection_selector"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="@string/collections"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="19sp"
+                            style="?android:attr/borderlessButtonStyle"
+                            />
 
+
+                        <RadioButton
+                            android:textAllCaps="false"
+                            android:button="@android:color/transparent"
+                            android:id="@+id/bt_downloaded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/button_downloaded_selector"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="@string/downloaded"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="19sp"
+                            style="?android:attr/borderlessButtonStyle"
+                            />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <ImageView

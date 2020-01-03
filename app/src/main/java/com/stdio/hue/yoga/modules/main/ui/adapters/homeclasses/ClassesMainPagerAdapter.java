@@ -21,7 +21,6 @@ public class ClassesMainPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case Constant.TAB_HOME_CLASSES_COLLECTIONS:
                 return CollectionsClassesMainFragment.newInstance();
-            case Constant.TAB_HOME_CLASSES_CUSTOM:
             default:
                 return CustomClassesMainFragment.newInstance();
         }

@@ -14,4 +14,5 @@
         android:id="@+id/navigation_schedule"
         android:icon="@drawable/ic_calendar_gray"
         android:title="@string/schedule" />
+
 </menu>
