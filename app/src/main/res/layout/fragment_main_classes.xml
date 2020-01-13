@@ -6,7 +6,8 @@
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbarLayout"
@@ -23,7 +24,7 @@
                 <com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="260dp"
                     app:auto_cycle="true"
                     app:layout_scrollFlags="scroll|enterAlways"
                     custom:indicator_visibility="visible"
@@ -37,16 +38,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="17dp"
             android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:background="@color/colorWhite"
-            >
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,57 +58,42 @@
                     android:layout_toStartOf="@+id/iv_search"
                     android:gravity="center"
                     android:orientation="horizontal">
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
+
+                    <TextView
+                        android:id="@+id/bt_collections"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_gray_light_corner"
                         android:gravity="center"
-                        >
-                        <RadioButton
-                            fontPath="@string/fonts_helveticaneue_bold"
-                            android:button="@android:color/transparent"
-                            android:id="@+id/bt_collections"
-                            android:checked="true"
+                        android:text="@string/collections"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/font_size_22" />
 
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_collection_selector"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="@string/collections"
-                            android:textAllCaps="false"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="19sp"
-                            style="?android:attr/borderlessButtonStyle"
-                            />
+                    <TextView
+                        android:id="@+id/bt_downloaded"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="@string/downloaded"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorGrayLightes"
+                        android:textSize="@dimen/font_size_19" />
 
-
-                        <RadioButton
-                            android:textAllCaps="false"
-                            android:button="@android:color/transparent"
-                            android:id="@+id/bt_downloaded"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_downloaded_selector"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
-                            android:text="@string/downloaded"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="19sp"
-                            style="?android:attr/borderlessButtonStyle"
-                            />
-                    </RadioGroup>
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_home_search_gray" />
             </RelativeLayout>

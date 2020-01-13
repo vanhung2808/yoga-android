@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
@@ -81,18 +82,63 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
 
     @SuppressLint("ResourceAsColor")
     private void initEvent() {
-        viewDataBinding.ivSearch.setOnClickListener(view -> SearchClassesActivity.start(getContext()));
+
+        ViewUtils.setOnDelayClick(viewDataBinding.ivSearch, v -> SearchClassesActivity.start(getContext()));
+        viewDataBinding.vpClasses.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0) {
+                    viewDataBinding.btCollections.setTextSize(22);
+                    viewDataBinding.btDownloaded.setTextSize(19);
+                    viewDataBinding.btCollections.setBackgroundResource(R.drawable.background_gray_light_corner);
+                    viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+                    viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+                    viewDataBinding.btDownloaded.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+                } else {
+                    viewDataBinding.btCollections.setTextSize(19);
+                    viewDataBinding.btDownloaded.setTextSize(22);
+                    viewDataBinding.btDownloaded.setBackgroundResource(R.drawable.background_gray_light_corner);
+                    viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+                    viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+                    viewDataBinding.btCollections.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
         ViewUtils.setOnDelayClick(viewDataBinding.btCollections, v -> {
+            viewDataBinding.btCollections.setTextSize(22);
+            viewDataBinding.btDownloaded.setTextSize(19);
+            viewDataBinding.btCollections.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+            viewDataBinding.btDownloaded.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
             viewDataBinding.vpClasses.setCurrentItem(0);
         });
+
         ViewUtils.setOnDelayClick(viewDataBinding.btDownloaded, v -> {
+            viewDataBinding.btCollections.setTextSize(19);
+            viewDataBinding.btDownloaded.setTextSize(22);
+            viewDataBinding.btDownloaded.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+            viewDataBinding.btCollections.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
             viewDataBinding.vpClasses.setCurrentItem(1);
         });
 
     }
 
     private void initSlider() {
-        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhite));
+        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhiteLight));
         viewDataBinding.slider.setPresetTransformer(SliderLayout.Transformer.Default);
         viewDataBinding.slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
     }

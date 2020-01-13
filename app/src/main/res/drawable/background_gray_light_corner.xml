@@ -5,5 +5,5 @@
         android:centerColor="@color/colorGrayLight"
         android:endColor="@color/colorGrayLight"
         android:startColor="@color/colorGrayLight" />
-    <corners android:radius="20dp" />
+    <corners android:radius="25dp" />
 </shape>

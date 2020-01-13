@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class HtmlTextViewHelper {
     public static void showHtmlTextView(String content, TextView tvHtml) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tvHtml.setText(Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT));
+            tvHtml.setText(Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT).toString().trim());
         } else {
             tvHtml.setText(Html.fromHtml(content));
         }

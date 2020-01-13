@@ -8,6 +8,7 @@ import com.stdio.hue.yoga.data.models.Classes;
 import com.stdio.hue.yoga.databinding.ItemClassesBinding;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesOfCollectionAdapter;
 import com.stdio.hue.yoga.shares.utils.ConvertJsonToNameEntity;
+import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 /**
  * Created by dungbeo on 1/3/2020.
@@ -25,12 +26,10 @@ public class ItemClassesOfCollectionVH extends RecyclerView.ViewHolder {
         this.listener = listener;
     }
 
-    public void bind(Classes classes){
+    public void bind(Classes classes) {
         binding.setClassesName(classes.getNameEntity(new Gson()).getNameLocale());
-        binding.setClassesTime(ConvertJsonToNameEntity.getNameEntity(new Gson(),classes.getDuration()).getNameLocale());
+        binding.setClassesTime(ConvertJsonToNameEntity.getNameEntity(new Gson(), classes.getDuration()).getNameLocale());
         binding.setClassesImage(classes.getImage());
-        binding.getRoot().setOnClickListener(v -> {
-            listener.onItemClassesClick(classes);
-        });
+        ViewUtils.setOnDelayClick(binding.getRoot(), v -> listener.onItemClassesClick(classes));
     }
 }

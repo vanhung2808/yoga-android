@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.stdio.hue.yoga.modules.main.ui.fragments.classes.ClassesMainFragment;
 import com.stdio.hue.yoga.modules.main.ui.fragments.news.NewsMainFragment;
+import com.stdio.hue.yoga.modules.main.ui.fragments.poses.PosesMainFragment;
 import com.stdio.hue.yoga.modules.main.ui.fragments.schedule.ScheduleMainFragment;
 import com.stdio.hue.yoga.shares.utils.Constant;
 
@@ -23,6 +24,8 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case Constant.TAB_HOME_CLASSES:
                 return ClassesMainFragment.newInstance();
+            case Constant.TAB_HOME_POSES:
+                return PosesMainFragment.newInstance();
             case Constant.TAB_HOME_NEWS:
                 return NewsMainFragment.newInstance();
             case Constant.TAB_HOME_SCHEDULE:
@@ -33,6 +36,6 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

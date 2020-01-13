@@ -1,5 +1,7 @@
 package com.stdio.hue.yoga.modules.classes.detail.di;
 
+import com.google.gson.Gson;
+import com.stdio.hue.yoga.databases.daos.CollectionDao;
 import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
 import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
@@ -16,7 +18,14 @@ import dagger.Provides;
 @Module
 public class ClassesDetailModule {
     @Provides
-    public ClassesDetailPresenter providesClassesDetailPresenter(AbilityRepository abilityRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository) {
-        return new ClassesDetailPresenterImpl(abilityRepository, focusRepository, intensityRepository, posesRepository);
+    public ClassesDetailPresenter providesClassesDetailPresenter(
+            AbilityRepository abilityRepository,
+            FocusRepository focusRepository,
+            IntensityRepository intensityRepository,
+            PosesRepository posesRepository,
+            CollectionDao collectionDao,
+            Gson gson
+    ) {
+        return new ClassesDetailPresenterImpl(abilityRepository, focusRepository, intensityRepository, posesRepository, collectionDao, gson);
     }
 }

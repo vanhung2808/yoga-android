@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,7 +24,7 @@
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="433dp"
             android:background="@color/colorWhite"
             android:fitsSystemWindows="true">
 
@@ -36,7 +37,7 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="433dp"
                     app:layout_scrollFlags="scroll|enterAlways">
 
                     <ImageView
@@ -62,43 +63,45 @@
 
                     <TextView
                         android:id="@+id/tv_collection_name"
+                        fontPath="@string/fonts_helveticaneue_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:text="@{name}"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:textSize="@dimen/font_size_22"
                         app:layout_constraintBottom_toTopOf="@+id/tv_collection_total_classes"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_collection_total_classes"
+                        fontPath="@string/fonts_helveticaneue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:drawableStart="@drawable/ic_classes_white"
                         android:drawablePadding="5dp"
                         android:gravity="center"
                         android:text='@{collection.totalClasses +(collection.totalClasses > 1 ? " Classes" : " Class")}'
                         android:textColor="@color/colorWhite"
-                        android:textSize="14sp"
+                        android:textSize="17sp"
                         app:layout_constraintBottom_toTopOf="@+id/tv_collection_description"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
-
                     <TextView
                         android:id="@+id/tv_collection_description"
+                        fontPath="@string/fonts_helveticaneue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_marginStart="16dp"
+                        android:maxLines="10"
+                        tools:text="These 10 minute yoga classes are for the yogi on the go! Choose to focus on balance, flexibility, relaxation, strength or a combination of all four, and easily squeeze a quick youga fix into your busy schedule."
+                        android:layout_marginBottom="11dp"
                         android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="3"
                         android:textColor="@color/colorWhite"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/font_size_15"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -135,13 +138,17 @@
             <android.support.design.widget.TabLayout
                 android:id="@+id/tl_collection"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:tabIndicator="@drawable/background_indicator_selector"
                 app:tabIndicatorColor="@color/colorGreenLight"
                 app:tabSelectedTextColor="@color/colorGreenLight"
-                app:tabTextColor="@color/gray_light"
-                app:tabTextAppearance="@style/textInTabAppearance" />
+                app:tabTextAppearance="@style/textInTabAppearance"
+                app:tabTextColor="@color/colorGrayLightes" />
 
             <android.support.v4.view.ViewPager
+                android:overScrollMode="always"
                 android:id="@+id/vp_collection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

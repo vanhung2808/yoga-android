@@ -19,7 +19,6 @@ import java.util.List;
 /**
  * Created by TranHuuPhuc on 11/24/18.
  */
-//public class ClassesOfCollectionAdapter extends AbsBindingAdapter<ViewDataBinding> {
 public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClassesOfCollectionVH> {
     private static final int TYPE_LEFT = 110;
     private static final int TYPE_RIGHT = 111;
@@ -49,9 +48,9 @@ public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClasses
     }
 
     public void updateData(List<Classes> classes) {
-//        if (this.classes == null) {
-//            this.classes = new ArrayList<>();
-//        }
+        if (this.classes == null) {
+            this.classes = new ArrayList<>();
+        }
         int size = classes.size();
         this.classes.addAll(classes);
 //        notifyDataSetChanged();

@@ -38,7 +38,7 @@ public class ProjectApplication extends MultiDexApplication {
         getAppComponent().inject(this);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/HelveticaNeue.ttf")
+                .setDefaultFontPath("fonts/Helvetica-Neue-Bold.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

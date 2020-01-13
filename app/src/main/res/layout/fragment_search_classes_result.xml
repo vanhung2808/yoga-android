@@ -10,12 +10,14 @@
             android:id="@+id/tl_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/colorGreenLight"
+            app:tabIndicator="@drawable/background_indicator_selector"
+            app:tabTextColor="@color/colorGrayLightes"
+            app:tabMode="scrollable"
+            app:tabTextAppearance="@style/textInTabAppearance"
             app:tabSelectedTextColor="@color/colorGreenLight"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_filter_result"

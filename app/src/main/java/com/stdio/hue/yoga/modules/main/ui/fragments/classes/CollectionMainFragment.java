@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.google.android.flexbox.FlexboxLayoutManager;
 import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.FragmentMainCollectionsBinding;
@@ -18,6 +17,7 @@ import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainAdapter;
 import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
 import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
+import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -80,7 +80,7 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         adapter = new CollectionsClassesMainAdapter(this);
         viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvCollections.setHasFixedSize(false);
-        viewDataBinding.rvCollections.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(15, getContext().getApplicationContext()), true));
+        viewDataBinding.rvCollections.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16, getContext().getApplicationContext()), true));
         viewDataBinding.rvCollections.setAdapter(adapter);
     }
 

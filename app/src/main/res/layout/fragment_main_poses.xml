@@ -11,6 +11,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:layout_marginStart="11dp"
+            android:layout_marginEnd="11dp"
             android:padding="5dp">
 
             <TextView
@@ -18,42 +20,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/background_gray_light_corner"
                 android:gravity="center"
                 android:minWidth="90dp"
                 android:text="@string/poses"
                 android:textAllCaps="false"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="@dimen/font_size_22" />
 
             <TextView
                 android:id="@+id/bt_blocks"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:minWidth="90dp"
                 android:text="@string/blocks"
                 android:textAllCaps="false"
-                android:textColor="@color/colorGray"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textColor="@color/colorGrayLightes"
+                android:textSize="@dimen/font_size_22" />
 
             <TextView
                 android:id="@+id/bt_favorites"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:minWidth="90dp"
                 android:text="@string/favorites"
                 android:textAllCaps="false"
-                android:textColor="@color/colorGray"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textColor="@color/colorGrayLightes"
+                android:textSize="@dimen/font_size_22" />
         </LinearLayout>
 
         <android.support.v4.view.ViewPager

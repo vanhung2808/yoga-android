@@ -139,4 +139,5 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
         //Todo show Classes Detail Screen
         ClassesDetailActivity.start(getContext(), classes);
     }
+
 }

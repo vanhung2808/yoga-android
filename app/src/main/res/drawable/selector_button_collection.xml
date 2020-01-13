@@ -2,5 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/background_white_corner_class" android:state_checked="false" />
     <item android:drawable="@drawable/background_gray_light_corner" android:state_checked="true" />
-    <item android:drawable="@drawable/background_gray_light_corner" android:state_checkable="true"/>
 </selector>

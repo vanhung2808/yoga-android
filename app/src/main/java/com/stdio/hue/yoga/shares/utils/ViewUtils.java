@@ -7,8 +7,10 @@ import android.view.View;
  */
 public class ViewUtils {
     public static void setOnDelayClick(View view, View.OnClickListener delayClick) {
-        view.setClickable(false);
-        view.setOnClickListener(delayClick);
-        view.postDelayed(() -> view.setClickable(true), 600);
+        view.setOnClickListener(v -> {
+            view.setClickable(false);
+            delayClick.onClick(v);
+            view.postDelayed(() -> view.setClickable(true), 600);
+        });
     }
 }

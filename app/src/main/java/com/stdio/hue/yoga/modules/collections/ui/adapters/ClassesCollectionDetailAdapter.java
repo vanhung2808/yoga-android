@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Created by TranHuuPhuc on 11/23/18.
  */
-//public class ClassesCollectionDetailAdapter extends AbsBindingAdapter<ViewDataBinding> {
 public class ClassesCollectionDetailAdapter extends AbsBindingAdapter<ViewDataBinding> {
     private List<FilterClasses> items;
     private ClassesOfCollectionAdapter.ClassesOfCollectionAdapterListener listener;
@@ -50,7 +49,7 @@ public class ClassesCollectionDetailAdapter extends AbsBindingAdapter<ViewDataBi
             itemBind.rvClasses.setHasFixedSize(false);
 //            itemBind.rvClasses.setLayoutManager(new GridLayoutManager(itemBind.getRoot().getContext(), 2, LinearLayoutManager.VERTICAL, false));
             itemBind.rvClasses.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-            itemBind.rvClasses.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(15, itemBind.getRoot().getContext().getApplicationContext()), true));
+            itemBind.rvClasses.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16, itemBind.getRoot().getContext().getApplicationContext()), true));
             itemBind.rvClasses.setAdapter(adapter);
             adapter.updateData(filterClasses.getClasses());
         }

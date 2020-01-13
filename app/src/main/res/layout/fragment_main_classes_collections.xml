@@ -10,15 +10,19 @@
             android:id="@+id/tbl_collections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/colorGreenLight"
-            app:tabTextColor="@color/gray_light"
+            app:tabIndicator="@drawable/background_indicator_selector"
+            app:tabTextColor="@color/colorGrayLightes"
             app:tabMode="scrollable"
             app:tabTextAppearance="@style/textInTabAppearance"
-            app:tabSelectedTextColor="@color/colorGreenLight" />
+            app:tabSelectedTextColor="@color/colorGreenLight"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_collections"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
 </layout>

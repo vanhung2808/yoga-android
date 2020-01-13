@@ -18,6 +18,7 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:id="@+id/cv_item_collection"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp">
 
@@ -52,23 +53,24 @@
                 android:id="@+id/tv_collection_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
                 android:text="@{collectionName}"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="@dimen/font_size_17"
                 app:layout_constraintBottom_toTopOf="@+id/tv_total_classes_of_collction"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tv_total_classes_of_collction"
+                fontPath="@string/fonts_helveticaneue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="9dp"
                 android:text='@{totalClasses + (totalClasses > 1 ? " classes" : " class")}'
                 android:textColor="@android:color/white"
                 android:textSize="14sp"

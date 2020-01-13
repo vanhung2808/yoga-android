@@ -18,4 +18,6 @@ public interface MainPresenter extends Presenter {
     Observable<List<Collection>> getCollectionsOfACategory(int categoryId);
 
     void getAllNews();
+
+    void getAllPoses();
 }

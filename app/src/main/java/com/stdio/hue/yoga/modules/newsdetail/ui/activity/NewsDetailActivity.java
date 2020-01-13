@@ -31,7 +31,7 @@ public class NewsDetailActivity extends BaseYogaActivity<BasePresenter, Activity
     protected void init() {
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_green);
         viewDataBinding.toolbar.setTitle("");
-        viewDataBinding.toolbarTitle.setText(R.string.news);
+        viewDataBinding.toolbarTitle.setText("");
         setSupportActionBar(viewDataBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

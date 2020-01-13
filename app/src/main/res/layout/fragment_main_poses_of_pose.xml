@@ -9,7 +9,11 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"
+            >
 
             <EditText
                 android:id="@+id/et_search_poses"
@@ -17,12 +21,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_white_corner"
                 android:drawableStart="@drawable/ic_search_gray"
-                android:drawablePadding="10dp"
+                android:drawablePadding="16dp"
                 android:hint="@string/enter_pose_name"
                 android:minHeight="50dp"
-                android:paddingStart="10dp"
+                android:paddingStart="16dp"
                 android:paddingEnd="10dp"
-                android:textColorHint="#C5CCD6" />
+                android:textSize="@dimen/font_size_17"
+                fontPath="@string/fonts_helveticaneue_medium"
+                android:textColorHint="@color/colorGrayLightes" />
 
             <ImageView
                 android:id="@+id/iv_filter_poses"

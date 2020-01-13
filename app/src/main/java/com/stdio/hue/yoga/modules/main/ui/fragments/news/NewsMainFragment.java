@@ -15,6 +15,7 @@ import com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.BaseSliderView;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.TextSliderView;
 import com.stdio.hue.yoga.data.models.Banner;
+import com.stdio.hue.yoga.data.models.News;
 import com.stdio.hue.yoga.databinding.FragmentMainNewsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
@@ -22,6 +23,8 @@ import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.NewsAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homenews.NewsMainAdapter;
 import com.stdio.hue.yoga.modules.newsdetail.ui.activity.NewsDetailActivity;
+import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
+import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
 import com.stdio.hue.yoga.shares.utils.SHStringHelper;
 
 import io.reactivex.subjects.PublishSubject;
@@ -29,7 +32,7 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * Created by TranHuuPhuc on 10/19/18.
  */
-public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainNewsBinding> implements BaseSliderView.OnSliderClickListener, AbsBindingAdapter.RecyclerViewClickListener, NewsMainAdapter.NewsMainAdapterListener {
+public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainNewsBinding> implements BaseSliderView.OnSliderClickListener, NewsMainAdapter.ItemNewsMainClickListener , NewsMainAdapter.ItemFavoriteClickListener {
 
     public static NewsMainFragment newInstance() {
         Bundle args = new Bundle();
@@ -82,9 +85,10 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
 
         PublishSubject<NewsAction> newsMainState = getAppComponent().getMainComponent().getNewsMainState();
         getPresenter().getAllNews();
-        adapter = new NewsMainAdapter(this, this);
+        adapter = new NewsMainAdapter(this);
         viewDataBinding.rvMainNews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvMainNews.setHasFixedSize(false);
+        viewDataBinding.rvMainNews.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16,getContext().getApplicationContext()),true));
         viewDataBinding.rvMainNews.setAdapter(adapter);
 
         disposableManager.add(
@@ -113,7 +117,7 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
     }
 
     private void initSlider() {
-        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhite));
+        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhiteLight));
         viewDataBinding.slider.setPresetTransformer(SliderLayout.Transformer.Default);
         viewDataBinding.slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
     }
@@ -149,13 +153,16 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
 
     }
 
+
+
     @Override
-    public void recyclerViewListClicked(View view, int position) {
-        NewsDetailActivity.start(getContext(), adapter.getNews(position));
+    public void onItemNewsMainClickListener(News news) {
+        NewsDetailActivity.start(getContext(), news);
+
     }
 
     @Override
-    public void onClickFavorite(int position) {
-        
+    public void onItemFavoriteClickListener(View view) {
+
     }
 }

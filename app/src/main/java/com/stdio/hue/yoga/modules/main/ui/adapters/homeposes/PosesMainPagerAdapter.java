@@ -13,6 +13,7 @@ import com.stdio.hue.yoga.shares.utils.Constant;
  * Created by TranHuuPhuc on 11/29/18.
  */
 public class PosesMainPagerAdapter extends FragmentStatePagerAdapter {
+
     public PosesMainPagerAdapter(FragmentManager fm) {
         super(fm);
     }

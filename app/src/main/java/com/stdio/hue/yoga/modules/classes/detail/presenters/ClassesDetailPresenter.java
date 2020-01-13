@@ -11,4 +11,5 @@ import io.reactivex.Observable;
  */
 public interface ClassesDetailPresenter extends Presenter {
     Observable<List<Object>> getData(int classesId, String abilityId, String intensityId, String focusId);
+    String getCollectionNameById(int collectionId);
 }
