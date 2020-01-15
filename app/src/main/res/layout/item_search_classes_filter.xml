@@ -17,19 +17,19 @@
                 android:id="@+id/tv_type_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+                android:paddingTop="@dimen/space_large"
+                android:paddingBottom="@dimen/space_large"
                 tools:text="Ability"
                 android:gravity="start"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/font_size_17" />
+                android:textSize="@dimen/text_size_x_large" />
 
             <ImageView
                 android:id="@+id/iv_expand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
-                android:padding="15dp"
+                android:padding="@dimen/space_large"
                 android:rotation="90"
                 android:src="@drawable/ic_arrow_right" />
 

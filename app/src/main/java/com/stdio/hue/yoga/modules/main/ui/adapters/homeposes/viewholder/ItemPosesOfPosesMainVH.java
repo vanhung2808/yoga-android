@@ -18,15 +18,16 @@ public class ItemPosesOfPosesMainVH extends RecyclerView.ViewHolder {
     private ItemPosesBinding posesBinding;
     private Gson gson;
 
-    public ItemPosesOfPosesMainVH(@NonNull PosesOfPosesMainAdapter.ItemPosesClickListener listener, ItemPosesBinding binding, Gson gson) {
+    public ItemPosesOfPosesMainVH(@NonNull PosesOfPosesMainAdapter.ItemPosesClickListener listener,
+                                  ItemPosesBinding binding, Gson gson) {
         super(binding.getRoot());
         this.listener = listener;
         this.posesBinding = binding;
-        this.gson = gson;
+        this.gson = new Gson();
     }
 
     public void bind(Poses poses) {
-        posesBinding.setPosesName(poses.getNameEntity(new Gson()).getNameLocale());
+        posesBinding.setPosesName(poses.getNameEntity(gson).getNameLocale());
         posesBinding.setPosesImage(poses.getImage());
 
         ViewUtils.setOnDelayClick(posesBinding.getRoot(), view -> {

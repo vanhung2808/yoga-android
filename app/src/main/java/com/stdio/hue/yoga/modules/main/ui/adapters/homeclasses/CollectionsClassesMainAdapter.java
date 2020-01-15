@@ -181,7 +181,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.ItemCollectionClassesMainBinding;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.viewholder.ItemCollectionClassMainVH;
@@ -201,37 +200,9 @@ public class CollectionsClassesMainAdapter extends RecyclerView.Adapter<ItemColl
 
     public CollectionsClassesMainAdapter(ItemCollectionsClassesMainClickListener listener) {
         collections = new ArrayList<>();
-        this.gson = new GsonBuilder().create();
+        this.gson = new Gson();
         this.listener = listener;
     }
-
-//
-//        @Override
-//        public void updateBinding(ViewDataBinding binding, int position) {
-//            if (binding instanceof ItemCollectionClassesMainBinding) {
-////            if (position % 2 != 0) {
-////                binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 1500));
-////            } else {
-////                binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-////            }
-////            binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(binding.getRoot().getMeasuredWidth() / 2, ViewGroup.LayoutParams.WRAP_CONTENT));
-//
-//                Collection collection = collections.get(position);
-//                ItemCollectionClassesMainBinding itemBind = (ItemCollectionClassesMainBinding) binding;
-//                itemBind.setCollectionName(collection.getNameEntity(getGson()).getNameLocale());
-//                itemBind.setCollectionAvatar(collection.getImage());
-//                itemBind.setTotalClasses(collection.getTotalClasses());
-//            }
-//            if (binding instanceof ItemCollectionClassesMainRightBinding) {
-////            binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(binding.getRoot().getMeasuredWidth() / 2, ViewGroup.LayoutParams.WRAP_CONTENT));
-//
-//                Collection collection = collections.get(position);
-//                ItemCollectionClassesMainRightBinding itemBind = (ItemCollectionClassesMainRightBinding) binding;
-//                itemBind.setCollectionName(collection.getNameEntity(getGson()).getNameLocale());
-//                itemBind.setCollectionAvatar(collection.getImage());
-//                itemBind.setTotalClasses(collection.getTotalClasses());
-//            }
-//        }
 
     public Collection getCollection(int position) {
         return collections.get(position);
@@ -254,7 +225,7 @@ public class CollectionsClassesMainAdapter extends RecyclerView.Adapter<ItemColl
         ItemCollectionClassesMainBinding binding = ItemCollectionClassesMainBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
         int width = viewGroup.getMeasuredWidth() / 2;
         binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(width, (int) (width * (i == TYPE_LEFT ? 1.5 : 1.7))));
-        return new ItemCollectionClassMainVH(binding,gson, listener);
+        return new ItemCollectionClassMainVH(binding, gson, listener);
     }
 
     @Override

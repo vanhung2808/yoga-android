@@ -3,24 +3,24 @@
     <item
         android:id="@+id/navigation_classes"
         android:icon="@drawable/ic_classes_gray"
-        android:textSize="10sp"
+        android:textSize="@dimen/text_size_smaller"
         android:title="@string/classes" />
     <item
         android:id="@+id/navigation_poses"
         android:icon="@drawable/ic_poses_gray"
-        android:textSize="10sp"
+        android:textSize="@dimen/text_size_smaller"
         android:title="@string/poses" />
 
     <item
         android:id="@+id/navigation_news"
         android:icon="@drawable/ic_news_gray"
-        android:textSize="10sp"
+        android:textSize="@dimen/text_size_smaller"
         android:title="@string/news" />
 
     <item
         android:id="@+id/navigation_schedule"
         android:icon="@drawable/ic_calendar_gray"
-        android:textSize="10sp"
+        android:textSize="@dimen/text_size_smaller"
         android:title="@string/schedule" />
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -30,15 +31,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/space_large"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/tv_typeText"
+            fontPath="@string/fonts_helveticaneue_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_smallest"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_small"
+            tools:text="Healthy" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_large"
+            android:paddingLeft="@dimen/space_x_large"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size_xx_large" />
     </LinearLayout>
 </RelativeLayout>

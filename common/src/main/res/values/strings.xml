@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="fonts_helveticaneue_bold">fonts/Helvetica-Neue-Bold.ttf</string>
+    <string name="fonts_helveticaneue">fonts/HelveticaNeue.ttf</string>
+    <string name="fonts_helveticaneue_medium">fonts/HelveticaNeue Medium.ttf</string>
 </resources>

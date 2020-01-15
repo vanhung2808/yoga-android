@@ -47,7 +47,7 @@ public class ClassesCollectionDetailAdapter extends AbsBindingAdapter<ViewDataBi
             itemBind.setTitle(filterClasses.getTitle());
             ClassesOfCollectionAdapter adapter = new ClassesOfCollectionAdapter(listener);
             itemBind.rvClasses.setHasFixedSize(false);
-//            itemBind.rvClasses.setLayoutManager(new GridLayoutManager(itemBind.getRoot().getContext(), 2, LinearLayoutManager.VERTICAL, false));
+            itemBind.rvClasses.setNestedScrollingEnabled(false);
             itemBind.rvClasses.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             itemBind.rvClasses.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16, itemBind.getRoot().getContext().getApplicationContext()), true));
             itemBind.rvClasses.setAdapter(adapter);

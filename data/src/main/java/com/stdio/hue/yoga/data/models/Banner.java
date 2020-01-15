@@ -30,6 +30,10 @@ public class Banner extends BaseObservable implements Serializable {
     private String createdAt;
     @ColumnInfo(name = "updated_at")
     private String updatedAt;
+    @ColumnInfo(name = "title")
+    private String title;
+    @ColumnInfo(name = "type_text")
+    private String typeText;
 
     public int getId() {
         return id;
@@ -93,5 +97,21 @@ public class Banner extends BaseObservable implements Serializable {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getTypeText() {
+        return typeText;
+    }
+
+    public void setTypeText(String typeText) {
+        this.typeText = typeText;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

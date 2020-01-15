@@ -16,15 +16,15 @@
         <TextView
             android:id="@+id/tv_title"
             fontPath="@string/fonts_helveticaneue_medium"
-            android:textColor="@color/colorGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="4dp"
+            android:paddingStart="@dimen/space_large"
+            android:paddingTop="@dimen/space_small"
+            android:paddingBottom="@dimen/space_small"
             android:text="@{title}"
             android:textAllCaps="true"
-            android:textSize="18sp" />
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/text_size_xx_large" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_classes"

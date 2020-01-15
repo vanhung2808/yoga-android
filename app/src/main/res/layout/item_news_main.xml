@@ -28,8 +28,8 @@
             android:id="@+id/cv_news"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="11dp"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginBottom="@dimen/space_normal"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_title_news"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -64,9 +64,9 @@
             fontPath="@string/fonts_helveticaneue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/space_small"
             android:text="@{titleNews}"
-            android:textSize="@dimen/font_size_17"
+            android:textSize="@dimen/text_size_x_large"
             android:maxLines="2"
             android:textAllCaps="false"
             android:textColor="@color/colorBlackLightes"
@@ -79,7 +79,7 @@
             android:id="@+id/ll_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="@dimen/space_normal"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -99,11 +99,11 @@
                 android:id="@+id/tv_total_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/space_normal"
                 android:gravity="center|center_vertical"
                 android:textColor="@color/colorGray"
                 android:text="@{totalFavorite}"
-                android:textSize="15sp" />
+                android:textSize="@dimen/text_size_standard" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

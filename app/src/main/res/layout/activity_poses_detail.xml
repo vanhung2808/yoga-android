@@ -75,7 +75,7 @@
                         android:id="@+id/iv_favorite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_margin="@dimen/space_normal"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,83 +112,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="10dp">
+                android:paddingTop="@dimen/space_normal">
 
                 <TextView
                     android:id="@+id/tv_classes_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
+                    android:paddingStart="@dimen/space_large"
+                    android:paddingEnd="@dimen/space_large"
                     android:text="@{posesName}"
                     android:textColor="@color/colorBlack"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_x_large"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/space_normal"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_ability_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
                         android:layout_weight="1"
                         android:text="@{abilityName}"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_size_x_large" />
 
                     <TextView
                         android:id="@+id/tv_focus_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
                         android:layout_weight="1"
                         android:text="@{focusName}"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_size_x_large" />
 
                     <TextView
                         android:id="@+id/tv_intensity_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
                         android:layout_weight="1"
                         android:text="@{intensityName}"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_size_x_large" />
 
                 </LinearLayout>
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="@dimen/space_normal">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="@dimen/space_normal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/description"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/text_size_standard" />
 
                         <TextView
                             android:id="@+id/tv_description"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:textSize="12sp" />
+                            android:layout_marginStart="@dimen/space_large"
+                            android:layout_marginTop="@dimen/space_x_large"
+                            android:layout_marginEnd="@dimen/space_large"
+                            android:textSize="@dimen/text_size_standard" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>

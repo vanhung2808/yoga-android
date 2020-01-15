@@ -38,7 +38,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="@dimen/space_large"
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -47,9 +47,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
-                android:paddingBottom="5dp">
+                android:paddingTop="@dimen/space_small"
+                android:paddingEnd="@dimen/space_small"
+                android:paddingBottom="@dimen/space_small">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -62,39 +62,39 @@
                     <TextView
                         android:id="@+id/bt_collections"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="@dimen/space_xxxxxx_large"
                         android:layout_gravity="center"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/space_large"
                         android:layout_weight="1"
                         android:background="@drawable/background_gray_light_corner"
                         android:gravity="center"
                         android:text="@string/collections"
                         android:textAllCaps="false"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/font_size_22" />
+                        android:textSize="@dimen/text_size_xxxx_large" />
 
                     <TextView
                         android:id="@+id/bt_downloaded"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_height="@dimen/space_xxxxxx_large"
+                        android:layout_marginEnd="@dimen/space_normal"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:gravity="center"
                         android:text="@string/downloaded"
                         android:textAllCaps="false"
                         android:textColor="@color/colorGrayLightes"
-                        android:textSize="@dimen/font_size_19" />
+                        android:textSize="@dimen/text_size_xxx_large" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_search"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="@dimen/space_xxxxxx_large"
+                    android:layout_height="@dimen/space_xxxxxx_large"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="@dimen/space_normal"
                     android:src="@drawable/ic_home_search_gray" />
             </RelativeLayout>
 

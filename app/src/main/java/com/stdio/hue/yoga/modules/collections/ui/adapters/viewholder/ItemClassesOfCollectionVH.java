@@ -27,8 +27,8 @@ public class ItemClassesOfCollectionVH extends RecyclerView.ViewHolder {
     }
 
     public void bind(Classes classes) {
-        binding.setClassesName(classes.getNameEntity(new Gson()).getNameLocale());
-        binding.setClassesTime(ConvertJsonToNameEntity.getNameEntity(new Gson(), classes.getDuration()).getNameLocale());
+        binding.setClassesName(classes.getNameEntity(gson).getNameLocale());
+        binding.setClassesTime(ConvertJsonToNameEntity.getNameEntity(gson, classes.getDuration()).getNameLocale());
         binding.setClassesImage(classes.getImage());
         ViewUtils.setOnDelayClick(binding.getRoot(), v -> listener.onItemClassesClick(classes));
     }

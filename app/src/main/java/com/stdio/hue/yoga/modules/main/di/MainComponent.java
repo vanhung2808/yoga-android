@@ -4,7 +4,7 @@ import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.NewsAction;
-import com.stdio.hue.yoga.modules.main.ui.actions.PosesOfPosesAction;
+//import com.stdio.hue.yoga.modules.main.ui.actions.PosesOfPosesAction;
 
 import dagger.Subcomponent;
 import io.reactivex.subjects.PublishSubject;
@@ -22,5 +22,5 @@ public interface MainComponent {
 
     MainPresenter getMainPresenter();
 
-    PublishSubject<PosesOfPosesAction> getPosesOfPosesMainState();
+//    PublishSubject<PosesOfPosesAction> getPosesOfPosesMainState();
 }

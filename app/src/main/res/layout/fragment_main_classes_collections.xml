@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,19 +11,17 @@
             android:id="@+id/tbl_collections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
             app:tabIndicator="@drawable/background_indicator_selector"
-            app:tabTextColor="@color/colorGrayLightes"
             app:tabMode="scrollable"
-            app:tabTextAppearance="@style/textInTabAppearance"
             app:tabSelectedTextColor="@color/colorGreenLight"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
+            app:tabTextAppearance="@style/textInTabAppearance"
+            app:tabTextColor="@color/colorGrayLightes" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_collections"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>
