@@ -101,10 +101,8 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
 
     private void initAdapter() {
         adapter = new ClassesCollectionDetailAdapter(this);
-//        viewDataBinding.rvClasses.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvClasses.setLayoutManager(new LinearLayoutManager(getContext()));
         viewDataBinding.rvClasses.setHasFixedSize(false);
-//        viewDataBinding.rvClasses.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(15, getContext().getApplicationContext()), true));
         viewDataBinding.rvClasses.setAdapter(adapter);
     }
 

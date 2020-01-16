@@ -40,27 +40,27 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="@dimen/space_small"
             android:layout_height="50dp">
 
             <TextView
                 android:id="@+id/tv_title_news_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_normal"
                 android:gravity="start|center_vertical"
                 android:maxWidth="305dp"
                 android:text="@{titleNews}"
                 android:textColor="@color/colorBlack"
-                android:textSize="22sp"
+                android:textSize="@dimen/text_size_xxxx_large"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+                tools:text="Yoga for children" />
 
             <LinearLayout
                 android:id="@+id/ll_favorite_news_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="@dimen/space_normal"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -78,20 +78,20 @@
                     fontPath="@string/fonts_helveticaneue"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/space_normal"
                     android:gravity="center_vertical"
                     android:text="@{totalFavorite}"
                     android:textColor="@color/colorGray"
-                    android:textSize="@dimen/font_size_15" />
+                    android:textSize="@dimen/text_size_standard" />
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginRight="@dimen/space_normal">
 
             <WebView
                 android:id="@+id/wv_news_detail"

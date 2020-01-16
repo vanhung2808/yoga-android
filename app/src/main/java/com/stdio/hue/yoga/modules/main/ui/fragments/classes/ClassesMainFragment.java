@@ -17,10 +17,10 @@ import com.stdio.hue.yoga.data.models.Banner;
 import com.stdio.hue.yoga.databinding.FragmentMainClassesBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.activities.SearchClassesActivity;
+import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.ClassesMainPagerAdapter;
-import com.stdio.hue.yoga.shares.utils.SHStringHelper;
 import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 import io.reactivex.subjects.PublishSubject;
@@ -68,13 +68,20 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
                             viewDataBinding.slider.removeAllSliders();
                             for (Banner slider : banners) {
                                 TextSliderView textSliderView = new TextSliderView(getContext());
-                                textSliderView.description(slider.getCollection() == null || SHStringHelper.nullOrEmpty(slider.getCollection().getName()) ? "" : slider.getCollection().getNameEntity(gson).getNameLocale())
+                                textSliderView.typeText(slider.getTypeText())
+                                        .title(slider.getTitle())
                                         .image(slider.getImage())
                                         .setScaleType(BaseSliderView.ScaleType.CenterCrop)
                                         .setOnSliderClickListener(this);
                                 textSliderView.bundle(new Bundle());
                                 textSliderView.getBundle().putString("extra", slider.getImage());
                                 viewDataBinding.slider.addSlider(textSliderView);
+
+                                textSliderView.setOnSliderClickListener(slider1 -> {
+                                    if (getContext() != null) {
+                                        CollectionDetailActivity.start(getContext(), slider.getCollection());
+                                    }
+                                });
                             }
                         }));
         initEvent();
@@ -168,6 +175,7 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
     @Override
     public void onSliderClick(BaseSliderView slider) {
         //Todo open webview link slider
+
     }
 
 }

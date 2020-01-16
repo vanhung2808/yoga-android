@@ -17,7 +17,6 @@ import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainAdapter;
 import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
 import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
-import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -56,9 +55,7 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
             disposableManager.add(getPresenter().getCollectionsOfACategory(categoryId)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(collections -> {
-                                //collections.addAll(collections);
-                                //collections.addAll(collections);
-                                adapter.updateData(collections);
+                        adapter.updateData(collections);
                             }
                     ));
         }

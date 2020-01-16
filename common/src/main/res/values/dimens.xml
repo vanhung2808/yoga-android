@@ -3,7 +3,32 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="space.medium">16dp</dimen>
-    <dimen name="space.small">8dp</dimen>
-    <dimen name="space.very_small">4dp</dimen>
+    <!--    Text size -->
+    <dimen name="text_size_smaller">10sp</dimen>
+    <dimen name="text_size_x_smaller">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_standard">15sp</dimen>
+    <dimen name="text_size_x_standard">16sp</dimen>
+    <dimen name="text_size_x_large">17sp</dimen>
+    <dimen name="text_size_xx_large">18sp</dimen>
+    <dimen name="text_size_xxx_large">19sp</dimen>
+    <dimen name="text_size_xxxx_large">22sp</dimen>
+    <dimen name="text_size_xxxxx_large">28sp</dimen>
+    <dimen name="text_size_xxxxxx_large">32sp</dimen>
+
+    <!--    Padding - margin-->
+
+    <dimen name="space_smallest">3dp</dimen>
+    <dimen name="space_small">5dp</dimen>
+    <dimen name="space_normal">10dp</dimen>
+    <dimen name="space_large">15dp</dimen>
+    <dimen name="space_x_large">20dp</dimen>
+    <dimen name="space_xx_large">25dp</dimen>
+    <dimen name="space_xxx_large">30dp</dimen>
+    <dimen name="space_xxxx_large">35dp</dimen>
+    <dimen name="space_xxxxx_large">40dp</dimen>
+    <dimen name="space_xxxxxx_large">45dp</dimen>
+    <dimen name="space_xxxxxxx_large">50dp</dimen>
+    <dimen name="space_xxxxxxxx_large">80dp</dimen>
+    <dimen name="space_xxxxxxxxx_large">65dp</dimen>
 </resources>

@@ -30,7 +30,8 @@ public abstract class BaseSliderView {
 
     protected OnSliderClickListener mOnSliderClickListener;
 
-    private String mDescription;
+    private String mTitle;
+    private String mTypeText;
 
     /**
      * Scale type of the image.
@@ -57,14 +58,26 @@ public abstract class BaseSliderView {
         return this;
     }
 
+
     /**
-     * the description of a slider image.
+     * the type text of a slider image.
      *
-     * @param description
+     * @param typeText
      * @return
      */
-    public BaseSliderView description(String description) {
-        mDescription = description;
+    public BaseSliderView typeText(String typeText) {
+        mTypeText = typeText;
+        return this;
+    }
+
+    /**
+     * the title of a slider image.
+     *
+     * @param title
+     * @return
+     */
+    public BaseSliderView title(String title) {
+        mTitle = title;
         return this;
     }
 
@@ -126,8 +139,13 @@ public abstract class BaseSliderView {
         return mErrorPlaceHolderRes;
     }
 
-    public String getDescription() {
-        return mDescription;
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public String getTypeText() {
+        return mTypeText;
     }
 
     public Context getContext() {
@@ -144,9 +162,16 @@ public abstract class BaseSliderView {
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if (mOnSliderClickListener != null) {
+                    v.setClickable(false);
                     mOnSliderClickListener.onSliderClick(me);
+                    v.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            v.setClickable(true);
+                        }
+                    }, 600);
                 }
             }
         });

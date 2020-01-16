@@ -15,8 +15,8 @@
             app:tabMode="scrollable"
             app:tabTextAppearance="@style/textInTabAppearance"
             app:tabSelectedTextColor="@color/colorGreenLight"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
             />
 
         <android.support.v4.view.ViewPager

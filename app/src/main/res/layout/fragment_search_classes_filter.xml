@@ -10,10 +10,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
-            android:textSize="@dimen/font_size_22"
+            android:textSize="@dimen/text_size_xxxx_large"
             android:textColor="@color/colorBlack"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_xx_large"
             />
 
         <TextView
@@ -22,21 +22,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_small"
             android:drawableEnd="@drawable/ic_bin_black"
-            android:drawablePadding="15dp"
+            android:drawablePadding="@dimen/space_large"
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/clear_all"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/font_size_17"
+            android:textSize="@dimen/text_size_x_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_filter"
-            android:layout_margin="17dp"
+            android:layout_margin="@dimen/space_large"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

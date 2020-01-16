@@ -10,7 +10,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
-import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderLayout;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.BaseSliderView;
 import com.stdio.hue.yoga.common.widgets.slider.library.SliderTypes.TextSliderView;
@@ -18,6 +17,7 @@ import com.stdio.hue.yoga.data.models.Banner;
 import com.stdio.hue.yoga.data.models.News;
 import com.stdio.hue.yoga.databinding.FragmentMainNewsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
+import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.actions.NewsAction;
@@ -25,14 +25,13 @@ import com.stdio.hue.yoga.modules.main.ui.adapters.homenews.NewsMainAdapter;
 import com.stdio.hue.yoga.modules.newsdetail.ui.activity.NewsDetailActivity;
 import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
 import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
-import com.stdio.hue.yoga.shares.utils.SHStringHelper;
 
 import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by TranHuuPhuc on 10/19/18.
  */
-public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainNewsBinding> implements BaseSliderView.OnSliderClickListener, NewsMainAdapter.ItemNewsMainClickListener , NewsMainAdapter.ItemFavoriteClickListener {
+public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainNewsBinding> implements BaseSliderView.OnSliderClickListener, NewsMainAdapter.ItemNewsMainClickListener, NewsMainAdapter.ItemFavoriteClickListener {
 
     public static NewsMainFragment newInstance() {
         Bundle args = new Bundle();
@@ -73,13 +72,20 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
                             viewDataBinding.slider.removeAllSliders();
                             for (Banner slider : banners) {
                                 TextSliderView textSliderView = new TextSliderView(getContext());
-                                textSliderView.description(slider.getCollection() == null || SHStringHelper.nullOrEmpty(slider.getCollection().getName()) ? "" : slider.getCollection().getNameEntity(gson).getNameLocale())
+                                textSliderView.typeText(slider.getTypeText())
+                                        .title(slider.getTitle())
                                         .image(slider.getImage())
                                         .setScaleType(BaseSliderView.ScaleType.CenterCrop)
                                         .setOnSliderClickListener(this);
                                 textSliderView.bundle(new Bundle());
                                 textSliderView.getBundle().putString("extra", slider.getImage());
                                 viewDataBinding.slider.addSlider(textSliderView);
+
+                                textSliderView.setOnSliderClickListener(slider1 -> {
+                                    if (NewsMainFragment.this.getContext() != null) {
+                                        CollectionDetailActivity.start(NewsMainFragment.this.getContext(), slider.getCollection());
+                                    }
+                                });
                             }
                         }));
 
@@ -88,7 +94,7 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
         adapter = new NewsMainAdapter(this);
         viewDataBinding.rvMainNews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvMainNews.setHasFixedSize(false);
-        viewDataBinding.rvMainNews.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16,getContext().getApplicationContext()),true));
+        viewDataBinding.rvMainNews.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16, getContext().getApplicationContext()), true));
         viewDataBinding.rvMainNews.setAdapter(adapter);
 
         disposableManager.add(
@@ -152,7 +158,6 @@ public class NewsMainFragment extends BaseYogaFragment<MainPresenter, FragmentMa
     public void onSliderClick(BaseSliderView slider) {
 
     }
-
 
 
     @Override

@@ -30,16 +30,16 @@ public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClasses
     public ClassesOfCollectionAdapter(ClassesOfCollectionAdapterListener listener) {
         this.classes = new ArrayList<>();
         this.listener = listener;
-
+        this.gson = new Gson();
     }
 
     @NonNull
     @Override
     public ItemClassesOfCollectionVH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        ItemClassesBinding binding = ItemClassesBinding.inflate(LayoutInflater.from(viewGroup.getContext()),viewGroup,false);
-        int with = viewGroup.getMeasuredWidth()/2;
-        binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(with,(int)(with*(i == TYPE_LEFT ? 1.5 :1.7))));
-        return new ItemClassesOfCollectionVH(binding,gson,listener);
+        ItemClassesBinding binding = ItemClassesBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
+        int with = viewGroup.getMeasuredWidth() / 2;
+        binding.getRoot().setLayoutParams(new ViewGroup.LayoutParams(with, (int) (with * (i == TYPE_LEFT ? 1.5 : 1.7))));
+        return new ItemClassesOfCollectionVH(binding, gson, listener);
     }
 
     @Override
@@ -53,28 +53,8 @@ public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClasses
         }
         int size = classes.size();
         this.classes.addAll(classes);
-//        notifyDataSetChanged();
-        notifyItemRangeInserted(size,classes.size());
+        notifyItemRangeInserted(size, classes.size());
     }
-
-//    @Override
-//    public void updateBinding(ViewDataBinding binding, int position) {
-//        if (binding instanceof ItemClassesBinding) {
-//            ItemClassesBinding itemBind = (ItemClassesBinding) binding;
-//            Classes classes = items.get(position);
-//            if (getExitsVideo(itemBind.getRoot().getContext(), "classes" + classes.getId() + ".mp4") == null) {
-//                itemBind.ivStatusDownload.setVisibility(View.GONE);
-//            } else {
-//                itemBind.ivStatusDownload.setVisibility(View.VISIBLE);
-//            }
-//            itemBind.setClassesImage(classes.getImage());
-//            itemBind.setClassesName(classes.getNameEntity(getGson()).getNameLocale());
-//            itemBind.setClassesTime(ConvertJsonToNameEntity.getNameEntity(getGson(), classes.getDuration()).getNameLocale());
-//            itemBind.cvContent.setOnClickListener(view -> {
-//                listener.onItemClassesClick(classes);
-//            });
-//        }
-//    }
 
     private Uri getExitsVideo(Context context, String videoName) {
         File file = new File(context.getFilesDir(), videoName);
@@ -83,7 +63,6 @@ public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClasses
         }
         return null;
     }
-
 
     @Override
     public int getItemCount() {

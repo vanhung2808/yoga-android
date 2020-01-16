@@ -31,23 +31,6 @@ public class NewsMainAdapter extends RecyclerView.Adapter<ItemNewMainVH> {
         this.listener = listener;
     }
 
-
-//    @Override
-//    public void updateBinding(ViewDataBinding binding, int position) {
-//        if (binding instanceof ItemNewsMainBinding) {
-//            News news = items.get(position);
-//            ItemNewsMainBinding itemBind = (ItemNewsMainBinding) binding;
-//            if (news != null) {
-//                itemBind.setTitleNews(news.getNameEntity(getGson()).getNameLocale());
-//                itemBind.setImageNews(news.getImage());
-//                itemBind.setTotalFavorite(String.valueOf(news.getTotalFavorite()));
-//            }
-//            itemBind.cbFavorite.setOnClickListener(v -> {
-//                listener.onClickFavorite(position);
-//            });
-//        }
-//    }
-
     public News getNews(int position) {
         return items.get(position);
     }

@@ -24,28 +24,14 @@ public class ItemNewMainVH extends RecyclerView.ViewHolder {
         super(binding.getRoot());
         this.listener = listener;
         this.binding = binding;
-        this.gson = gson;
+        this.gson = new Gson();
     }
 
     public void bind(News news) {
         total = news.getTotalFavorite();
         binding.setTotalFavorite(String.valueOf(total));
-        binding.setTitleNews(news.getNameEntity(new Gson()).getNameLocale());
+        binding.setTitleNews(news.getNameEntity(gson).getNameLocale());
         binding.setImageNews(news.getImage());
-//            binding.cbFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                if (binding.cbFavorite.isChecked()) {
-//                    total = total + 1;
-//                    news.setTotalFavorite(total);
-//                    binding.setTotalFavorite(String.valueOf(total));
-//                    Log.d("TAG_CHECKBOX", total + "check box true + 1");
-//                } else {
-//                    total = total - 1;
-//                    news.setTotalFavorite(total);
-//                    binding.setTotalFavorite(String.valueOf(total));
-//                    Log.d("TAG_CHECKBOX", total + "check box false -1");
-//                }
-//            });
-//            Log.d("TAG_CHECKBOX", total + "?total");
         ViewUtils.setOnDelayClick(binding.getRoot(), v -> listener.onItemNewsMainClickListener(news));
     }
 }

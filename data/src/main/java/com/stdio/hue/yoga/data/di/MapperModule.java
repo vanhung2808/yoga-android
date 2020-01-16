@@ -12,8 +12,6 @@ import com.stdio.hue.yoga.data.mappers.IntensityMapper;
 import com.stdio.hue.yoga.data.mappers.NewsMapper;
 import com.stdio.hue.yoga.data.mappers.PosesMapper;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

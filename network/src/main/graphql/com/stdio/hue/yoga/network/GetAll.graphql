@@ -60,6 +60,8 @@ query GetBanner($update: String) {
 				collection_id
 				created_at
 				updated_at
+				title
+				type_text
 		}
 }
 query GetAbility($update: String) {

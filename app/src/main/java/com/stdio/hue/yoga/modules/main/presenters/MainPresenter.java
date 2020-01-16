@@ -19,5 +19,5 @@ public interface MainPresenter extends Presenter {
 
     void getAllNews();
 
-    void getAllPoses();
+//    void getAllPoses();
 }
