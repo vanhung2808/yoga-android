@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
@@ -83,19 +82,6 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
                                         CollectionDetailActivity.start(getContext(), slider.getCollection());
                                     }
                                 });
-//                                ViewUtils.setOnDelayClick(textSliderView.getView(),textSliderView.);
-//                                ViewUtils.setOnDelayClick(viewDataBinding.getRoot(),textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-//                                    @Override
-//                                    public void onSliderClick(BaseSliderView sliderl) {
-//                                        Log.e("DUNG","slide onlcik");
-//                                    }
-//                                }));
-//                                ViewUtils.setOnDelayClick(textSliderView.getView(), textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-//                                    @Override
-//                                    public void onSliderClick(BaseSliderView sliderl) {
-//                                        CollectionDetailActivity.start(getContext(), slider.getCollection());
-//                                    }
-//                                }));
                             }
                         }));
         initEvent();

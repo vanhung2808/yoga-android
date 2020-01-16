@@ -19,7 +19,6 @@ import static com.stdio.hue.yoga.shares.utils.Constant.EXTRA_COLLECTION;
  * Created by TranHuuPhuc on 10/20/18.
  */
 public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, ActivityCollectionDetailBinding> {
-//    private static final String EXTRA_COLLECTION = "extra-collection";
 
     public static void start(Context context, Collection collection) {
         Intent starter = new Intent(context, CollectionDetailActivity.class);
