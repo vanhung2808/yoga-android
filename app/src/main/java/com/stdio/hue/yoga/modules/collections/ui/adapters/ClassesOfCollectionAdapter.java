@@ -53,8 +53,6 @@ public class ClassesOfCollectionAdapter extends RecyclerView.Adapter<ItemClasses
         }
         int size = classes.size();
         this.classes.addAll(classes);
-        this.classes.addAll(classes);
-        this.classes.addAll(classes);
         notifyItemRangeInserted(size, classes.size());
     }
 
