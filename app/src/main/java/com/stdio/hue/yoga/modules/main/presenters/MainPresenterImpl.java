@@ -19,6 +19,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 
+//import com.stdio.hue.yoga.modules.main.ui.actions.PosesOfPosesAction;
+
 /**
  * Created by TranHuuPhuc on 9/25/18.
  */
@@ -26,20 +28,25 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     private PublishSubject<MainAction> mainActionPublishSubject;
     private PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState;
     private PublishSubject<NewsAction> newsActionPublishSubject;
+    //    private PublishSubject<PosesOfPosesAction> posesOfPosesActionPublishSubject;
     private BannerRepository bannerRepository;
     private CategoryRepository categoryRepository;
     private CollectionRepository collectionRepository;
     private NewsRepository newsRepository;
+//    private PosesRepository posesRepository;
 
 
     public MainPresenterImpl(PublishSubject<MainAction> mainActionPublishSubject, PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState, PublishSubject<NewsAction> newsActionPublishSubject, BannerRepository bannerRepository, CategoryRepository categoryRepository, CollectionRepository collectionRepository, NewsRepository newsRepository) {
+//    public MainPresenterImpl(PublishSubject<MainAction> mainActionPublishSubject, PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState, PublishSubject<NewsAction> newsActionPublishSubject, PublishSubject<PosesOfPosesAction> posesOfPosesActionPublishSubject, BannerRepository bannerRepository, CategoryRepository categoryRepository, CollectionRepository collectionRepository, NewsRepository newsRepository, PosesRepository posesRepository) {
         this.mainActionPublishSubject = mainActionPublishSubject;
         this.collectionsClassesMainState = collectionsClassesMainState;
         this.newsActionPublishSubject = newsActionPublishSubject;
+//        this.posesOfPosesActionPublishSubject = posesOfPosesActionPublishSubject;
         this.bannerRepository = bannerRepository;
         this.categoryRepository = categoryRepository;
         this.collectionRepository = collectionRepository;
         this.newsRepository = newsRepository;
+//        this.posesRepository = posesRepository;
     }
 
     @SuppressLint("RxSubscribeOnError")
@@ -73,4 +80,18 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
                 .subscribeOn(Schedulers.io())
                 .subscribe(news -> newsActionPublishSubject.onNext(NewsAction.setNews(news))));
     }
+
+//    @Override
+//    public void getAllPoses() {
+//        disposable.add(Observable.just(posesRepository.getPosesDetail())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Consumer<List<Poses>>() {
+//                    @Override
+//                    public void accept(List<Poses> poses) throws Exception {
+//                        posesOfPosesActionPublishSubject.onNext(PosesOfPosesAction.setPoses(poses));
+//                    }
+//                }));
+//    }
+
 }

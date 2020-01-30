@@ -33,6 +33,7 @@ public class PosesMainFragment extends BaseYogaFragment<BasePresenter, FragmentM
 
     @Override
     protected void init(@Nullable View view) {
+        viewDataBinding.vpPoses.setAdapter(new PosesMainPagerAdapter(getChildFragmentManager()));
         initEvent();
     }
 

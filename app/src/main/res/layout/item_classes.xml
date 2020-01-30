@@ -20,19 +20,19 @@
         android:id="@+id/cv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="8dp"
+        >
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_collection"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:minHeight="250dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:alpha="0.3"
                 android:background="@android:color/black"
                 android:minHeight="250dp"
@@ -54,12 +54,12 @@
                 android:id="@+id/tv_collection_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_small"
+                android:layout_marginBottom="@dimen/space_smallest"
                 android:text="@{classesName}"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="@dimen/text_size_x_large"
                 app:layout_constraintBottom_toTopOf="@+id/tv_total_classes_of_collction"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -68,12 +68,13 @@
                 android:id="@+id/tv_total_classes_of_collction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_small"
+                android:layout_marginBottom="@dimen/space_normal"
                 android:text="@{classesTime}"
+                fontPath="@string/fonts_helveticaneue"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_small"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_collection"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -82,8 +83,8 @@
                 android:id="@+id/iv_status_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="5dp"
+                android:layout_margin="@dimen/space_small"
+                android:padding="@dimen/space_small"
                 android:src="@drawable/ic_download_status_black"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"

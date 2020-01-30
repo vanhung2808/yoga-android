@@ -14,6 +14,8 @@ import com.stdio.hue.yoga.di.components.AppComponent;
 import com.stdio.hue.yoga.di.components.DaggerAppComponent;
 import com.stdio.hue.yoga.services.DownloadService;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 /**
  * Created by TranHuuPhuc on 7/6/18.
  */
@@ -34,6 +36,12 @@ public class ProjectApplication extends MultiDexApplication {
         PRDownloader.initialize(getApplicationContext(), config);
         startService(new Intent(this, DownloadService.class));
         getAppComponent().inject(this);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Helvetica-Neue-Bold.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 
     public AppComponent getAppComponent() {

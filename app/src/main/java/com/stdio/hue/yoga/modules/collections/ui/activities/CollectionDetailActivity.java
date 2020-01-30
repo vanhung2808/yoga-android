@@ -13,11 +13,12 @@ import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.CollectionDetailPagerAdapter;
 import com.stdio.hue.yoga.shares.utils.HtmlTextViewHelper;
 
+import static com.stdio.hue.yoga.shares.utils.Constant.EXTRA_COLLECTION;
+
 /**
  * Created by TranHuuPhuc on 10/20/18.
  */
 public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, ActivityCollectionDetailBinding> {
-    private static final String EXTRA_COLLECTION = "extra-collection";
 
     public static void start(Context context, Collection collection) {
         Intent starter = new Intent(context, CollectionDetailActivity.class);
@@ -34,7 +35,7 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
     protected void init() {
         viewDataBinding.toolbar.setNavigationIcon(R.drawable.ic_back_white);
         viewDataBinding.collapsToolbar.setTitleEnabled(false);
-        viewDataBinding.toolbarTitle.setText(R.string.collections);
+        viewDataBinding.toolbarTitle.setText(R.string.collection);
         setSupportActionBar(viewDataBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -74,4 +75,5 @@ public class CollectionDetailActivity extends BaseYogaActivity<BasePresenter, Ac
     protected BasePresenter createPresenter() {
         return new BasePresenter();
     }
+
 }

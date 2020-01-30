@@ -1,5 +1,8 @@
 package com.stdio.hue.yoga.modules.splash.presenter;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.data.usecases.GetAbilitiesUseCase;
 import com.stdio.hue.yoga.data.usecases.GetBannersUseCase;
@@ -110,6 +113,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         return getBannersUseCase.execute(timeUpdate, language)
                 .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
+//                    Log.e("THIEN", new Gson().toJson(results));
                     bannerRepository.insertBanner(results.getData());
                     return true;
                 });
@@ -128,6 +132,7 @@ public class SplashPresenterImpl extends BasePresenter implements SplashPresente
         return getClassesUseCase.execute(timeUpdate, language)
                 .doOnComplete(() -> splashPublishSubject.onNext(SplashAction.setProgess(1)))
                 .map(results -> {
+//                    Log.e("THIEN_CLASS", new Gson().toJson(results));
                     classesRepository.insertClasses(results.getData());
                     return true;
                 });

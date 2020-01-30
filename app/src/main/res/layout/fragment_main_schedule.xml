@@ -75,16 +75,16 @@
                             android:id="@+id/iv_setting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
+                            android:padding="@dimen/space_normal"
                             android:src="@drawable/ic_setting_white" />
 
                         <ImageView
                             android:id="@+id/iv_back_calendar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:padding="10dp"
+                            android:layout_marginStart="@dimen/space_small"
+                            android:layout_marginEnd="@dimen/space_normal"
+                            android:padding="@dimen/space_normal"
                             android:src="@drawable/ic_back_calenda_white" />
 
                         <TextView
@@ -95,26 +95,26 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
+                            android:paddingStart="@dimen/space_normal"
+                            android:paddingEnd="@dimen/space_normal"
                             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
                             android:textColor="@android:color/white"
-                            android:textSize="18sp" />
+                            android:textSize="@dimen/text_size_xx_large" />
 
                         <ImageView
                             android:id="@+id/iv_next_calendar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:padding="10dp"
+                            android:layout_marginStart="@dimen/space_small"
+                            android:layout_marginEnd="@dimen/space_small"
+                            android:padding="@dimen/space_normal"
                             android:src="@drawable/ic_next_white" />
 
                         <ImageView
                             android:id="@+id/iv_log_book"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
+                            android:padding="@dimen/space_normal"
                             android:src="@drawable/ic_log_book_white" />
                     </LinearLayout>
                 </android.support.v7.widget.Toolbar>
@@ -134,7 +134,7 @@
             android:id="@+id/iv_add"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/space_x_large"
             android:src="@drawable/ic_float_button_add"
             app:fabSize="mini"
             app:layout_anchor="@+id/appbarLayout"

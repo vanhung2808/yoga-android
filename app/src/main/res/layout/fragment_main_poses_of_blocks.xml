@@ -25,7 +25,7 @@
             android:id="@+id/iv_add_blocks"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/space_x_large"
             android:src="@drawable/ic_float_button_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

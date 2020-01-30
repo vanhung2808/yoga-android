@@ -3,7 +3,8 @@
     <string name="schedule">Schedule</string>
     <string name="poses">Poses</string>
     <string name="classes">Class</string>
-    <string name="collections">Collection</string>
+    <string name="collections">Collections</string>
+    <string name="collection">Collection</string>
     <string name="custom">Custom</string>
     <string name="news">News</string>
     <string name="no_classes_found">No class found!</string>
@@ -78,4 +79,6 @@
     <string name="ability_filter">Ability:</string>
     <string name="focus_filter">Focus:</string>
     <string name="intensity_filter">Intensity:</string>
+    <string name="downloaded">Downloaded</string>
+
 </resources>

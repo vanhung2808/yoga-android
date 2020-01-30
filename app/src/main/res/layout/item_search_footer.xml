@@ -11,19 +11,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_xxx_large"
             android:background="@drawable/background_gradient_green_corner"
-            android:minWidth="170dp"
             android:text="@string/search"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_xx_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -23,7 +23,7 @@ import com.stdio.hue.yoga.data.models.Poses;
 import com.stdio.hue.yoga.databinding.ActivityClassesDetailBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.classes.detail.presenters.ClassesDetailPresenter;
-import com.stdio.hue.yoga.modules.classes.detail.ui.adapters.ClassesDetailAdapter;
+//import com.stdio.hue.yoga.modules.classes.detail.ui.adapters.ClassesDetailAdapter;
 import com.stdio.hue.yoga.modules.poses.detail.ui.activities.PosesDetailActivity;
 import com.stdio.hue.yoga.modules.upgrade.ui.activities.UpgradeActivity;
 import com.stdio.hue.yoga.modules.video.ui.activity.VideoActivity;
@@ -40,7 +40,7 @@ import static com.stdio.hue.yoga.shares.utils.Constant.EXTRA_CLASSES;
 /**
  * Created by TranHuuPhuc on 12/4/18.
  */
-public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresenter, ActivityClassesDetailBinding> implements ClassesDetailAdapter.ClassesDetailAdapterListener {
+public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresenter, ActivityClassesDetailBinding>{
     public static final String PROGRESS = "progress";
     public static final String PROGRESS_PERCENTAGE = "progress-percentage";
 
@@ -117,6 +117,9 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
                 viewDataBinding.ivPlayVideo.setVisibility(View.VISIBLE);
                 viewDataBinding.btDownload.setVisibility(View.GONE);
             }
+
+            viewDataBinding.setCollectionName(getPresenter().getCollectionNameById(Integer.parseInt(classes.getCollectionId())));
+
             viewDataBinding.setClassesName(classes.getNameEntity(gson).getNameLocale());
             viewDataBinding.setClassesImage(classes.getImage());
             HtmlTextViewHelper.showHtmlTextView(classes.getDescriptionLocale(new GsonBuilder().create()).getNameLocale(), viewDataBinding.tvDescription);
@@ -237,8 +240,8 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
         return getAppComponent().getClassesDetailComponent().getClassesDetailPresenter();
     }
 
-    @Override
-    public void onPosesClick(Poses poses) {
-        PosesDetailActivity.start(this, poses);
-    }
+//    @Override
+//    public void onPosesClick(Poses poses) {
+////        PosesDetailActivity.start(this, poses);
+//    }
 }

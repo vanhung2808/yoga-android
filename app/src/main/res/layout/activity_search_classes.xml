@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -15,12 +16,14 @@
             android:minHeight="?attr/actionBarSize">
 
             <TextView
+                tools:text="Search"
+                android:textSize="@dimen/text_size_xxxx_large"
                 android:id="@+id/toolbar_title"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorBlack" />
         </android.support.v7.widget.Toolbar>
 
         <FrameLayout

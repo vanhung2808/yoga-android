@@ -1,6 +1,5 @@
 package com.stdio.hue.yoga.modules.main.ui.fragments.classes;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +8,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
-import com.stdio.hue.yoga.base.AbsBindingAdapter;
 import com.stdio.hue.yoga.data.models.Collection;
 import com.stdio.hue.yoga.databinding.FragmentMainCollectionsBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
@@ -17,6 +15,8 @@ import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActi
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.CollectionsClassesMainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.CollectionsClassesMainAdapter;
+import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
+import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
@@ -26,7 +26,11 @@ import static com.stdio.hue.yoga.shares.utils.Constant.EXTRA_CATEGORY_ID;
 /**
  * Created by TranHuuPhuc on 10/5/18.
  */
-public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainCollectionsBinding> implements AbsBindingAdapter.RecyclerViewClickListener {
+public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, FragmentMainCollectionsBinding> implements CollectionsClassesMainAdapter.ItemCollectionsClassesMainClickListener {
+
+    private CollectionsClassesMainAdapter adapter;
+    private int categoryId;
+
     public static CollectionMainFragment newInstance(int categoryId) {
         Bundle args = new Bundle();
         args.putInt(EXTRA_CATEGORY_ID, categoryId);
@@ -40,19 +44,20 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         return R.layout.fragment_main_collections;
     }
 
-    private CollectionsClassesMainAdapter adapter;
-    private int categoryId;
-
-    @SuppressLint("RxSubscribeOnError")
     @Override
     protected void init(@Nullable View view) {
-        initAdapter();
+
+        initRV();
+
         PublishSubject<CollectionsClassesMainAction> collectionsClassesMainState = getAppComponent().getMainComponent().getCollectionsClassesMainState();
         if (getArguments() != null) {
             categoryId = getArguments().getInt(EXTRA_CATEGORY_ID);
             disposableManager.add(getPresenter().getCollectionsOfACategory(categoryId)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(collections -> adapter.updateData(collections)));
+                    .subscribe(collections -> {
+                        adapter.updateData(collections);
+                            }
+                    ));
         }
 
         disposableManager.add(
@@ -68,12 +73,14 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         );
     }
 
-    private void initAdapter() {
+    private void initRV() {
         adapter = new CollectionsClassesMainAdapter(this);
         viewDataBinding.rvCollections.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         viewDataBinding.rvCollections.setHasFixedSize(false);
+        viewDataBinding.rvCollections.addItemDecoration(new GridSpacingItemDecoration(2, LayoutSizeConverter.dpToPx(16, getContext().getApplicationContext()), true));
         viewDataBinding.rvCollections.setAdapter(adapter);
     }
+
 
     @Override
     protected void screenResume() {
@@ -101,9 +108,9 @@ public class CollectionMainFragment extends BaseYogaFragment<MainPresenter, Frag
         return getAppComponent().getMainComponent().getMainPresenter();
     }
 
+
     @Override
-    public void recyclerViewListClicked(View view, int position) {
-        Collection collection = adapter.getCollection(position);
+    public void onItemCollectionClassesClick(Collection collection) {
         if (!collection.getCategoryId().equals("4")) {
             CollectionDetailActivity.start(getContext(), collection);
         }

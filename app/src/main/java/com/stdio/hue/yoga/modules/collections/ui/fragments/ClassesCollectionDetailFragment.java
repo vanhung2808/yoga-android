@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
@@ -17,6 +18,8 @@ import com.stdio.hue.yoga.modules.collections.ui.actions.ClassesCollectionDetail
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesCollectionDetailAdapter;
 import com.stdio.hue.yoga.modules.collections.ui.adapters.ClassesOfCollectionAdapter;
 import com.stdio.hue.yoga.shares.utils.Constant;
+import com.stdio.hue.yoga.shares.utils.GridSpacingItemDecoration;
+import com.stdio.hue.yoga.shares.utils.LayoutSizeConverter;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -64,32 +67,42 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
                         .subscribe(this::showToast)
         );
 
-        if (tabStyle == Constant.TAB_ABILITY) {
-            disposableManager.add(
-                    classesCollectionDetailAction.filter(c -> c.getFilterAbilityClassesList() != null)
-                            .map(ClassesCollectionDetailAction::getFilterAbilityClassesList)
-                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
-        } else if (tabStyle == Constant.TAB_FOCUS) {
-            disposableManager.add(
-                    classesCollectionDetailAction.filter(c -> c.getFilterFocusClassesList() != null)
-                            .map(ClassesCollectionDetailAction::getFilterFocusClassesList)
-                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
-        } else if (tabStyle == Constant.TAB_INTENSITY) {
-            disposableManager.add(
-                    classesCollectionDetailAction.filter(c -> c.getFilterIntensityClassesList() != null)
-                            .map(ClassesCollectionDetailAction::getFilterIntensityClassesList)
-                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
-        } else {
-            disposableManager.add(
-                    classesCollectionDetailAction.filter(c -> c.getFilterDurationClassesList() != null)
-                            .map(ClassesCollectionDetailAction::getFilterDurationClassesList)
-                            .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+        switch (tabStyle) {
+            case Constant.TAB_ABILITY: {
+                disposableManager.add(
+                        classesCollectionDetailAction.filter(c -> c.getFilterAbilityClassesList() != null)
+                                .map(ClassesCollectionDetailAction::getFilterAbilityClassesList)
+                                .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+            }
+            break;
+            case Constant.TAB_FOCUS: {
+                disposableManager.add(
+                        classesCollectionDetailAction.filter(c -> c.getFilterFocusClassesList() != null)
+                                .map(ClassesCollectionDetailAction::getFilterFocusClassesList)
+                                .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+            }
+            break;
+            case Constant.TAB_INTENSITY: {
+                disposableManager.add(
+                        classesCollectionDetailAction.filter(c -> c.getFilterIntensityClassesList() != null)
+                                .map(ClassesCollectionDetailAction::getFilterIntensityClassesList)
+                                .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+                break;
+            }
+            default:
+                disposableManager.add(
+                        classesCollectionDetailAction.filter(c -> c.getFilterDurationClassesList() != null)
+                                .map(ClassesCollectionDetailAction::getFilterDurationClassesList)
+                                .subscribe(filterClasses -> adapter.updateData(filterClasses)));
+                break;
+
         }
     }
 
     private void initAdapter() {
         adapter = new ClassesCollectionDetailAdapter(this);
-        viewDataBinding.rvClasses.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        viewDataBinding.rvClasses.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewDataBinding.rvClasses.setHasFixedSize(false);
         viewDataBinding.rvClasses.setAdapter(adapter);
     }
 
@@ -124,4 +137,5 @@ public class ClassesCollectionDetailFragment extends BaseYogaFragment<ClassesCol
         //Todo show Classes Detail Screen
         ClassesDetailActivity.start(getContext(), classes);
     }
+
 }

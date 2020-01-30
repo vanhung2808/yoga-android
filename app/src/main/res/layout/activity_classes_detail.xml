@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="collectionName"
+            type="String" />
+
+        <variable
             name="time"
             type="String" />
 
@@ -51,7 +55,7 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="280dp"
+                    android:layout_height="433dp"
                     app:layout_scrollFlags="scroll|enterAlways">
 
                     <ImageView
@@ -79,7 +83,8 @@
                         android:id="@+id/ll_download_classes"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/background_gradient_green_circel"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
@@ -119,20 +124,22 @@
                     <TextView
                         android:id="@+id/toolbar_title"
                         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        fontPath="@string/fonts_helveticaneue_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_x_large" />
                 </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="10dp"
+            android:paddingTop="@dimen/space_normal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
@@ -140,42 +147,55 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <android.support.constraint.ConstraintLayout
+                <TextView
+                    android:id="@+id/tv_collection_name"
+                    fontPath="@string/fonts_helveticaneue_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginEnd="@dimen/space_large"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{collectionName}"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/text_size_x_large" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginTop="@dimen/space_x_large"
+                    android:layout_marginEnd="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_normal"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_classes_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:ellipsize="end"
-                        android:maxLines="1"
+                        android:gravity="start"
                         android:text="@{classesName}"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackLightes"
+                        android:textSize="@dimen/text_size_xxxx_large"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_time"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
                     <TextView
                         android:id="@+id/tv_time"
+                        fontPath="@string/fonts_helveticaneue_medium"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:ellipsize="end"
                         android:gravity="end"
-                        android:maxLines="1"
                         android:text="@{time}"
-                        android:textSize="14sp"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_x_large"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -184,53 +204,83 @@
                 </android.support.constraint.ConstraintLayout>
 
                 <TextView
+
                     android:id="@+id/tv_description"
+                    fontPath="@string/fonts_helveticaneue"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:textSize="14sp" />
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginEnd="@dimen/space_large"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/text_size_standard" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:orientation="horizontal"
+                    >
 
                     <TextView
+                        android:layout_weight="1"
                         android:id="@+id/tv_ability_name"
-                        android:layout_width="0dp"
+                        fontPath="@string/fonts_helveticaneue_medium"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
+                        android:gravity="start"
                         android:text="@{abilityName}"
-                        android:textSize="14sp" />
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_standard" />
 
                     <TextView
-                        android:id="@+id/tv_focus_name"
-                        android:layout_width="0dp"
+                        fontPath="@string/fonts_helveticaneue_medium"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
+                        android:text="-"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_standard" />
+
+                    <TextView
                         android:layout_weight="1"
+                        android:id="@+id/tv_focus_name"
+                        fontPath="@string/fonts_helveticaneue_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
+                        android:gravity="center"
                         android:text="@{focusName}"
-                        android:textSize="14sp" />
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_standard" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        fontPath="@string/fonts_helveticaneue_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_standard" />
 
                     <TextView
                         android:id="@+id/tv_intensity_name"
-                        android:layout_width="0dp"
+                        fontPath="@string/fonts_helveticaneue_medium"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:layout_marginEnd="@dimen/space_large"
+                        android:gravity="end"
                         android:text="@{intensityName}"
-                        android:textSize="14sp" />
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/text_size_standard" />
 
                 </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

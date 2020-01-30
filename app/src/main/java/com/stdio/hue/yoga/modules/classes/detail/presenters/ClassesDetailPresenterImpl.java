@@ -1,7 +1,9 @@
 package com.stdio.hue.yoga.modules.classes.detail.presenters;
 
+import com.google.gson.Gson;
 import com.stdio.hue.yoga.base.core.mvp.BasePresenter;
 import com.stdio.hue.yoga.data.models.Poses;
+import com.stdio.hue.yoga.databases.daos.CollectionDao;
 import com.stdio.hue.yoga.databases.repositories.AbilityRepository;
 import com.stdio.hue.yoga.databases.repositories.FocusRepository;
 import com.stdio.hue.yoga.databases.repositories.IntensityRepository;
@@ -21,12 +23,22 @@ public class ClassesDetailPresenterImpl extends BasePresenter implements Classes
     private FocusRepository focusRepository;
     private IntensityRepository intensityRepository;
     private PosesRepository posesRepository;
+    private CollectionDao collectionDao;
+    private Gson gson;
 
-    public ClassesDetailPresenterImpl(AbilityRepository abilityRepository, FocusRepository focusRepository, IntensityRepository intensityRepository, PosesRepository posesRepository) {
+    public ClassesDetailPresenterImpl(
+            AbilityRepository abilityRepository,
+            FocusRepository focusRepository,
+            IntensityRepository intensityRepository,
+            PosesRepository posesRepository,
+            CollectionDao collectionDao,
+            Gson gson) {
         this.abilityRepository = abilityRepository;
         this.focusRepository = focusRepository;
         this.intensityRepository = intensityRepository;
         this.posesRepository = posesRepository;
+        this.collectionDao = collectionDao;
+        this.gson = gson;
     }
 
     @Override
@@ -46,6 +58,11 @@ public class ClassesDetailPresenterImpl extends BasePresenter implements Classes
                 })
                 .subscribeOn(Schedulers.io())
                 .map(results -> results);
+    }
+
+    @Override
+    public String getCollectionNameById(int collectionId) {
+        return collectionDao.getCollection(collectionId).getNameEntity(gson).getNameLocale();
     }
 
     private Observable<List<Poses>> getPosesOfClasses(int classesId) {

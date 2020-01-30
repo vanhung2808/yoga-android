@@ -84,4 +84,7 @@ dependencies {
     implementation 'com.karumi:dexter:5.0.0'
     //In-App Billing
     implementation 'com.anjlab.android.iab.v3:library:1.0.44'
+    //font
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.google.android:flexbox:1.0.0'
 }

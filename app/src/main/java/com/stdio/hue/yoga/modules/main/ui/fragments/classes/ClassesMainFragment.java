@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.stdio.hue.yoga.R;
@@ -16,10 +17,11 @@ import com.stdio.hue.yoga.data.models.Banner;
 import com.stdio.hue.yoga.databinding.FragmentMainClassesBinding;
 import com.stdio.hue.yoga.modules.base.BaseYogaFragment;
 import com.stdio.hue.yoga.modules.classes.searchs.ui.activities.SearchClassesActivity;
+import com.stdio.hue.yoga.modules.collections.ui.activities.CollectionDetailActivity;
 import com.stdio.hue.yoga.modules.main.presenters.MainPresenter;
 import com.stdio.hue.yoga.modules.main.ui.actions.MainAction;
 import com.stdio.hue.yoga.modules.main.ui.adapters.homeclasses.ClassesMainPagerAdapter;
-import com.stdio.hue.yoga.shares.utils.SHStringHelper;
+import com.stdio.hue.yoga.shares.utils.ViewUtils;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -66,24 +68,84 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
                             viewDataBinding.slider.removeAllSliders();
                             for (Banner slider : banners) {
                                 TextSliderView textSliderView = new TextSliderView(getContext());
-                                textSliderView.description(slider.getCollection() == null || SHStringHelper.nullOrEmpty(slider.getCollection().getName()) ? "" : slider.getCollection().getNameEntity(gson).getNameLocale())
+                                textSliderView.typeText(slider.getTypeText())
+                                        .title(slider.getTitle())
                                         .image(slider.getImage())
                                         .setScaleType(BaseSliderView.ScaleType.CenterCrop)
                                         .setOnSliderClickListener(this);
                                 textSliderView.bundle(new Bundle());
                                 textSliderView.getBundle().putString("extra", slider.getImage());
                                 viewDataBinding.slider.addSlider(textSliderView);
+
+                                textSliderView.setOnSliderClickListener(slider1 -> {
+                                    if (getContext() != null) {
+                                        CollectionDetailActivity.start(getContext(), slider.getCollection());
+                                    }
+                                });
                             }
                         }));
         initEvent();
     }
 
+    @SuppressLint("ResourceAsColor")
     private void initEvent() {
-        viewDataBinding.ivSearch.setOnClickListener(view -> SearchClassesActivity.start(getContext()));
+
+        ViewUtils.setOnDelayClick(viewDataBinding.ivSearch, v -> SearchClassesActivity.start(getContext()));
+        viewDataBinding.vpClasses.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0) {
+                    viewDataBinding.btCollections.setTextSize(22);
+                    viewDataBinding.btDownloaded.setTextSize(19);
+                    viewDataBinding.btCollections.setBackgroundResource(R.drawable.background_gray_light_corner);
+                    viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+                    viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+                    viewDataBinding.btDownloaded.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+                } else {
+                    viewDataBinding.btCollections.setTextSize(19);
+                    viewDataBinding.btDownloaded.setTextSize(22);
+                    viewDataBinding.btDownloaded.setBackgroundResource(R.drawable.background_gray_light_corner);
+                    viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+                    viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+                    viewDataBinding.btCollections.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        ViewUtils.setOnDelayClick(viewDataBinding.btCollections, v -> {
+            viewDataBinding.btCollections.setTextSize(22);
+            viewDataBinding.btDownloaded.setTextSize(19);
+            viewDataBinding.btCollections.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+            viewDataBinding.btDownloaded.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.vpClasses.setCurrentItem(0);
+        });
+
+        ViewUtils.setOnDelayClick(viewDataBinding.btDownloaded, v -> {
+            viewDataBinding.btCollections.setTextSize(19);
+            viewDataBinding.btDownloaded.setTextSize(22);
+            viewDataBinding.btDownloaded.setBackgroundResource(R.drawable.background_gray_light_corner);
+            viewDataBinding.btDownloaded.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBlack));
+            viewDataBinding.btCollections.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGrayLightes));
+            viewDataBinding.btCollections.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+            viewDataBinding.vpClasses.setCurrentItem(1);
+        });
+
     }
 
     private void initSlider() {
-        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhite));
+        viewDataBinding.slider.getPagerIndicator().setDefaultIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimary), ContextCompat.getColor(getContext(), R.color.colorWhiteLight));
         viewDataBinding.slider.setPresetTransformer(SliderLayout.Transformer.Default);
         viewDataBinding.slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
     }
@@ -113,5 +175,7 @@ public class ClassesMainFragment extends BaseYogaFragment<MainPresenter, Fragmen
     @Override
     public void onSliderClick(BaseSliderView slider) {
         //Todo open webview link slider
+
     }
+
 }

@@ -31,7 +31,7 @@ public class MainActivity extends BaseYogaActivity<BasePresenter, ActivityMainBi
 
     @Override
     protected void init() {
-        viewDataBinding.vpHome.setOffscreenPageLimit(3);
+        viewDataBinding.vpHome.setOffscreenPageLimit(4);
         viewDataBinding.vpHome.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         viewDataBinding.navigation.setOnNavigationItemSelectedListener(this);
         viewDataBinding.vpHome.addOnPageChangeListener(this);
@@ -83,6 +83,9 @@ public class MainActivity extends BaseYogaActivity<BasePresenter, ActivityMainBi
         switch (item.getItemId()) {
             case R.id.navigation_classes:
                 viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_CLASSES);
+                break;
+            case R.id.navigation_poses:
+                viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_POSES);
                 break;
             case R.id.navigation_news:
                 viewDataBinding.vpHome.setCurrentItem(Constant.TAB_HOME_NEWS);
