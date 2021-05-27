@@ -80,5 +80,17 @@
     <string name="focus_filter">Focus:</string>
     <string name="intensity_filter">Intensity:</string>
     <string name="downloaded">Downloaded</string>
+    <string name="save_your_progress_to_access_your_personal_trainning_program">Save your progress to access your personal trainning program!</string>
+    <string name="change_starts_here">Change Starts Here</string>
+    <string name="google">google</string>
+    <string name="close">close</string>
+    <string name="it_s_recommended_to_connect_your_email_address_for_us_to_better_protect_your_information">it_s_recommended_to_connect_your_email_address_for_us_to_better_protect_your_information</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_password_again">Enter your password again</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="email">EMAIL</string>
+    <string name="facebook">FACEBOOK</string>
+    <string name="google1">GOOGLE</string>
+    <string name="string1">It’s recommended to connect your email address for us to better protect your information.</string>
 
 </resources>

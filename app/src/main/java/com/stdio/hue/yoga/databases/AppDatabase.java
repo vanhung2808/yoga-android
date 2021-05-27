@@ -26,11 +26,13 @@ import com.stdio.hue.yoga.databases.daos.FocusDao;
 import com.stdio.hue.yoga.databases.daos.IntensityDao;
 import com.stdio.hue.yoga.databases.daos.NewsDao;
 import com.stdio.hue.yoga.databases.daos.PosesDao;
+import com.stdio.hue.yoga.modules.auth.dao.UserDao;
+import com.stdio.hue.yoga.modules.auth.model.User;
 
 /**
  * Created by TranHuuPhuc on 11/7/18.
  */
-@Database(entities = {Ability.class, Banner.class, Category.class, Classes.class, Collection.class, Duration.class, Focus.class, Intensity.class, Poses.class, PosesType.class, News.class}, version = 1, exportSchema = false)
+@Database(entities = {Ability.class, Banner.class, Category.class, Classes.class, Collection.class, Duration.class, Focus.class, Intensity.class, Poses.class, PosesType.class, News.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
 
@@ -63,4 +65,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PosesDao posesDao();
 
     public abstract NewsDao newsDao();
+
+    public abstract UserDao userDao();
 }

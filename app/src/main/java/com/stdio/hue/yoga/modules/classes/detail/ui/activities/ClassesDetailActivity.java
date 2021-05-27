@@ -21,6 +21,7 @@ import com.stdio.hue.yoga.R;
 import com.stdio.hue.yoga.data.models.Classes;
 import com.stdio.hue.yoga.data.models.Poses;
 import com.stdio.hue.yoga.databinding.ActivityClassesDetailBinding;
+import com.stdio.hue.yoga.modules.auth.activity.HomeSignupActivity;
 import com.stdio.hue.yoga.modules.base.BaseYogaActivity;
 import com.stdio.hue.yoga.modules.classes.detail.presenters.ClassesDetailPresenter;
 //import com.stdio.hue.yoga.modules.classes.detail.ui.adapters.ClassesDetailAdapter;
@@ -163,34 +164,37 @@ public class ClassesDetailActivity extends BaseYogaActivity<ClassesDetailPresent
     }
 
     private void initEvent() {
-        viewDataBinding.btDownload.addOnClickListener(new DownloadButtonProgress.OnClickListener() {
-            @Override
-            public void onIdleButtonClick(View view) {
-                //Todo show icon download
-                if (!billingProcessor.isPurchased("android.test.purchased")) {
-                    UpgradeActivity.start(ClassesDetailActivity.this);
-                } else {
-                    if (!SHStringHelper.nullOrEmpty(classes.getVideoUrl())) {
-                        mBindService.startDownloadVideo(classes);
-                        viewDataBinding.btDownload.setDeterminate();
-                        viewDataBinding.btDownload.setMaxProgress(100);
-                        isIdle = false;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelButtonClick(View view) {
-                //Todo pause
-                mBindService.pauseDownloadVideo("classes" + classes.getId());
-                viewDataBinding.btDownload.setIdle();
-                isIdle = true;
-            }
-
-            @Override
-            public void onFinishButtonClick(View view) {
-                //Todo finish download
-            }
+//        viewDataBinding.btDownload.addOnClickListener(new DownloadButtonProgress.OnClickListener() {
+//            @Override
+//            public void onIdleButtonClick(View view) {
+//                //Todo show icon download
+//                if (!billingProcessor.isPurchased("android.test.purchased")) {
+//                    UpgradeActivity.start(ClassesDetailActivity.this);
+//                } else {
+//                    if (!SHStringHelper.nullOrEmpty(classes.getVideoUrl())) {
+//                        mBindService.startDownloadVideo(classes);
+//                        viewDataBinding.btDownload.setDeterminate();
+//                        viewDataBinding.btDownload.setMaxProgress(100);
+//                        isIdle = false;
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelButtonClick(View view) {
+//                //Todo pause
+//                mBindService.pauseDownloadVideo("classes" + classes.getId());
+//                viewDataBinding.btDownload.setIdle();
+//                isIdle = true;
+//            }
+//
+//            @Override
+//            public void onFinishButtonClick(View view) {
+//                //Todo finish download
+//            }
+//        });
+        viewDataBinding.btDownload.setOnClickListener(v -> {
+            HomeSignupActivity.start(this);
         });
 
         viewDataBinding.ivPlayVideo.setOnClickListener(view -> {
